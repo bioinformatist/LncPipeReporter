@@ -1,0 +1,36 @@
+---
+title: "MultiIP Reports"
+author: "Yu Sun"
+date: "June 26, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.width = 4.5, fig.height = 3)
+```
+
+## Plot 1: Scatter plot -- `CPAT` against `CDF`
+
+```{r echo = FALSE, message = FALSE}
+require(plotly)
+require(data.table)
+require(cowplot)
+require(htmltools)
+wtf <- fread('CDF.txt')
+wtf <- data.table(wtf, fuck = exp(wtf$value))
+wtf <- wtf[sample(nrow(wtf), 5000), ]
+p <- ggplot() + geom_jitter(data = wtf, aes(x = fuck, y = value, colour = type), alpha = 0.4) + scale_x_continuous(expand  = c(0,0)) + scale_y_continuous(expand = c(0, 0)) + xlab('Coding Probability (CPAT)') + ylab('CDF')
+ggplotly(p)
+```
+
+## Plot 2: Density plot -- `Transcript length` against `Density`
+
+```{r echo = FALSE, message = FALSE}
+wtf <- wtf[,1:2]
+wtf$value <- wtf$value * 50000
+wtf <- wtf[sample(nrow(wtf), 5000), ]
+p <- ggplot() + geom_density(data = wtf, aes(x = value, colour = type)) + xlab('Transcript length') + ylab('Density') + scale_x_continuous(expand = c(0.01, 0)) + scale_y_continuous(expand = c(0.01, 0))
+ggplotly(p)
+```
+
+
