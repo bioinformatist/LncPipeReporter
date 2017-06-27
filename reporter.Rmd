@@ -6,25 +6,27 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, fig.width = 4.5, fig.height = 3)
-```
-
-## Plot 1: Scatter plot -- `CPAT` against `CDF`
-
-```{r echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.width = 4.5, fig.height = 3, cache = TRUE)
+rm(list = ls())
+gc()
 require(plotly)
 require(data.table)
 require(cowplot)
-cdf <- fread('CDF.txt')
-cdf <- cdf[ order(cdf[,1], cdf[,2]) ]
-# cdf <- cdf[sample(nrow(cdf), 50000), ]
-names(cdf) <- c('Type', 'CPAT')
-p <- ggplot() + geom_step(data = cdf, aes(x = CPAT, colour = Type), size = 2, stat = 'ecdf') + scale_x_continuous(expand  = c(0,0)) + scale_y_continuous(expand = c(0, 0)) + labs(x = 'Coding Probablity(CPAT)', title = "Coding Potential", y = "CDF") + scale_color_manual(values = c("#FFA500", "#3A5FCD", "#EE2C2C")) + geom_hline(yintercept = 1, colour = "grey",linetype = "dashed",size = 1)
-ggplotly(p)
-# p
 ```
 
-## Plot 2: Density plot -- `Transcript length` against `Density`
+## Plot 1: *ECDF* plot by step
+
+```{r echo = FALSE, message = FALSE}
+cdf <- fread('CDF.txt')
+cdf <- cdf[ order(cdf[,1], cdf[,2]) ]
+cdf <- cdf[sample(nrow(cdf), nrow(cdf) * 0.25), ]
+names(cdf) <- c('Type', 'CPAT')
+p <- ggplot() + geom_line(data = cdf, aes(x = CPAT, colour = Type), size = 2, stat = 'ecdf') + scale_x_continuous(expand  = c(.01, 0)) + scale_y_continuous(expand = c(0, 0)) + labs(x = 'Coding Probablity(CPAT)', title = "Coding Potential", y = "CDF") + scale_color_manual(values = c("#FFA500", "#3A5FCD", "#EE2C2C")) + geom_hline(yintercept = 1, colour = "grey",linetype = "dashed",size = 1)
+ggplotly(p)
+rm(cdf, p)
+```
+
+## Plot 2: Transcript length density plot
 
 ```{r echo = FALSE, message = FALSE}
 # cdf <- cdf[,1:2]
