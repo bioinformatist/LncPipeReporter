@@ -13,27 +13,39 @@ require(plotly)
 require(data.table)
 require(cowplot)
 ```
+## Parsing STAR log
+```{r echo = FALSE}
+log.list = as.vector(t(fread('log.list', header = FALSE)))
+# sapply(log.list, function(x) )
+# for (i in 1:length(log.list)) assign(log.list[i], fread(log.list[i], sep = '|'))
+# grep "" `cat log.list` | perl -F':\s{2,}|\s\|\t' -lanE'/:$/ ? next : say join qq{\t}, @F'
+```
 
-## Plot 1: *ECDF* plot by step
+## *ECDF* plot by step
 
 ```{r echo = FALSE, message = FALSE}
 cdf <- fread('CDF.txt')
+# Order first, for geom_line later (geom_step behaves badly when calling plotly with small sample)
 cdf <- cdf[ order(cdf[,1], cdf[,2]) ]
 cdf <- cdf[sample(nrow(cdf), nrow(cdf) * 0.25), ]
-names(cdf) <- c('Type', 'CPAT')
+setnames(cdf, c('Type', 'CPAT'))
 p <- ggplot() + geom_line(data = cdf, aes(x = CPAT, colour = Type), size = 2, stat = 'ecdf') + scale_x_continuous(expand  = c(.01, 0)) + scale_y_continuous(expand = c(0, 0)) + labs(x = 'Coding Probablity(CPAT)', title = "Coding Potential", y = "CDF") + scale_color_manual(values = c("#FFA500", "#3A5FCD", "#EE2C2C")) + geom_hline(yintercept = 1, colour = "grey",linetype = "dashed",size = 1)
 ggplotly(p)
-rm(cdf, p)
+rm(cdf, p); invisible(gc())
 ```
 
-## Plot 2: Transcript length density plot
+## Transcript length density plot
 
 ```{r echo = FALSE, message = FALSE}
-# cdf <- cdf[,1:2]
-# cdf$value <- cdf$value * 50000
-# cdf <- cdf[sample(nrow(cdf), 500), ]
-# p <- ggplot() + geom_density(data = cdf, aes(x = value, colour = type)) + xlab('Transcript length') + ylab('Density') + scale_x_continuous(expand = c(0.01, 0)) + scale_y_continuous(expand = c(0.01, 0))
-# ggplotly(p)
+gtf <- fread(paste("sed -re 's/\\s+|;\\s+|;/\t/g'", "lncRNA.final.v2.gtf", "| cut -f2,4,5,12"))
+# Use sum of exon length as transcript length
+gtf <- unique(gtf[, V2 := sum(V3-V2), by = .(V1, V4)][, V3 := NULL])
+setcolorder(gtf, c('V4', 'V1', 'V2'))
+setnames(gtf, c('Transcript', "Type", "Length"))
+head(gtf)
+p <- ggplot() + geom_density(data = gtf, aes(x = Length, colour = Type)) + xlab('Transcript length') + ylab('Density') + scale_x_continuous(expand = c(0.01, 0)) + scale_y_continuous(expand = c(0.01, 0))
+ggplotly(p)
+rm(gtf, p); invisible(gc())
 ```
 
 
