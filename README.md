@@ -6,6 +6,11 @@ Motivation
 
 [Qi Zhao](https://github.com/likelet)'s [workflow](git.oschina.net/likelet/workflow) need a tool for automatically generating reports in `HTML` format with interactive plots.
 
+Gallery
+-------
+
+<iframe src="reporter.html" width="700px" height="500px" frameborder="0" scrolling="no">
+</iframe>
 License
 -------
 
