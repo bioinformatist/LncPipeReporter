@@ -6,27 +6,54 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, fig.width = 4.5, fig.height = 3, cache = TRUE)
+knitr::opts_chunk$set(echo = TRUE, fig.width = 7.2, fig.height = 4.8, cache = FALSE)
 rm(list = ls())
 gc()
+# The latest plotly should be used, for a lot of bugs fixed now
+# if (!require("devtools")) install.packages("devtools")
+# devtools::install_github("ropensci/plotly")
 require(plotly)
 require(data.table)
 require(cowplot)
+require(stringr)
+.toupperFirstLetter = function(x) paste0(toupper(substr(x, 1, 1)), tolower(substring(x, 2)))
 ```
+
 ## Parsing STAR log
-```{r echo = FALSE}
-log.list = as.vector(t(fread('log.list', header = FALSE)))
-# sapply(log.list, function(x) )
-# for (i in 1:length(log.list)) assign(log.list[i], fread(log.list[i], sep = '|'))
-# grep "" `cat log.list` | perl -F':\s{2,}|\s\|\t' -lanE'/:$/ ? next : say join qq{\t}, @F'
+```{r echo = FALSE, message = FALSE}
+# Call perl one-liner to concatenate all log files in the list
+log.summary = fread(paste0("grep '' `", "cat log.list", "` | perl -F':\\s{2,}|\\s\\|\\t' -lanE'/:$/ ? next : say join qq{\t}, @F'"), header = FALSE)
+# Extract lines and get sample names
+log.summary <- log.summary[V2 %like% c('of i|Uni|mu|many l|sho|oth')] [, V1 := tstrsplit(V1, '\\.')[[1]]]
+# Convert percentage (characters) into decimals
+log.percentage <- log.summary[V2 %like% '%'][, ':=' (V2 = .toupperFirstLetter(gsub('% of reads | reads %', '', V2)), V3 = as.numeric(sub("%", "",V3,fixed=TRUE))/100)]
+setnames(log.percentage, c('Sample', 'Type', 'Percentage'))
+p <- ggplot() + geom_bar(data = log.percentage, aes(x = Sample, y = Percentage, fill = Type), stat = 'identity') + scale_y_continuous(labels = scales::percent) + coord_flip()
+# p
+ggplotly(p)
+
+##############################################################################################################################
+# system.time(
+#   log.list[V2 %like% c('Uni')]
+# )
+  #  user  system elapsed
+  # 0.000   0.000   0.001
+
+# system.time(
+#   log.list[V2 %in% c('Uniquely mapped reads number', 'Uniquely mapped reads %')]
+# )
+  #  user  system elapsed 
+  # 0.003   0.000   0.003
+##############################################################################################################################
 ```
 
 ## *ECDF* plot by step
 
 ```{r echo = FALSE, message = FALSE}
 cdf <- fread('CDF.txt')
-# Order first, for geom_line later (geom_step behaves badly when calling plotly with small sample)
+# Order first, for using geom_line later (geom_step behaves badly when calling plotly, see https://github.com/ropensci/plotly/issues/1030)
 cdf <- cdf[ order(cdf[,1], cdf[,2]) ]
+# Subset data randomly
 cdf <- cdf[sample(nrow(cdf), nrow(cdf) * 0.25), ]
 setnames(cdf, c('Type', 'CPAT'))
 p <- ggplot() + geom_line(data = cdf, aes(x = CPAT, colour = Type), size = 2, stat = 'ecdf') + scale_x_continuous(expand  = c(.01, 0)) + scale_y_continuous(expand = c(0, 0)) + labs(x = 'Coding Probablity(CPAT)', title = "Coding Potential", y = "CDF") + scale_color_manual(values = c("#FFA500", "#3A5FCD", "#EE2C2C")) + geom_hline(yintercept = 1, colour = "grey",linetype = "dashed",size = 1)
@@ -42,7 +69,7 @@ gtf <- fread(paste("sed -re 's/\\s+|;\\s+|;/\t/g'", "lncRNA.final.v2.gtf", "| cu
 gtf <- unique(gtf[, V2 := sum(V3-V2), by = .(V1, V4)][, V3 := NULL])
 setcolorder(gtf, c('V4', 'V1', 'V2'))
 setnames(gtf, c('Transcript', "Type", "Length"))
-head(gtf)
+# head(gtf)
 p <- ggplot() + geom_density(data = gtf, aes(x = Length, colour = Type)) + xlab('Transcript length') + ylab('Density') + scale_x_continuous(expand = c(0.01, 0)) + scale_y_continuous(expand = c(0.01, 0))
 ggplotly(p)
 rm(gtf, p); invisible(gc())
