@@ -9,7 +9,7 @@ Motivation
 Gallery
 -------
 
-<iframe src="reporter.html" width="700px" height="500px" frameborder="0" scrolling="no">
+<iframe src="https://raw.githubusercontent.com/bioinformatist/multiIP/master/reporter.html" width="700px" height="500px" frameborder="0" scrolling="yes">
 </iframe>
 License
 -------
