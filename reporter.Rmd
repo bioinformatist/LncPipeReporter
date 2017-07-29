@@ -55,9 +55,9 @@ Column
 
 ```{r results='asis'}
 fastqc.dirs = list.files(path = params$up.stream, pattern = '_fastqc$')
-fastqc.table = data.table(Sample = substr(fastqc.dirs, 7, nchar(fastqc.dirs)-7), HTML = paste0('[', substr(fastqc.dirs, 7, nchar(fastqc.dirs)-7), '](', paste0(fastqc.dirs, "/fastqc_report.html"), ')'), Summary = paste0('[', substr(fastqc.dirs, 7, nchar(fastqc.dirs)-7), '](', paste0(fastqc.dirs, "/summary.txt"), ')'), Details = paste0('[', substr(fastqc.dirs, 7, nchar(fastqc.dirs)-7), '](', paste0(fastqc.dirs, "/fastqc_data.txt"), ')'))
+fastqc.table = data.table(Sample = substr(fastqc.dirs, 7, nchar(fastqc.dirs)-7), HTML = paste0('[', substr(fastqc.dirs, 7, nchar(fastqc.dirs)-7), '](', paste0(params$up.stream, '/', fastqc.dirs, "/fastqc_report.html"), ')'), Summary = paste0('[', substr(fastqc.dirs, 7, nchar(fastqc.dirs)-7), '](', paste0(params$up.stream, '/', fastqc.dirs, "/summary.txt"), ')'), Details = paste0('[', substr(fastqc.dirs, 7, nchar(fastqc.dirs)-7), '](', paste0(params$up.stream, '/', fastqc.dirs, "/fastqc_data.txt"), ')'))
 kable(fastqc.table, caption = "FastQC results")
-rm(fastqc.dirs, fastqc.table); invisible(gc())
+# rm(fastqc.dirs, fastqc.table); invisible(gc())
 ```
 
 STAR {data-navmenu="Aligning"}
@@ -127,7 +127,7 @@ HISAT2 {data-navmenu="Aligning"}
 ```{r}
 hisat <- fread(paste0(
 "cd ", params$up.stream, ";grep -H '' `", "cat hisat2_log.list` |perl -F':|\\(|\\)|(>?\\d\\stimes?)' -lanE '/%/ and /aligned/ ? say join qq{\t},@F : next'"), header = FALSE)
-hisat <- hisat[,c(1,3,5,7,8)][, ':=' (V3 =  as.numeric(sub("%", "", V3, fixed = TRUE)) / 100)][,':='(V5 = sub(' exactly',"",V5))]
+hisat <- hisat[,c(1,3,5,7,8)][, ':=' (V1 = tstrsplit(V1, '\\.')[[1]], V5 =  as.numeric(sub("%", "", V5, fixed = TRUE)) / 100, V7 = sub(' exactly',"",V7))]
 setnames(hisat, c('Sample', 'Num','Percentage','Type', 'Times'))
 ```
 
@@ -150,11 +150,10 @@ Column
 p <-
 ggplot() + geom_bar(data = hisat,
 aes(x = Type, y = Percentage, fill = Times),
-stat = 'identity') + scale_y_continuous() + coord_flip()
+stat = 'identity') + scale_y_continuous(labels = scales::percent) + coord_flip() + facet_grid(Sample ~ .)
 # p
 ggplotly(p)
-rm(hisat, p)
-invisible(gc())
+rm(hisat, p);invisible(gc())
 ```
 
 
@@ -162,11 +161,11 @@ CDF {data-navmenu="Annotation"}
 =====================================
 
 ```{r}
-cdf <- fread('CDF.txt')
+cdf <- fread(paste0(params$up.stream, '/CDF.txt'))
 # Order first, for using geom_line later (geom_step behaves badly when calling plotly, see https://github.com/ropensci/plotly/issues/1030)
 cdf <- cdf[ order(cdf[,1], cdf[,2]) ]
 # Subset data randomly
-cdf <- cdf[sample(nrow(cdf), nrow(cdf) * 0.1), ]
+cdf <- cdf[sample(nrow(cdf), nrow(cdf) * params$cdf.percent / 100), ]
 setnames(cdf, c('Type', 'CPAT'))
 ```
 
@@ -194,7 +193,7 @@ lncRNA {data-navmenu="Annotation"}
 =====================================
 
 ```{r}
-gtf <- fread(paste("sed -re 's/\\s+|;\\s+|;/\t/g'", "lncRNA.final.v2.gtf", "| cut -f2,4,5,12,14"))
+gtf <- fread(paste0("sed -re 's/\\s+|;\\s+|;/\t/g' ", params$up.stream, "/lncRNA.final.v2.gtf", "| cut -f2,4,5,12,14"))
 # Use sum of exon length as transcript length
 gtf <- unique(gtf[, V2 := sum(V3-V2), by = .(V1, V4)][, V3 := NULL])
 setcolorder(gtf, c('V4', 'V1', 'V2', 'V5'))
@@ -218,11 +217,13 @@ ggplotly(p)
 rm(p); invisible(gc())
 ```
 
+Row
+-------------------------------------
+
 ### Total lncRNA length distribution
 
 ```{r, message=TRUE, warning=TRUE}
-# TODO: User defined parameters threshold
-threshold <- 10000
+threshold <- params$max.lncrna.len
 gtf[Length > threshold, Length := threshold]
 p <- ggplot() + geom_histogram(data = gtf, aes(x= Length), binwidth = 100) + scale_x_continuous(breaks = seq.int(200, threshold, length.out = 10), labels = c(seq.int(200, threshold, length.out = 9), paste0(threshold, '+')), expand = c(0.01, 0)) + scale_y_continuous(expand = c(0, 10)) + labs(x = 'lncRNA length', y = 'Count')
 ggplotly(p)
