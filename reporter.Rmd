@@ -312,5 +312,5 @@ invisible(gc())
 
 ```{r}
 lnc.cls <- fread(paste0(params$up.stream, '/lncRNA_classes.txt'))[,6:10]
-lnc.cls[type == 'intergenic', final.type = ifelse(direction = 'antisense' & distance < 1000, 'Bidirectional', 'Intergenic')]
+lnc.cls[type == 'intergenic', final.type := ifelse(direction == 'antisense' & distance < 1000, 'Bidirectional', 'Intergenic')]
 ```
