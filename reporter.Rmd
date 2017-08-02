@@ -26,6 +26,13 @@ params:
   max.lncrna.len:
     label: "Maximum length of lncRNAs to display when calculate distribution"
     value: 10000
+  min.expressed.sample:
+    label: "Minimal percentage of expressed samples"
+    value: 50
+    input: slider
+    min: 0
+    max: 100
+    post: '%'
 ---
 
 ```{r setup, include=FALSE}
@@ -44,11 +51,18 @@ knitr::opts_chunk$set(
   # install.packages(c("curl", "httr"))
   # devtools::install_github('ramnathv/htmlwidgets')
   # devtools::install_github("ropensci/plotly")
+  # source("https://bioconductor.org/biocLite.R")
+  # biocLite("edgeR")
+  # library(devtools)
+  # install_github("vqv/ggbiplot")
   require(plotly)
   require(data.table)
   require(cowplot)
   require(stringr)
   require(knitr)
+  require(edgeR)
+  require(ggbiplot)
+  require(pheatmap)
   .toupperFirstLetter = function(x)
   paste0(toupper(substr(x, 1, 1)), tolower(substring(x, 2)))
 ```
@@ -311,6 +325,90 @@ invisible(gc())
 ### lncRNA classification
 
 ```{r}
-lnc.cls <- fread(paste0(params$up.stream, '/lncRNA_classes.txt'))[,6:10]
-lnc.cls[type == 'intergenic', final.type := ifelse(direction == 'antisense' & distance < 1000, 'Bidirectional', 'Intergenic')]
+lnc.cls <-
+  fread(paste0(params$up.stream, '/lncRNA_classes.txt'))[, 6:10]
+lnc.cls[type == 'intergenic', final.type := ifelse(direction == 'antisense' &
+                                                     distance < 1000,
+                                                   'Bidirectional',
+                                                   'Intergenic')]
+```
+
+DE analysis
+=====================================
+
+```{r}
+rsem.count <-
+  fread(paste0(params$up.stream, '/lncRNA.rsem.count.txt'))
+  design.table <-
+  fread(paste0(params$up.stream, '/designMatrix.txt'), header = TRUE)
+  rsem.count <- rsem.count[, round(.SD), by = ID]
+  group <- as.factor(design.table$condition)
+  d <- DGEList(counts = rsem.count[, -1], group = group)
+  design <- model.matrix( ~ group)
+  d <-
+  d[keep <-
+  rowSums(cpm(d) > 1) >= nrow(design.table) * params$min.expressed.sample / 100, , keep.lib.sizes =
+  FALSE]
+  d <- calcNormFactors(d)
+  d <- estimateDisp(d, design = design)
+  de <- exactTest(d)
+  de <- topTags(de, n = length(rownames(de$table)))
+  deg <- row.names(de$table[with(de$table, PValue < 0.05),][order(-de$table[with(de$table, PValue < 0.05),]$logCPM),][1:20,])
+  log.cpm <- cpm(d, prior.count=2, log=TRUE)
+  log.cpm <- data.frame(log.cpm)
+  heatmap.m <- log.cpm[deg,]
+```
+
+Column 
+-------------------------------------
+
+### lncRNA length table
+
+```{r}
+DT::datatable(de$table)
+```
+
+Column {.tabset}
+-------------------------------------
+
+### Vocalno plot
+
+```{r}
+de$table$threshold <-
+  as.factor(abs(de$table$logFC) > 2 & de$table$PValue < 0.05)
+  p <-
+  ggplot(data = de$table, aes(
+  x = logFC,
+  y = -log10(PValue),
+  colour = threshold
+  )) + geom_point(size = 1.75, alpha = 0.4) + xlab("log2 fold change") + ylab("-log10 p-value") +
+  # plotly does not support expression object now
+  # xlab(expression("log"[2]*"(Fold Change)")) + ylab(expression("-log"[10]*"(p-value)")) +
+  geom_vline(
+  xintercept = 0,
+  colour = "grey",
+  linetype = "dashed",
+  size = 1
+  ) +
+  geom_hline(
+  yintercept = -log10(0.05),
+  colour = "grey",
+  linetype = "dashed",
+  size = 1
+  ) + theme(legend.position = "none")
+  ggplotly(p)
+```
+
+### Principle Components Analysis
+
+```{r}
+pca.m <- prcomp(t(log.cpm), scale. = FALSE)
+p <- ggbiplot(pca.m, groups = design.table$condition, ellipse = TRUE, circle = TRUE, labels = colnames(log.cpm), var.axes = FALSE)
+ggplotly(p)
+```
+
+### Heatmap
+
+```{r}
+
 ```
