@@ -42,7 +42,8 @@ knitr::opts_chunk$set(
   fig.height = 6,
   cache = FALSE,
   message = FALSE,
-  warning = FALSE
+  warning = FALSE,
+  cache = TRUE
   )
   rm(list = setdiff(ls(), "params"))
   gc()
@@ -65,6 +66,74 @@ knitr::opts_chunk$set(
   require(pheatmap)
   .toupperFirstLetter = function(x)
   paste0(toupper(substr(x, 1, 1)), tolower(substring(x, 2)))
+  
+  ggheatmap <- function(exprs) {
+  require(ggdendro)
+  require(cowplot)
+  require(data.table)
+  require(stringr)
+  
+  features <- row.names(exprs)
+  exprs <- t(scale(t(exprs)))
+  
+  dd.col <- as.dendrogram(hclust(dist(exprs)))
+  dd.row <- as.dendrogram(hclust(dist(t(exprs))))
+  col.order <- order.dendrogram(dd.col)
+  dy <- dendro_data(dd.col)
+  row.order <- order.dendrogram(dd.row)
+  dx <- dendro_data(dd.row)
+  
+  ggdend <- function(df) {
+  ggplot() +
+    geom_segment(data = df, aes(x=x, y=y, xend=xend, yend=yend)) +
+    labs(x = "", y = "") + theme_minimal() +
+    theme(axis.text = element_blank(), axis.ticks = element_blank(),
+          panel.grid = element_blank())
+}
+  
+  exprs <- data.table(features, t(scale(t(exprs)))[col.order, row.order])
+  exprs <- melt(exprs, id = 1, variable.name = 'sample.name')
+  
+  dendro.data.x <- dendro_data(dd.row)
+  dendro.data.y <- dendro_data(dd.col)
+  
+  # theme_none <- theme(
+  #   panel.grid.major = element_blank(),
+  #   panel.grid.minor = element_blank(),
+  #   panel.background = element_blank(),
+  #   axis.title.x = element_text(colour=NA),
+  #   axis.title.y = element_blank(),
+  #   axis.text.x = element_blank(),
+  #   axis.text.y = element_blank(),
+  #   axis.line = element_blank()
+  #   #axis.ticks.length = element_blank()
+  # )
+px <- ggdend(dx$segments)
+py <- ggdend(dy$segments) + coord_flip()  
+  
+  heatmap.exprs <- ggplot(exprs, aes(x = sample.name, y = features)) + geom_tile(aes(fill=value)) + scale_fill_gradient2(low = "green", mid = "black", high = "red", midpoint = 0)
+  
+  # dendrogram.x <- ggplot(segment(dendro.data.x)) + 
+  #   geom_segment(aes(x=x, y=y, xend=xend, yend=yend))
+  # dendrogram.y <- ggplot(segment(dendro.data.y)) + 
+  #   geom_segment(aes(x=x, y=y, xend=xend, yend=yend)) + 
+  #   coord_flip()
+  
+eaxis <- list(
+  showticklabels = FALSE,
+  showgrid = FALSE,
+  zeroline = FALSE
+)
+
+p_empty <- ggplotly(ggplot()) %>%
+  # note that margin applies to entire plot, so we can
+  # add it here to make tick labels more readable
+  layout(margin = list(l = 200),
+         xaxis = eaxis,
+         yaxis = eaxis)
+  # return(list(dendrogram.x, ggplot(), heatmap.exprs, dendrogram.y))
+subplot(px, p_empty, heatmap.exprs, py, nrows = 2, margin = 0.01)
+}
 ```
 
 Quality Control
@@ -410,5 +479,7 @@ ggplotly(p)
 ### Heatmap
 
 ```{r}
-
+# pheatmap(heatmap.m, trace = 'none', margin = c(13, 13), display_numbers = TRUE, number_format = '%.1e')
+ggheatmap(heatmap.m)
+plot_grid(plotlist = heatmap.dendrogram, align = 'hv')
 ```
