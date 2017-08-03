@@ -67,73 +67,6 @@ knitr::opts_chunk$set(
   .toupperFirstLetter = function(x)
   paste0(toupper(substr(x, 1, 1)), tolower(substring(x, 2)))
   
-  ggheatmap <- function(exprs) {
-  require(ggdendro)
-  require(cowplot)
-  require(data.table)
-  require(stringr)
-  
-  features <- row.names(exprs)
-  exprs <- t(scale(t(exprs)))
-  
-  dd.col <- as.dendrogram(hclust(dist(exprs)))
-  dd.row <- as.dendrogram(hclust(dist(t(exprs))))
-  col.order <- order.dendrogram(dd.col)
-  dy <- dendro_data(dd.col)
-  row.order <- order.dendrogram(dd.row)
-  dx <- dendro_data(dd.row)
-  
-  ggdend <- function(df) {
-  ggplot() +
-    geom_segment(data = df, aes(x=x, y=y, xend=xend, yend=yend)) +
-    labs(x = "", y = "") + theme_minimal() +
-    theme(axis.text = element_blank(), axis.ticks = element_blank(),
-          panel.grid = element_blank())
-}
-  
-  exprs <- data.table(features, t(scale(t(exprs)))[col.order, row.order])
-  exprs <- melt(exprs, id = 1, variable.name = 'sample.name')
-  
-  dendro.data.x <- dendro_data(dd.row)
-  dendro.data.y <- dendro_data(dd.col)
-  
-  # theme_none <- theme(
-  #   panel.grid.major = element_blank(),
-  #   panel.grid.minor = element_blank(),
-  #   panel.background = element_blank(),
-  #   axis.title.x = element_text(colour=NA),
-  #   axis.title.y = element_blank(),
-  #   axis.text.x = element_blank(),
-  #   axis.text.y = element_blank(),
-  #   axis.line = element_blank()
-  #   #axis.ticks.length = element_blank()
-  # )
-px <- ggdend(dx$segments)
-py <- ggdend(dy$segments) + coord_flip()  
-  
-  heatmap.exprs <- ggplot(exprs, aes(x = sample.name, y = features)) + geom_tile(aes(fill=value)) + scale_fill_gradient2(low = "green", mid = "black", high = "red", midpoint = 0)
-  
-  # dendrogram.x <- ggplot(segment(dendro.data.x)) + 
-  #   geom_segment(aes(x=x, y=y, xend=xend, yend=yend))
-  # dendrogram.y <- ggplot(segment(dendro.data.y)) + 
-  #   geom_segment(aes(x=x, y=y, xend=xend, yend=yend)) + 
-  #   coord_flip()
-  
-eaxis <- list(
-  showticklabels = FALSE,
-  showgrid = FALSE,
-  zeroline = FALSE
-)
-
-p_empty <- ggplotly(ggplot()) %>%
-  # note that margin applies to entire plot, so we can
-  # add it here to make tick labels more readable
-  layout(margin = list(l = 200),
-         xaxis = eaxis,
-         yaxis = eaxis)
-  # return(list(dendrogram.x, ggplot(), heatmap.exprs, dendrogram.y))
-subplot(px, p_empty, heatmap.exprs, py, nrows = 2, margin = 0.01)
-}
 ```
 
 Quality Control
@@ -394,25 +327,45 @@ invisible(gc())
 ### lncRNA classification
 
 ```{r}
-lnc.cls <-
-  fread(paste0(params$up.stream, '/lncRNA_classes.txt'))[, 6:10]
-lnc.cls[type == 'intergenic', final.type := ifelse(direction == 'antisense' &
-                                                     distance < 1000,
-                                                   'Bidirectional',
-                                                   'Intergenic')]
+# lnc.cls <-
+#   fread(paste0(params$up.stream, '/lncRNA_classes.txt'))[, 6:10]
+# lnc.cls[type == 'intergenic', final.type := ifelse(direction == 'antisense' &
+#                                                      distance < 1000,
+#                                                    'Bidirectional',
+#                                                    'Intergenic')]
 ```
 
 DE analysis
 =====================================
 
 ```{r}
+# DE.analysis <- function(m, group) {
+#   d <- DGEList(counts = rsem.count, group = group)
+#   design <- model.matrix( ~ group)
+#   d <-
+#   d[keep <-
+#   rowSums(cpm(d) > 1) >= nrow(design.table) * params$min.expressed.sample / 100, , keep.lib.sizes =
+#   FALSE]
+#   d <- calcNormFactors(d)
+#   d <- estimateDisp(d, design = design)
+#   de <- exactTest(d)
+#   de <- topTags(de, n = length(rownames(de$table)))
+#   deg <- row.names(de$table[with(de$table, PValue < 0.05),][order(-de$table[with(de$table, PValue < 0.05),]$logCPM),][1:20,])
+#   log.cpm <- cpm(d, prior.count=2, log=TRUE)
+#   log.cpm <- data.frame(log.cpm)
+#   heatmap.m <- log.cpm[deg,]
+#   return(list(de$table, log.cpm, heatmap.m))
+# }
+
 rsem.count <-
   fread(paste0(params$up.stream, '/lncRNA.rsem.count.txt'))
+rna.id <- rsem.count[,1]
+rna.type <- rsem.count[,2]
   design.table <-
   fread(paste0(params$up.stream, '/designMatrix.txt'), header = TRUE)
-  rsem.count <- rsem.count[, round(.SD), by = ID]
+  rsem.count <- rsem.count[, round(.SD), .SDcols = -(1:2), with = TRUE]
   group <- as.factor(design.table$condition)
-  d <- DGEList(counts = rsem.count[, -1], group = group)
+  d <- DGEList(counts = rsem.count, group = group)
   design <- model.matrix( ~ group)
   d <-
   d[keep <-
@@ -472,14 +425,131 @@ de$table$threshold <-
 
 ```{r}
 pca.m <- prcomp(t(log.cpm), scale. = FALSE)
-p <- ggbiplot(pca.m, groups = design.table$condition, ellipse = TRUE, circle = TRUE, labels = colnames(log.cpm), var.axes = FALSE)
+p <-
+  ggbiplot(
+    pca.m,
+    groups = design.table$condition,
+    ellipse = TRUE,
+    circle = TRUE,
+    labels = colnames(log.cpm),
+    var.axes = FALSE
+  )
 ggplotly(p)
+rm(pca.m, p)
+invisible(gc())
 ```
 
 ### Heatmap
 
 ```{r}
 # pheatmap(heatmap.m, trace = 'none', margin = c(13, 13), display_numbers = TRUE, number_format = '%.1e')
+ggheatmap <- function(exprs) {
+  # https://plot.ly/ggplot2/ggdendro-dendrograms/
+  require(ggdendro)
+  # require(stringr)
+  
+  features <- row.names(exprs)
+  exprs <- t(scale(t(exprs)))
+  
+  dd.col <- as.dendrogram(hclust(dist(exprs)))
+  dd.row <- as.dendrogram(hclust(dist(t(exprs))))
+  col.order <- order.dendrogram(dd.col)
+  dy <- dendro_data(dd.col)
+  row.order <- order.dendrogram(dd.row)
+  dx <- dendro_data(dd.row)
+  
+  ggdend <- function(df) {
+  ggplot() +
+  geom_segment(data = df, aes(
+  x = x,
+  y = y,
+  xend = xend,
+  yend = yend
+  )) +
+  labs(x = "", y = "") + theme_minimal() +
+  theme(
+  axis.text = element_blank(),
+  axis.ticks = element_blank(),
+  panel.grid = element_blank()
+  )
+  }
+  
+  exprs <-
+  data.table(features, t(scale(t(exprs)))[col.order, row.order])
+  exprs <- melt(exprs, id = 1, variable.name = 'sample.name')
+  
+  dendro.data.x <- dendro_data(dd.row)
+  dendro.data.y <- dendro_data(dd.col)
+  
+  px <- ggdend(dx$segments)
+  py <- ggdend(dy$segments) + coord_flip()
+  
+  heatmap.exprs <-
+  ggplot(exprs, aes(x = sample.name, y = features)) + geom_raster(aes(fill =
+  value)) + scale_fill_gradient2(
+  low = "green",
+  mid = "black",
+  high = "red",
+  midpoint = 0
+  ) + theme(axis.ticks = element_blank(),
+  axis.text = element_text(
+  size = rel(0.4),
+  angle = 45,
+  vjust = 0
+  ))
+  
+  eaxis <- list(showticklabels = FALSE,
+  showgrid = FALSE,
+  zeroline = FALSE)
+  
+  p_empty <- plot_ly() %>%
+  # note that margin applies to entire plot, so we can
+  # add it here to make tick labels more readable
+  layout(xaxis = eaxis,
+  yaxis = eaxis)
+  
+  subplot(
+  px,
+  p_empty,
+  heatmap.exprs,
+  py,
+  nrows = 2,
+  widths = c(0.8, 0.2),
+  heights = c(0.2, 0.8)
+  )
+}
 ggheatmap(heatmap.m)
-plot_grid(plotlist = heatmap.dendrogram, align = 'hv')
+rm(ggheatmap)
+invisible(gc())
 ```
+
+### Correlation heatmap
+
+```{r Correlation heatmap}
+p <- ggplot() + geom_raster(data = melt(cor(heatmap.m)), aes(x = Var1, y = Var2, fill = value)) + labs(x = '', y = '') + guides(fill=guide_legend(title='Cor value')) + theme(axis.text = element_text(size = rel(0.8)), axis.text.x = element_text(angle = 60, vjust = 0.7))
+ggplotly(p)
+```
+
+Compare
+=====================================
+
+Column {.tabset}
+-------------------------------------
+
+### Density
+
+```{r compare density}
+compare.dt <- data.table(Type = as.vector(t(rna.type))[as.numeric(row.names(log.cpm))], log.cpm)
+p <- ggplot() + geom_density(data = melt(compare.dt, id = 'Type'), aes(x = value, colour = Type))
+ggplotly(p)
+```
+
+
+### Violin plot
+
+```{r compare violin}
+compare.dt <- data.table(Type = as.vector(t(rna.type))[as.numeric(row.names(log.cpm))], log.cpm)
+p <- ggplot() + geom_boxplot(data = melt(compare.dt, id = 'Type'), aes(x = Type, y = value), notch = TRUE)
+ggplotly(p)
+```
+
