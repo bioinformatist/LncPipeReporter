@@ -1,8 +1,7 @@
 ---
 title: "LncPipe Reports"
 author: "Yu Sun"
-date: `r date()`
-# output: html_document
+date: '`r date()`'
 output:
   flexdashboard::flex_dashboard:
     navbar:
@@ -69,6 +68,11 @@ knitr::opts_chunk$set(
   paste0(toupper(substr(x, 1, 1)), tolower(substring(x, 2)))
   
 ```
+
+Home
+===================================== 
+
+
 
 Quality Control
 ===================================== 
@@ -524,7 +528,7 @@ invisible(gc())
 # }
 # ggheatmap(heatmap.m)
 
-heatmaply(heatmap.m, xlab = "Sample", margins = c(60,100,40,20))
+heatmaply(heatmap.m, scale = 'row', xlab = "Sample", margins = c(60,100,40,20))
 
 rm(ggheatmap)
 invisible(gc())
