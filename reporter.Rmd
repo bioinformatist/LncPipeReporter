@@ -1,7 +1,7 @@
 ---
-title: "MultiIP Reports"
+title: "LncPipe Reports"
 author: "Yu Sun"
-date: "June 26, 2017"
+date: `r date()`
 # output: html_document
 output:
   flexdashboard::flex_dashboard:
@@ -64,6 +64,7 @@ knitr::opts_chunk$set(
   require(edgeR)
   require(ggbiplot)
   require(pheatmap)
+  require(heatmaply)
   .toupperFirstLetter = function(x)
   paste0(toupper(substr(x, 1, 1)), tolower(substring(x, 2)))
   
@@ -442,83 +443,89 @@ invisible(gc())
 ### Heatmap
 
 ```{r}
+# pheatmap version
 # pheatmap(heatmap.m, trace = 'none', margin = c(13, 13), display_numbers = TRUE, number_format = '%.1e')
-ggheatmap <- function(exprs) {
-  # https://plot.ly/ggplot2/ggdendro-dendrograms/
-  require(ggdendro)
-  # require(stringr)
-  
-  features <- row.names(exprs)
-  exprs <- t(scale(t(exprs)))
-  
-  dd.col <- as.dendrogram(hclust(dist(exprs)))
-  dd.row <- as.dendrogram(hclust(dist(t(exprs))))
-  col.order <- order.dendrogram(dd.col)
-  dy <- dendro_data(dd.col)
-  row.order <- order.dendrogram(dd.row)
-  dx <- dendro_data(dd.row)
-  
-  ggdend <- function(df) {
-  ggplot() +
-  geom_segment(data = df, aes(
-  x = x,
-  y = y,
-  xend = xend,
-  yend = yend
-  )) +
-  labs(x = "", y = "") + theme_minimal() +
-  theme(
-  axis.text = element_blank(),
-  axis.ticks = element_blank(),
-  panel.grid = element_blank()
-  )
-  }
-  
-  exprs <-
-  data.table(features, t(scale(t(exprs)))[col.order, row.order])
-  exprs <- melt(exprs, id = 1, variable.name = 'sample.name')
-  
-  dendro.data.x <- dendro_data(dd.row)
-  dendro.data.y <- dendro_data(dd.col)
-  
-  px <- ggdend(dx$segments)
-  py <- ggdend(dy$segments) + coord_flip()
-  
-  heatmap.exprs <-
-  ggplot(exprs, aes(x = sample.name, y = features)) + geom_raster(aes(fill =
-  value)) + scale_fill_gradient2(
-  low = "green",
-  mid = "black",
-  high = "red",
-  midpoint = 0
-  ) + theme(axis.ticks = element_blank(),
-  axis.text = element_text(
-  size = rel(0.4),
-  angle = 45,
-  vjust = 0
-  ))
-  
-  eaxis <- list(showticklabels = FALSE,
-  showgrid = FALSE,
-  zeroline = FALSE)
-  
-  p_empty <- plot_ly() %>%
-  # note that margin applies to entire plot, so we can
-  # add it here to make tick labels more readable
-  layout(xaxis = eaxis,
-  yaxis = eaxis)
-  
-  subplot(
-  px,
-  p_empty,
-  heatmap.exprs,
-  py,
-  nrows = 2,
-  widths = c(0.8, 0.2),
-  heights = c(0.2, 0.8)
-  )
-}
-ggheatmap(heatmap.m)
+
+# ggplot2 %>% plotly version
+# ggheatmap <- function(exprs) {
+#   # https://plot.ly/ggplot2/ggdendro-dendrograms/
+#   require(ggdendro)
+#   # require(stringr)
+#   
+#   features <- row.names(exprs)
+#   exprs <- t(scale(t(exprs)))
+#   
+#   dd.col <- as.dendrogram(hclust(dist(exprs)))
+#   dd.row <- as.dendrogram(hclust(dist(t(exprs))))
+#   col.order <- order.dendrogram(dd.col)
+#   dy <- dendro_data(dd.col)
+#   row.order <- order.dendrogram(dd.row)
+#   dx <- dendro_data(dd.row)
+#   
+#   ggdend <- function(df) {
+#   ggplot() +
+#   geom_segment(data = df, aes(
+#   x = x,
+#   y = y,
+#   xend = xend,
+#   yend = yend
+#   )) +
+#   labs(x = "", y = "") + theme_minimal() +
+#   theme(
+#   axis.text = element_blank(),
+#   axis.ticks = element_blank(),
+#   panel.grid = element_blank()
+#   )
+#   }
+#   
+#   exprs <-
+#   data.table(features, t(scale(t(exprs)))[col.order, row.order])
+#   exprs <- melt(exprs, id = 1, variable.name = 'sample.name')
+#   
+#   dendro.data.x <- dendro_data(dd.row)
+#   dendro.data.y <- dendro_data(dd.col)
+#   
+#   px <- ggdend(dx$segments)
+#   py <- ggdend(dy$segments) + coord_flip()
+#   
+#   heatmap.exprs <-
+#   ggplot(exprs, aes(x = sample.name, y = features)) + geom_raster(aes(fill =
+#   value)) + scale_fill_gradient2(
+#   low = "green",
+#   mid = "black",
+#   high = "red",
+#   midpoint = 0
+#   ) + theme(axis.ticks = element_blank(),
+#   axis.text = element_text(
+#   size = rel(0.4),
+#   angle = 45,
+#   vjust = 0
+#   ))
+#   
+#   eaxis <- list(showticklabels = FALSE,
+#   showgrid = FALSE,
+#   zeroline = FALSE)
+#   
+#   p_empty <- plot_ly() %>%
+#   # note that margin applies to entire plot, so we can
+#   # add it here to make tick labels more readable
+#   layout(xaxis = eaxis,
+#   yaxis = eaxis)
+#   
+#   subplot(
+#   px,
+#   p_empty,
+#   heatmap.exprs,
+#   py,
+#   nrows = 2,
+#   widths = c(0.8, 0.2),
+#   heights = c(0.2, 0.8)
+#   )
+# }
+# ggheatmap(heatmap.m)
+
+heatmaply(heatmap.m, xlab = "Sample", margins = c(60,100,40,20))
+
 rm(ggheatmap)
 invisible(gc())
 ```
@@ -526,8 +533,13 @@ invisible(gc())
 ### Correlation heatmap
 
 ```{r Correlation heatmap}
-p <- ggplot() + geom_raster(data = melt(cor(heatmap.m)), aes(x = Var1, y = Var2, fill = value)) + labs(x = '', y = '') + guides(fill=guide_legend(title='Cor value')) + theme(axis.text = element_text(size = rel(0.8)), axis.text.x = element_text(angle = 60, vjust = 0.7))
-ggplotly(p)
+# ggplot2 %>% plotly version
+# p <- ggplot() + geom_raster(data = melt(cor(heatmap.m)), aes(x = Var1, y = Var2, fill = value)) + labs(x = '', y = '') + guides(fill=guide_legend(title='Cor value')) + theme(axis.text = element_text(size = rel(0.8)), axis.text.x = element_text(angle = 60, vjust = 0.7))
+# ggplotly(p)
+heatmaply(cor(heatmap.m), margins = c(40, 40),
+          k_col = 2, k_row = 2,
+          limits = c(-1,1))
+
 ```
 
 Compare
