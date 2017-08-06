@@ -225,7 +225,7 @@ p <-
 ```
 
 
-CDF {data-navmenu="Annotation"}
+CDF {data-navmenu="lncRNA"}
 =====================================
 
 ```{r}
@@ -270,10 +270,10 @@ p <-
   invisible(gc())
 ```
 
-lncRNA {data-navmenu="Annotation"}
+Stats {data-navmenu="lncRNA"}
 =====================================
 
-```{r}
+```{r parsing GTF file}
 gtf <-
   fread(
   paste0(
@@ -289,32 +289,30 @@ gtf <-
   setnames(gtf, c('Transcript', "Type", "Length", "Distance"))
 ```
 
-Row
+Column {.tabset}
 -------------------------------------
-
-### lncRNA length table
-
-```{r}
-DT::datatable(gtf)
-```
 
 ### lncRNA length distribution with type
 
 ```{r}
+gtf[Length > params$max.lncrna.len, Length := params$max.lncrna.len]
 p <-
-  ggplot() + geom_density(data = gtf, aes(x = Length, colour = Type)) + xlab('Transcript length') + ylab('Density') + scale_x_continuous(expand = c(0.01, 0)) + scale_y_continuous(expand = c(0.01, 0))
-  ggplotly(p)
-  rm(p)
-  invisible(gc())
+ggplot() + geom_density(data = gtf, aes(x = Length, colour = Type)) + xlab('Transcript length') + ylab('Density') + scale_x_continuous(
+breaks = seq.int(200, params$max.lncrna.len, length.out = 10),
+labels = c(
+seq.int(200, params$max.lncrna.len, length.out = 9),
+paste0(params$max.lncrna.len, '+')
+),
+expand = c(0.01, 0)
+) + scale_y_continuous(expand = c(0.01, 0))
+ggplotly(p) %>% layout(margin = list(r = 50))
+rm(p)
+invisible(gc())
 ```
-
-Row
--------------------------------------
 
 ### Total lncRNA length distribution
 
 ```{r}
-gtf[Length > params$max.lncrna.len, Length := params$max.lncrna.len]
 p <-
 ggplot() + geom_histogram(data = gtf, aes(x = Length), binwidth = 100) + scale_x_continuous(
 breaks = seq.int(200, params$max.lncrna.len, length.out = 10),
@@ -324,9 +322,15 @@ paste0(params$max.lncrna.len, '+')
 ),
 expand = c(0.01, 0)
 ) + scale_y_continuous(expand = c(0, 10)) + labs(x = 'lncRNA length', y = 'Count')
-ggplotly(p)
+ggplotly(p) %>% layout(margin = list(r = 50))
 rm(gtf, p)
 invisible(gc())
+```
+
+### Table
+
+```{r}
+DT::datatable(gtf)
 ```
 
 ### lncRNA classification
@@ -339,6 +343,11 @@ invisible(gc())
 #                                                    'Bidirectional',
 #                                                    'Intergenic')]
 ```
+
+Column
+-------------------------------------
+
+This is description.
 
 DE analysis
 =====================================
