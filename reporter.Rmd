@@ -137,16 +137,7 @@ log.summary = fread(
   setnames(log.percentage, c('Sample', 'Type', 'Percentage'))
 ```
 
-Column 
--------------------------------------
-
-### *STAR* log table
-
-```{r}
-DT::datatable(log.percentage)
-```
-
-Column 
+Column {.tabset}
 -------------------------------------
 
 ### *STAR* log plot
@@ -158,7 +149,7 @@ p <-
                       stat = 'identity') + scale_y_continuous(labels = scales::percent) + coord_flip()
 # p
 ggplotly(p)
-rm(log.summary, log.percentage, p)
+rm(p)
 invisible(gc())
 
 ##############################################################################################################################
@@ -175,6 +166,17 @@ invisible(gc())
 # 0.003   0.000   0.003
 ##############################################################################################################################
 ```
+
+### *STAR* log table
+
+```{r}
+DT::datatable(log.percentage)
+```
+
+Column
+-------------------------------------
+
+This is description.
 
 HISAT2 {data-navmenu="Aligning"}
 =====================================
@@ -198,18 +200,8 @@ hisat <- fread(
   setnames(hisat, c('Sample', 'Num', 'Percentage', 'Type', 'Times'))
 ```
 
-Column 
+Column {.tabset}
 -------------------------------------
-
-### *HISAT* log table
-
-```{r}
-DT::datatable(hisat)
-```
-
-Column 
--------------------------------------
-
 
 ### *HISAT* percent plot
 
@@ -220,10 +212,21 @@ p <-
   stat = 'identity') + scale_y_continuous(labels = scales::percent) + coord_flip() + facet_grid(Sample ~ .)
   # p
   ggplotly(p)
-  rm(hisat, p)
+  rm(p)
   invisible(gc())
 ```
 
+### *HISAT* log table
+
+```{r}
+DT::datatable(hisat)
+rm(hisat)
+```
+
+Column
+-------------------------------------
+
+This is description.
 
 CDF {data-navmenu="lncRNA"}
 =====================================
@@ -323,7 +326,7 @@ paste0(params$max.lncrna.len, '+')
 expand = c(0.01, 0)
 ) + scale_y_continuous(expand = c(0, 10)) + labs(x = 'lncRNA length', y = 'Count')
 ggplotly(p) %>% layout(margin = list(r = 50))
-rm(gtf, p)
+rm(p)
 invisible(gc())
 ```
 
