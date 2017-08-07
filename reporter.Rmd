@@ -72,7 +72,7 @@ knitr::opts_chunk$set(
 Home
 ===================================== 
 
-
+This is the homepage.
 
 Quality Control
 ===================================== 
@@ -137,16 +137,7 @@ log.summary = fread(
   setnames(log.percentage, c('Sample', 'Type', 'Percentage'))
 ```
 
-Column 
--------------------------------------
-
-### *STAR* log table
-
-```{r}
-DT::datatable(log.percentage)
-```
-
-Column 
+Column {.tabset}
 -------------------------------------
 
 ### *STAR* log plot
@@ -158,7 +149,7 @@ p <-
                       stat = 'identity') + scale_y_continuous(labels = scales::percent) + coord_flip()
 # p
 ggplotly(p)
-rm(log.summary, log.percentage, p)
+rm(p)
 invisible(gc())
 
 ##############################################################################################################################
@@ -175,6 +166,17 @@ invisible(gc())
 # 0.003   0.000   0.003
 ##############################################################################################################################
 ```
+
+### *STAR* log table
+
+```{r}
+DT::datatable(log.percentage)
+```
+
+Column
+-------------------------------------
+
+This is description.
 
 HISAT2 {data-navmenu="Aligning"}
 =====================================
@@ -198,18 +200,8 @@ hisat <- fread(
   setnames(hisat, c('Sample', 'Num', 'Percentage', 'Type', 'Times'))
 ```
 
-Column 
+Column {.tabset}
 -------------------------------------
-
-### *HISAT* log table
-
-```{r}
-DT::datatable(hisat)
-```
-
-Column 
--------------------------------------
-
 
 ### *HISAT* percent plot
 
@@ -220,12 +212,23 @@ p <-
   stat = 'identity') + scale_y_continuous(labels = scales::percent) + coord_flip() + facet_grid(Sample ~ .)
   # p
   ggplotly(p)
-  rm(hisat, p)
+  rm(p)
   invisible(gc())
 ```
 
+### *HISAT* log table
 
-CDF {data-navmenu="Annotation"}
+```{r}
+DT::datatable(hisat)
+rm(hisat)
+```
+
+Column
+-------------------------------------
+
+This is description.
+
+CDF {data-navmenu="lncRNA"}
 =====================================
 
 ```{r}
@@ -270,10 +273,10 @@ p <-
   invisible(gc())
 ```
 
-lncRNA {data-navmenu="Annotation"}
+Stats {data-navmenu="lncRNA"}
 =====================================
 
-```{r}
+```{r parsing GTF file}
 gtf <-
   fread(
   paste0(
@@ -289,32 +292,30 @@ gtf <-
   setnames(gtf, c('Transcript', "Type", "Length", "Distance"))
 ```
 
-Row
+Column {.tabset}
 -------------------------------------
-
-### lncRNA length table
-
-```{r}
-DT::datatable(gtf)
-```
 
 ### lncRNA length distribution with type
 
 ```{r}
+gtf[Length > params$max.lncrna.len, Length := params$max.lncrna.len]
 p <-
-  ggplot() + geom_density(data = gtf, aes(x = Length, colour = Type)) + xlab('Transcript length') + ylab('Density') + scale_x_continuous(expand = c(0.01, 0)) + scale_y_continuous(expand = c(0.01, 0))
-  ggplotly(p)
-  rm(p)
-  invisible(gc())
+ggplot() + geom_density(data = gtf, aes(x = Length, colour = Type)) + xlab('Transcript length') + ylab('Density') + scale_x_continuous(
+breaks = seq.int(200, params$max.lncrna.len, length.out = 10),
+labels = c(
+seq.int(200, params$max.lncrna.len, length.out = 9),
+paste0(params$max.lncrna.len, '+')
+),
+expand = c(0.01, 0)
+) + scale_y_continuous(expand = c(0.01, 0))
+ggplotly(p) %>% layout(margin = list(r = 50))
+rm(p)
+invisible(gc())
 ```
-
-Row
--------------------------------------
 
 ### Total lncRNA length distribution
 
 ```{r}
-gtf[Length > params$max.lncrna.len, Length := params$max.lncrna.len]
 p <-
 ggplot() + geom_histogram(data = gtf, aes(x = Length), binwidth = 100) + scale_x_continuous(
 breaks = seq.int(200, params$max.lncrna.len, length.out = 10),
@@ -324,9 +325,15 @@ paste0(params$max.lncrna.len, '+')
 ),
 expand = c(0.01, 0)
 ) + scale_y_continuous(expand = c(0, 10)) + labs(x = 'lncRNA length', y = 'Count')
-ggplotly(p)
-rm(gtf, p)
+ggplotly(p) %>% layout(margin = list(r = 50))
+rm(p)
 invisible(gc())
+```
+
+### Table
+
+```{r}
+DT::datatable(gtf)
 ```
 
 ### lncRNA classification
@@ -339,6 +346,11 @@ invisible(gc())
 #                                                    'Bidirectional',
 #                                                    'Intergenic')]
 ```
+
+Column
+-------------------------------------
+
+This is description.
 
 DE analysis
 =====================================
@@ -527,11 +539,10 @@ invisible(gc())
 #   )
 # }
 # ggheatmap(heatmap.m)
+# rm(ggheatmap)
 
-heatmaply(heatmap.m, scale = 'row', xlab = "Sample", margins = c(60,100,40,20))
-
-rm(ggheatmap)
-invisible(gc())
+heatmaply(heatmap.m, scale = 'row', xlab = "Sample", margins = c(60,100,40,20)) %>% layout(margin = list(l = 50, b = 50))
+# invisible(gc())
 ```
 
 ### Correlation heatmap
@@ -540,17 +551,15 @@ invisible(gc())
 # ggplot2 %>% plotly version
 # p <- ggplot() + geom_raster(data = melt(cor(heatmap.m)), aes(x = Var1, y = Var2, fill = value)) + labs(x = '', y = '') + guides(fill=guide_legend(title='Cor value')) + theme(axis.text = element_text(size = rel(0.8)), axis.text.x = element_text(angle = 60, vjust = 0.7))
 # ggplotly(p)
+
 heatmaply(cor(heatmap.m), margins = c(40, 40),
           k_col = 2, k_row = 2,
-          limits = c(-1,1))
+          limits = c(-1,1)) %>% layout(margin = list(l = 50, b = 50))
 
 ```
 
 Compare
 =====================================
-
-Column {.tabset}
--------------------------------------
 
 ### Density
 
