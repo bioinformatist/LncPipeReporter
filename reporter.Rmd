@@ -338,13 +338,8 @@ DT::datatable(gtf)
 
 ### lncRNA classification
 
-```{r}
-# lnc.cls <-
-#   fread(paste0(params$up.stream, '/lncRNA_classes.txt'))[, 6:10]
-# lnc.cls[type == 'intergenic', final.type := ifelse(direction == 'antisense' &
-#                                                      distance < 1000,
-#                                                    'Bidirectional',
-#                                                    'Intergenic')]
+```{r lncRNA classification}
+
 ```
 
 Column
@@ -448,7 +443,6 @@ p <-
     groups = design.table$condition,
     ellipse = TRUE,
     circle = TRUE,
-    labels = colnames(log.cpm),
     var.axes = FALSE
   )
 ggplotly(p)
