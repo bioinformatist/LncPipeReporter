@@ -44,6 +44,7 @@ knitr::opts_chunk$set(
   warning = FALSE,
   cache = TRUE
   )
+options(DT.options = list(autoFill = TRUE, searchHighlight = TRUE, search = list(regex = TRUE, caseInsensitive = FALSE), dom = 'Bfrtip', buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
   rm(list = setdiff(ls(), "params"))
   gc()
   # The latest plotly should be used, for a lot of bugs fixed
@@ -175,7 +176,7 @@ invisible(gc())
 ### *STAR* log table
 
 ```{r}
-DT::datatable(log.summary)
+DT::datatable(log.summary, extensions = 'Buttons')
 ```
 
 Column
@@ -555,6 +556,11 @@ heatmaply(cor(heatmap.m), margins = c(40, 40),
 ```{r}
 DT::datatable(de$table)
 ```
+
+Column
+-------------------------------------
+
+This is description.
 
 Compare
 =====================================
