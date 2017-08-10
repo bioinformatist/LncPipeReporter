@@ -113,6 +113,11 @@ rm(fastqc.dirs, fastqc.table)
 invisible(gc())
 ```
 
+Column
+-------------------------------------
+
+This is description.
+
 STAR {data-navmenu="Aligning"}
 ===================================== 
 
@@ -170,7 +175,7 @@ invisible(gc())
 ### *STAR* log table
 
 ```{r}
-DT::datatable(log.percentage)
+DT::datatable(log.summary)
 ```
 
 Column
@@ -244,15 +249,6 @@ setnames(cdf, c('Type', 'CPAT'))
 Column
 -------------------------------------
 
-### *CPAT* table
-
-```{r}
-DT::datatable(cdf)
-```
-
-Column
--------------------------------------
-
 ### *CDF* against *CPAT*
 
 ```{r}
@@ -269,8 +265,17 @@ p <-
   size = 1
   )
   ggplotly(p)
-  rm(cdf, p)
+  rm(p)
   invisible(gc())
+```
+
+Column
+-------------------------------------
+
+### *CPAT* table
+
+```{r}
+DT::datatable(cdf)
 ```
 
 Stats {data-navmenu="lncRNA"}
