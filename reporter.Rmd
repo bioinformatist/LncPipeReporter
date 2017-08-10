@@ -246,7 +246,7 @@ cdf[sample(nrow(cdf), nrow(cdf) * params$cdf.percent / 100),]
 setnames(cdf, c('Type', 'CPAT'))
 ```
 
-Column
+Column {.tabset}
 -------------------------------------
 
 ### *CDF* against *CPAT*
@@ -269,14 +269,16 @@ p <-
   invisible(gc())
 ```
 
-Column
--------------------------------------
-
 ### *CPAT* table
 
 ```{r}
 DT::datatable(cdf)
 ```
+
+Column
+-------------------------------------
+
+This is description.
 
 Stats {data-navmenu="lncRNA"}
 =====================================
@@ -396,15 +398,6 @@ rna.type <- rsem.count[,2]
   log.cpm <- cpm(d, prior.count=2, log=TRUE)
   log.cpm <- data.frame(log.cpm)
   heatmap.m <- log.cpm[deg,]
-```
-
-Column 
--------------------------------------
-
-### lncRNA length table
-
-```{r}
-DT::datatable(de$table)
 ```
 
 Column {.tabset}
@@ -557,8 +550,17 @@ heatmaply(cor(heatmap.m), margins = c(40, 40),
 
 ```
 
+### lncRNA length table
+
+```{r}
+DT::datatable(de$table)
+```
+
 Compare
 =====================================
+
+Column {.tabset}
+-------------------------------------
 
 ### Density
 
@@ -568,7 +570,6 @@ p <- ggplot() + geom_density(data = melt(compare.dt, id = 'Type'), aes(x = value
 ggplotly(p)
 ```
 
-
 ### Violin plot
 
 ```{r compare violin}
@@ -577,3 +578,7 @@ p <- ggplot() + geom_boxplot(data = melt(compare.dt, id = 'Type'), aes(x = Type,
 ggplotly(p)
 ```
 
+Column {.tabset}
+-------------------------------------
+
+This is description.
