@@ -168,7 +168,7 @@ Column
 ### *STAR* log table
 
 ```{r}
-DT::datatable(log.summary, colnames = c('Sample', 'Type', 'Value'), extensions = 'Buttons') %>% DT::formatRound('V3', digits = 3)
+DT::datatable(log.summary, colnames = c('Sample', 'Type', 'Value'), extensions = 'Buttons') %>% DT::formatRound('V3', digits = 2)
 ```
 
 ### Description
@@ -217,7 +217,7 @@ Column
 ### *HISAT* log table
 
 ```{r}
-DT::datatable(hisat)
+DT::datatable(hisat) %>% DT::formatRound('Percentage', digits = 2)
 rm(hisat)
 ```
 
@@ -266,7 +266,7 @@ Column
 ### *CPAT* table
 
 ```{r}
-DT::datatable(cdf)
+DT::datatable(cdf) %>% DT::formatRound('CPAT', digits = 2)
 ```
 
 ### Description
@@ -437,7 +437,7 @@ p <-
     ellipse = TRUE,
     circle = TRUE,
     var.axes = FALSE
-  )
+  ) + labs(color = "Groups")
 ggplotly(p)
 rm(pca.m, p)
 invisible(gc())
@@ -551,7 +551,7 @@ Column
 ### Differential expressed lncRNAs table
 
 ```{r}
-DT::datatable(de$table[, -5])
+DT::datatable(de$table[, -5]) %>% DT::formatRound(c('logFC', 'logCPM', 'PValue', "FDR"), digits = 2)
 ```
 
 ### Descirption
