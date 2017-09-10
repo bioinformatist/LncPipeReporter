@@ -66,7 +66,7 @@ options(DT.options = list(autoFill = TRUE, searchHighlight = TRUE, search = list
   # require(pheatmap)
   require(heatmaply)
   .toupperFirstLetter = function(x)
-  paste0(toupper(substr(x, 1, 1)), tolower(substring(x, 2)))
+  paste0(toupper(substr(x, 1, 1)), substring(x, 2))
   
 ```
 
@@ -230,6 +230,7 @@ CDF {data-navmenu="lncRNA"}
 cdf <- fread(paste0(params$up.stream, '/CDF.txt'))
 # Order first, for using geom_line later (geom_step behaves badly when calling plotly, see https://github.com/ropensci/plotly/issues/1030)
 cdf <- cdf[order(cdf[, 1], cdf[, 2])]
+cdf[, type := .toupperFirstLetter(sub("_", " ", type))]
 # Subset data randomly
 cdf <-
 cdf[sample(nrow(cdf), nrow(cdf) * params$cdf.percent / 100),]
@@ -287,6 +288,7 @@ gtf <-
   gtf <- unique(gtf[, V2 := sum(V3 - V2), by = .(V1, V4)][, V3 := NULL])
   setcolorder(gtf, c('V4', 'V1', 'V2', 'V5'))
   setnames(gtf, c('Transcript', "Type", "Length", "Distance"))
+  gtf[, Type := .toupperFirstLetter(Type)]
 ```
 
 Column {.tabset}
@@ -427,6 +429,7 @@ de$table$threshold <-
 
 ```{r}
 pca.m <- prcomp(t(log.cpm), scale. = FALSE)
+design.table$condition <- .toupperFirstLetter(design.table$condition)
 p <-
   ggbiplot(
     pca.m,
