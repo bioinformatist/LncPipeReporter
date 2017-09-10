@@ -73,38 +73,32 @@ options(DT.options = list(autoFill = TRUE, searchHighlight = TRUE, search = list
 Home
 ===================================== 
 
-This is the homepage.
+Column
+-------------------------------------
 
-Quality Control
-===================================== 
+This is the homepage.
 
 Column
 -------------------------------------
 
-### *FastQC* results
+### Quality control
 
 ```{r results='asis'}
-fastqc.dirs = list.files(path = params$up.stream, pattern = '_fastqc$')
-fastqc.table = data.table(
+fastqc.dirs <- list.files(path = params$up.stream, pattern = '_fastqc$')
+fastqc.table <- data.table(
 Sample = substr(fastqc.dirs, 7, nchar(fastqc.dirs) - 7),
 HTML = paste0(
-'[',
-substr(fastqc.dirs, 7, nchar(fastqc.dirs) - 7),
-'](',
+'[**Click** for HTML](',
 paste0(params$up.stream, '/', fastqc.dirs, "/fastqc_report.html"),
 ')'
 ),
 Summary = paste0(
-'[',
-substr(fastqc.dirs, 7, nchar(fastqc.dirs) - 7),
-'](',
+'[**Click** for summmary](',
 paste0(params$up.stream, '/', fastqc.dirs, "/summary.txt"),
 ')'
 ),
 Details = paste0(
-'[',
-substr(fastqc.dirs, 7, nchar(fastqc.dirs) - 7),
-'](',
+'[**Click** for details](',
 paste0(params$up.stream, '/', fastqc.dirs, "/fastqc_data.txt"),
 ')'
 )
@@ -113,11 +107,6 @@ kable(fastqc.table, caption = "FastQC results")
 rm(fastqc.dirs, fastqc.table)
 invisible(gc())
 ```
-
-Column
--------------------------------------
-
-This is description.
 
 STAR {data-navmenu="Aligning"}
 ===================================== 
@@ -143,7 +132,7 @@ log.summary = fread(
   setnames(log.percentage, c('Sample', 'Type', 'Percentage'))
 ```
 
-Column {.tabset}
+Column
 -------------------------------------
 
 ### *STAR* log plot
@@ -173,16 +162,16 @@ invisible(gc())
 ##############################################################################################################################
 ```
 
-### *STAR* log table
-
-```{r}
-DT::datatable(log.summary, extensions = 'Buttons')
-```
-
 Column
 -------------------------------------
 
-This is description.
+### *STAR* log table
+
+```{r}
+DT::datatable(log.summary, colnames = c('Sample', 'Type', 'Value'), extensions = 'Buttons') %>% DT::formatRound('V3', digits = 3)
+```
+
+### Description
 
 HISAT2 {data-navmenu="Aligning"}
 =====================================
@@ -206,10 +195,10 @@ hisat <- fread(
   setnames(hisat, c('Sample', 'Num', 'Percentage', 'Type', 'Times'))
 ```
 
-Column {.tabset}
+Column
 -------------------------------------
 
-### *HISAT* percent plot
+### *HISAT* percentage plot
 
 ```{r}
 p <-
@@ -222,6 +211,9 @@ p <-
   invisible(gc())
 ```
 
+Column
+-------------------------------------
+
 ### *HISAT* log table
 
 ```{r}
@@ -229,10 +221,7 @@ DT::datatable(hisat)
 rm(hisat)
 ```
 
-Column
--------------------------------------
-
-This is description.
+### Description
 
 CDF {data-navmenu="lncRNA"}
 =====================================
@@ -247,7 +236,7 @@ cdf[sample(nrow(cdf), nrow(cdf) * params$cdf.percent / 100),]
 setnames(cdf, c('Type', 'CPAT'))
 ```
 
-Column {.tabset}
+Column
 -------------------------------------
 
 ### *CDF* against *CPAT*
@@ -270,16 +259,16 @@ p <-
   invisible(gc())
 ```
 
+Column
+-------------------------------------
+
 ### *CPAT* table
 
 ```{r}
 DT::datatable(cdf)
 ```
 
-Column
--------------------------------------
-
-This is description.
+### Description
 
 Stats {data-navmenu="lncRNA"}
 =====================================
@@ -338,12 +327,6 @@ rm(p)
 invisible(gc())
 ```
 
-### Table
-
-```{r}
-DT::datatable(gtf)
-```
-
 ### lncRNA classification
 
 ```{r lncRNA classification}
@@ -353,7 +336,15 @@ DT::datatable(gtf)
 Column
 -------------------------------------
 
-This is description.
+### Table
+
+```{r}
+DT::datatable(gtf[, -4])
+```
+
+### Description
+
+
 
 DE analysis
 =====================================
@@ -551,15 +542,16 @@ heatmaply(cor(heatmap.m), margins = c(40, 40),
 
 ```
 
-### lncRNA length table
-
-```{r}
-DT::datatable(de$table)
-```
-
 Column
 -------------------------------------
 
+### Differential expressed lncRNAs table
+
+```{r}
+DT::datatable(de$table[, -5])
+```
+
+### Descirption
 This is description.
 
 Compare
@@ -584,7 +576,7 @@ p <- ggplot() + geom_boxplot(data = melt(compare.dt, id = 'Type'), aes(x = Type,
 ggplotly(p)
 ```
 
-Column {.tabset}
+Column
 -------------------------------------
 
-This is description.
+### Description
