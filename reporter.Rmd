@@ -405,7 +405,7 @@ rsem.count <-
 rna.id <- rsem.count[,1]
 rna.type <- rsem.count[,2]
   design.table <-
-  fread(paste0("perl -F':\\|,' -lanE'BEGIN{say qq{SampleID\tcondition}} $fuck = shift @F; say qq{$_\t$fuck} for @F' ", params$up.stream, '/design.file'), header = TRUE, sep = '\t')
+  fread(paste0("perl -F':|,' -lanE'BEGIN{say qq{SampleID\tcondition}} $fuck = shift @F; say qq{$_\t$fuck} for @F' ", params$up.stream, '/design.file'), header = TRUE)
   rsem.count <- rsem.count[, round(.SD), .SDcols = -(1:2), with = TRUE]
   group <- as.factor(design.table$condition)
   d <- DGEList(counts = rsem.count, group = group)
