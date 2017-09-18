@@ -212,7 +212,7 @@ hisat <- fread(
   "cd ",
   params$up.stream,
   ";grep -H '' `",
-  "cat hisat2_log.list` |perl -F':|\\(|\\)|(>?\\d\\stimes?)' -lanE '/%/ and /aligned/ ? say join qq{\t},@F : next'"
+  "cat hisat2_log.list` |perl -F':|\\(|\\)|(>?\\d\\stimes?)' -lanE '/%/ and /aligned/ ? say join qq{\t}, @F : next'"
   ),
   header = FALSE
   )
@@ -405,7 +405,7 @@ rsem.count <-
 rna.id <- rsem.count[,1]
 rna.type <- rsem.count[,2]
   design.table <-
-  fread(paste0(params$up.stream, '/designMatrix.txt'), header = TRUE)
+  fread(paste0("perl -F':\\|,' -lanE'BEGIN{say qq{SampleID\tcondition}} $fuck = shift @F; say qq{$_\t$fuck} for @F' ", params$up.stream, '/design.file'), header = TRUE, sep = '\t')
   rsem.count <- rsem.count[, round(.SD), .SDcols = -(1:2), with = TRUE]
   group <- as.factor(design.table$condition)
   d <- DGEList(counts = rsem.count, group = group)
