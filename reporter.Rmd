@@ -106,7 +106,7 @@ Column
 
 ```
 ### Authors 
-[Qi Zhao](https://github.com/likelet) from Sun Yat-sen University Cancer Center, Guangdong, China.
+[Qi Zhao](https://github.com/likelet) from Sun Yat-sen University Cancer Center, Guangdong, China.<br>
 [Yu Sun](https://github.com/bioinformatist) from Nankai University. Tianjin, China. 
 ### Citations
 
@@ -115,11 +115,11 @@ GPL v3
 
 Quality control
 =====================================
-This sections presents the fastQC output. Samples were listed in the following table.
 Column
 -------------------------------------
 
 ### Quality control
+This sections presents the fastQC output. Samples were listed in the following table. 
 
 ```{r results='asis'}
 fastqc.dirs <- list.files(path = params$up.stream, pattern = '_fastqc$')
