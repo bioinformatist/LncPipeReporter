@@ -9,7 +9,7 @@ output:
       - { icon: "ion-social-github", href: "https://github.com/bioinformatist/multiIP", align: right }
     theme: flatly
 params:
-  up.stream: 
+  input: 
     label: 'Input directory (results of up-stream analysis)'
     value: 'demo_results'
   output:
@@ -65,7 +65,7 @@ options(DT.options = list(autoFill = TRUE, searchHighlight = TRUE, search = list
   require(data.table)
   require(cowplot)
   require(stringr)
-  # require(knitr)
+  require(knitr)
   require(edgeR)
   require(ggbiplot)
   # require(pheatmap)
@@ -73,7 +73,6 @@ options(DT.options = list(autoFill = TRUE, searchHighlight = TRUE, search = list
   require(ggsci)
   .toupperFirstLetter = function(x)
   paste0(toupper(substr(x, 1, 1)), substring(x, 2))
-  
 ```
 
 Home
@@ -123,22 +122,22 @@ Column
 This sections presents the fastQC output. Samples were listed in the following table. 
 
 ```{r results='asis'}
-fastqc.dirs <- list.files(path = params$up.stream, pattern = '_fastqc$')
+fastqc.dirs <- list.files(path = params$input, pattern = '_fastqc$')
 fastqc.table <- data.table(
 Sample = substr(fastqc.dirs, 7, nchar(fastqc.dirs) - 7),
 HTML = paste0(
 '[**Click** for HTML](',
-paste0(params$up.stream, '/', fastqc.dirs, "/fastqc_report.html"),
+paste0(params$input, .Platform$file.sep, fastqc.dirs, .Platform$file.sep, "fastqc_report.html"),
 ')'
 ),
 Summary = paste0(
 '[**Click** for summmary](',
-paste0(params$up.stream, '/', fastqc.dirs, "/summary.txt"),
+paste0(params$input, .Platform$file.sep, fastqc.dirs, .Platform$file.sep, "summary.txt"),
 ')'
 ),
 Details = paste0(
 '[**Click** for details](',
-paste0(params$up.stream, '/', fastqc.dirs, "/fastqc_data.txt"),
+paste0(params$input, .Platform$file.sep, fastqc.dirs, .Platform$file.sep, "fastqc_data.txt"),
 ')'
 )
 )
@@ -160,7 +159,7 @@ STAR {data-navmenu="Aligning"}
 log.summary = fread(
   paste0(
   "cd ",
-  params$up.stream,
+  params$input,
   ";grep -H '' `",
   "cat star_log.list",
   "` | perl -F':\\s{2,}|\\s\\|\\t' -lanE'/:$/ ? next : say join qq{\t}, @F'"
@@ -232,7 +231,7 @@ HISAT2 {data-navmenu="Aligning"}
 hisat <- fread(
   paste0(
   "cd ",
-  params$up.stream,
+  params$input,
   ";grep -H '' `",
   "cat hisat2_log.list` |perl -F':|\\(|\\)|(>?\\d\\stimes?)' -lanE '/%/ and /aligned/ ? say join qq{\t}, @F : next'"
   ),
@@ -278,7 +277,7 @@ CDF {data-navmenu="lncRNA"}
 =====================================
 
 ```{r}
-cdf <- fread(paste0(params$up.stream, '/CDF.txt'))
+cdf <- fread(paste0(params$input, .Platform$file.sep, 'CDF.txt'))
 # Order first, for using geom_line later (geom_step behaves badly when calling plotly, see https://github.com/ropensci/plotly/issues/1030)
 cdf <- cdf[order(cdf[, 1], cdf[, 2])]
 cdf[, type := .toupperFirstLetter(sub("_", " ", type))]
@@ -330,8 +329,8 @@ gtf <-
   fread(
   paste0(
   "sed -re 's/\\s+|;\\s+|;/\t/g' ",
-  params$up.stream,
-  "/lncRNA.final.v2.gtf",
+  params$input,
+  .Platform$file.sep, "lncRNA.final.v2.gtf",
   "| cut -f2,4,5,12,14"
   )
   )
@@ -422,11 +421,11 @@ DE analysis
 # }
 
 rsem.count <-
-  fread(paste0(params$up.stream, '/lncRNA.rsem.count.txt'))
+  fread(paste0(params$input, .Platform$file.sep, 'lncRNA.rsem.count.txt'))
 rna.id <- rsem.count[,1]
 rna.type <- rsem.count[,2]
   design.table <-
-  fread(paste0("perl -F':|,' -lanE'BEGIN{say qq{SampleID\tcondition}} $fuck = shift @F; say qq{$_\t$fuck} for @F' ", params$up.stream, '/design.file'), header = TRUE)
+  fread(paste0("perl -F':|,' -lanE'BEGIN{say qq{SampleID\tcondition}} $fuck = shift @F; say qq{$_\t$fuck} for @F' ", params$input, '/design.file'), header = TRUE)
   rsem.count <- rsem.count[, round(.SD), .SDcols = -(1:2), with = TRUE]
   group <- as.factor(design.table$condition)
   d <- DGEList(counts = rsem.count, group = group)
