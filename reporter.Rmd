@@ -50,29 +50,61 @@ knitr::opts_chunk$set(
   cache = TRUE
   )
 options(DT.options = list(autoFill = TRUE, searchHighlight = TRUE, search = list(regex = TRUE, caseInsensitive = FALSE), dom = 'Bfrtip', buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
-  rm(list = setdiff(ls(), "params"))
-  gc()
-  # The latest plotly should be used, for a lot of bugs fixed
-  # if (!require("devtools")) install.packages("devtools")
-  # install.packages(c("curl", "httr"))
-  # devtools::install_github('ramnathv/htmlwidgets')
-  # devtools::install_github("ropensci/plotly")
-  # source("https://bioconductor.org/biocLite.R")
-  # biocLite("edgeR")
-  # library(devtools)
-  # install_github("vqv/ggbiplot")
-  require(plotly)
-  require(data.table)
-  require(cowplot)
-  require(stringr)
-  require(knitr)
-  require(edgeR)
-  require(ggbiplot)
-  # require(pheatmap)
-  require(heatmaply)
-  require(ggsci)
-  .toupperFirstLetter = function(x)
-  paste0(toupper(substr(x, 1, 1)), substring(x, 2))
+rm(list = setdiff(ls(), "params"))
+gc()
+# The latest plotly should be used, for a lot of bugs fixed
+# if (!require("devtools")) install.packages("devtools")
+# install.packages(c("curl", "httr"))
+# devtools::install_github('ramnathv/htmlwidgets')
+# devtools::install_github("ropensci/plotly")
+# source("https://bioconductor.org/biocLite.R")
+# biocLite("edgeR")
+# library(devtools)
+# install_github("vqv/ggbiplot")
+require(plotly)
+require(data.table)
+require(cowplot)
+require(stringr)
+require(knitr)
+require(edgeR)
+require(ggbiplot)
+# require(pheatmap)
+require(heatmaply)
+require(ggsci)
+.toupperFirstLetter = function(x)
+paste0(toupper(substr(x, 1, 1)), substring(x, 2))
+parsing.list <-  sapply(list.files(path = params$input, recursive = TRUE), USE.NAMES = FALSE, function(x) paste0(params$input, .Platform$file.sep, x))
+determine.type <- function(x, x.name) {
+  judge <- paste(x[,1], x[,2])
+  if (grepl("Left", judge)) {
+    type.list[['Tophat2']] <<- x.name
+  } else if (grepl("LINC", judge)) {
+    type.list[['Classification']] <<- x.name
+  } else if (grepl("value", judge)) {
+    type.list[['CDF']] <<- x.name
+  } else if (grepl("Started", judge)) {
+    if (is.null(type.list[['STAR']])) {
+      type.list[['STAR']] <<- x.name
+    } else {
+      type.list[['STAR']][length(type.list[['STAR']]) + 1] <<- x.name
+    }
+  } else if (grepl(":", judge)) {
+    type.list[['Design']] <<- x.name
+  } else if (grepl("chr", judge)) {
+    type.list[['LncRNA']] <<- x.name
+  } else if (grepl("ID", judge)) {
+    type.list[['RSEM']] <<- x.name
+  } else if (grepl("reads", judge)) {
+    if (is.null(type.list[['Hisat2']])) {
+      type.list[['Hisat2']] <<- x.name
+    } else {
+      type.list[['Hisat2']][length(type.list[['Hisat2']]) + 1] <<- x.name
+    }
+  }
+}
+parsing.list <- parsing.list[- grep("fastqc", parsing.list)]
+fuck <- sapply(parsing.list, function(x) tryCatch({fread(x, fill = TRUE, nrows = 1, header = FALSE)}, error = function(e) {}))
+type.list <- list(); lapply(names(fuck), function(x) determine.type(fuck[[x]], x))
 ```
 
 Home
@@ -84,7 +116,7 @@ Column
 ### Introduction
 
 Thanks for using [LncPipe](https://git.oschina.net/likelet/workflow)! LncPipe is a nextflow-based pipeline which collected several popular tools and in-house scripts so as to identifiy and analyze novel lncRNAs from raw RNA sequencing data.  As we known, identification and profiling of lncRNAs is a fundamental step to advance our knowledge on their function and regulatory mechanisms. We thus presents LncPipe to facilitate the relanvet researches on LncRNA discovery and annotation.
-This report summarized all output files produced by  [LncPipe](https://git.oschina.net/likelet/workflow) and shown them via fancy interactive plots. Briefly, this report contains sections as follows:
+This report summarized all output files produced by [LncPipe](https://git.oschina.net/likelet/workflow) and shown them via fancy interactive plots. Briefly, this report contains sections as follows:
 
 1. Raw fastq quallity control result soft links by FastQC.(Only available when fastQC step was not skipped by `--skip_QC`)
 2. Reads alignment summary. Since the intial mapping step was carried out by STAR, we summarized the basic information that can help control the library quanlity of each samples.
