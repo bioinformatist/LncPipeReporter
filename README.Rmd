@@ -11,7 +11,7 @@ A submodule for automated visualization and interactive reports.
 
 ## Motivation
 
-[Qi Zhao](https://github.com/likelet)'s [workflow](git.oschina.net/likelet/workflow) need a tool for automatically generating reports in `HTML` format with interactive plots.
+This project is a part pf LncPipe that take charge of automatically generating reports in `HTML` format with interactive plots based on pipeline output. It contains several ploting functions as well as analysis scripts to perform comparison analysis and differential expression analysis when experimental design information was available. We speculated this tools can facilitate understanding the underlining machanism of known and novel lncRNAs in their expriment.
 
 ## Configuration
 
