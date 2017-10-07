@@ -1,0 +1,12 @@
+PASS	Basic Statistics	HS457_HFL7TALXX_L1_2.clean.fq.gz
+PASS	Per base sequence quality	HS457_HFL7TALXX_L1_2.clean.fq.gz
+WARN	Per tile sequence quality	HS457_HFL7TALXX_L1_2.clean.fq.gz
+PASS	Per sequence quality scores	HS457_HFL7TALXX_L1_2.clean.fq.gz
+WARN	Per base sequence content	HS457_HFL7TALXX_L1_2.clean.fq.gz
+FAIL	Per sequence GC content	HS457_HFL7TALXX_L1_2.clean.fq.gz
+PASS	Per base N content	HS457_HFL7TALXX_L1_2.clean.fq.gz
+PASS	Sequence Length Distribution	HS457_HFL7TALXX_L1_2.clean.fq.gz
+PASS	Sequence Duplication Levels	HS457_HFL7TALXX_L1_2.clean.fq.gz
+PASS	Overrepresented sequences	HS457_HFL7TALXX_L1_2.clean.fq.gz
+PASS	Adapter Content	HS457_HFL7TALXX_L1_2.clean.fq.gz
+FAIL	Kmer Content	HS457_HFL7TALXX_L1_2.clean.fq.gz
