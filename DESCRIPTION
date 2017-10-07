@@ -1,0 +1,26 @@
+Package: LncPipeReporter
+Type: Package
+Title: Automatically Aggregating and Summarizing Bioinformatics Results for Interactive Report
+Version: 0.1.0
+Authors@R: as.person(c(
+    "Yu Sun <sun_yu@mail.nankai.edu.cn> [aut, cre]", 
+    "Qi Zhao <zhaoqi@sysucc.org.cn> [aut]"
+  ))
+URL: https://github.com/bioinformatist/LncPipe-Reporter
+BugReports: https://github.com/bioinformatist/LncPipe-Reporter/issues
+Description: This project is a part of LncPipe that take charge of automatically generating reports in HTML format with interactive plots based on pipeline output.
+    It contains several ploting functions as well as analysis scripts to perform comparison analysis and differential expression analysis when experimental design information was available.
+    We speculated this tools can facilitate understanding the underlining machanism of known and novel lncRNAs in their expriment.
+License: file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: plotly,
+    data.table,
+    ggsci,
+    heatmaply,
+    edgeR
+biocViews: Software
+Suggests: cowplot
+Remotes: vqv/ggbiplot,
+    ramnathv/htmlwidgets,
+    ropensci/plotly
