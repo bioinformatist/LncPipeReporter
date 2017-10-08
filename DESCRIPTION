@@ -19,7 +19,8 @@ Imports: plotly,
     ggsci,
     heatmaply,
     edgeR,
-    ggplot2
+    ggplot2,
+    knitr
 biocViews: Software
 Suggests: cowplot
 Remotes: vqv/ggbiplot,
