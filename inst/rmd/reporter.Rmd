@@ -11,7 +11,8 @@ output:
 params:
   input: 
     label: 'Input directory (results of up-stream analysis)'
-    value: 'demo_results'
+    value: !r system.file(paste0("extdata", .Platform$file.sep, "demo_results"),
+                                             package = "LncPipeReporter")
   output:
     label: "Output file (In HTML format)"
     value: 'reporter.html'
@@ -76,13 +77,7 @@ gc()
 # require(heatmaply)
 # require(ggsci)
 
-parsing.list <-  sapply(list.files(path = params$input, recursive = TRUE), 
-                        USE.NAMES = FALSE, 
-                        function(x) paste0(params$input, .Platform$file.sep, x))
-
-parsing.list <- parsing.list[- grep("fastqc", parsing.list)]
-fuck <- sapply(parsing.list, function(x) tryCatch({fread(x, fill = TRUE, nrows = 1, header = FALSE)}, error = function(e) {}))
-type.list <- list(); lapply(names(fuck), function(x) .search_then_determin_type(fuck[[x]], x))
+search_then_determine(path = params$input)
 ```
 
 Home
@@ -151,7 +146,7 @@ paste0(params$input, .Platform$file.sep, fastqc.dirs, .Platform$file.sep, "fastq
 ')'
 )
 )
-kable(fastqc.table, caption = "FastQC results")
+knitr::kable(fastqc.table, caption = "FastQC results")
 rm(fastqc.dirs, fastqc.table)
 invisible(gc())
 ```
@@ -164,15 +159,13 @@ Column
 STAR {data-navmenu="Aligning"}
 ===================================== 
 
-```{r}
+```{r star parsing}
 # Call perl one-liner to concatenate all log files in the list
-log.summary = fread(
+log.summary <- fread(
   paste0(
-  "cd ",
-  params$input,
-  ";grep -H '' `",
-  "cat star_log.list",
-  "` | perl -F':\\s{2,}|\\s\\|\\t' -lanE'/:$/ ? next : say join qq{\t}, @F'"
+  "grep -H '' ",
+  paste(type.list$STAR, collapse=" "),
+  " | perl -F':\\s{2,}|\\s\\|\\t' -lanE'/:$/ ? next : say join qq{\t}, @F'"
   ),
   header = FALSE
   )
@@ -181,7 +174,7 @@ log.summary = fread(
   log.summary[V2 %like% c('of i|Uni|mu|many l|sho|oth')] [, V1 := tstrsplit(V1, '\\.')[[1]]]
   # Convert percentage (characters) into decimals
   log.percentage <-
-  log.summary[V2 %like% '%'][, ':=' (V2 = .toupperFirstLetter(gsub('% of reads | reads %', '', V2)), V3 = as.numeric(sub("%", "", V3, fixed = TRUE)) / 100)]
+  log.summary[V2 %like% '%'][, ':=' (V2 = toUpperFirstLetter(gsub('% of reads | reads %', '', V2)), V3 = as.numeric(sub("%", "", V3, fixed = TRUE)) / 100)]
   setnames(log.percentage, c('Sample', 'Type', 'Percentage'))
 ##############################################################################################################################
 # system.time(
@@ -290,7 +283,7 @@ CDF {data-navmenu="lncRNA"}
 cdf <- fread(paste0(params$input, .Platform$file.sep, 'CDF.txt'))
 # Order first, for using geom_line later (geom_step behaves badly when calling plotly, see https://github.com/ropensci/plotly/issues/1030)
 cdf <- cdf[order(cdf[, 1], cdf[, 2])]
-cdf[, type := .toupperFirstLetter(sub("_", " ", type))]
+cdf[, type := toUpperFirstLetter(sub("_", " ", type))]
 # Subset data randomly
 cdf <-
 cdf[sample(nrow(cdf), nrow(cdf) * params$cdf.percent / 100),]
@@ -348,7 +341,7 @@ gtf <-
   gtf <- unique(gtf[, V2 := sum(V3 - V2), by = .(V1, V4)][, V3 := NULL])
   setcolorder(gtf, c('V4', 'V1', 'V2', 'V5'))
   setnames(gtf, c('Transcript', "Type", "Length", "Distance"))
-  gtf[, Type := .toupperFirstLetter(Type)]
+  gtf[, Type := toUpperFirstLetter(Type)]
 ```
 
 Column {.tabset}
@@ -489,7 +482,7 @@ de$table$threshold <-
 
 ```{r}
 pca.m <- prcomp(t(log.cpm), scale. = FALSE)
-design.table$condition <- .toupperFirstLetter(design.table$condition)
+design.table$condition <- toUpperFirstLetter(design.table$condition)
 p <-
   ggbiplot(
     pca.m,

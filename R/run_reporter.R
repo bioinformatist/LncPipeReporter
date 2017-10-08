@@ -1,11 +1,11 @@
-#' Run the main reporting pipeline
+#' Run the main reporting pipeline.
 #'
-#' @param input Absolute path of input directory (results of up-stream analysis).
-#' @param output Output file name (In HTML format).
-#' @param theme Journal palette applied to all plots supplied by package [ggsci](../../ggsci/doc/ggsci.html).
-#' @param cdf.percent Percentage of values to display when calculating coding potential.
-#' @param max.lncrna.len Maximum length of lncRNAs to display when calculating distribution (percentage).
-#' @param min.expressed.sample Minimal percentage of expressed samples (percentage).
+#' @param input absolute path of input directory (results of up-stream analysis).
+#' @param output output file name (In HTML format).
+#' @param theme journal palette applied to all plots supplied by package [ggsci](../../ggsci/doc/ggsci.html).
+#' @param cdf.percent percentage of values to display when calculating coding potential.
+#' @param max.lncrna.len maximum length of lncRNAs to display when calculating distribution (percentage).
+#' @param min.expressed.sample minimal percentage of expressed samples (percentage).
 #'
 #' @return None
 #' @export
