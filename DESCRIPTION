@@ -18,9 +18,12 @@ Imports: plotly,
     data.table,
     ggsci,
     heatmaply,
-    edgeR
+    edgeR,
+    ggplot2
 biocViews: Software
 Suggests: cowplot
 Remotes: vqv/ggbiplot,
     ramnathv/htmlwidgets,
     ropensci/plotly
+RoxygenNote: 6.0.1
+Roxygen: list(markdown = TRUE)
