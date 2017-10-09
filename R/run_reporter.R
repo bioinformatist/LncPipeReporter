@@ -29,6 +29,7 @@ run_reporter <- function(input = system.file(paste0("extdata", .Platform$file.se
                          max.lncrna.len = 10000,
                          min.expressed.sample = 50) {
   rmarkdown::render(system.file(paste0('rmd', .Platform$file.sep, 'reporter.Rmd'), package = 'LncPipeReporter'),
+                    output_file = 'reporter.html',
                     params = list(input = input,
                                   output = output,
                                   theme = theme,
