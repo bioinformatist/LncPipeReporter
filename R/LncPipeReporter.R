@@ -8,8 +8,6 @@
 #'
 #' @docType package
 #' @name LncPipeReporter
-#' @importFrom data.table fread
 #' @importFrom plotly ggplotly "%>%" layout
-#' @importFrom edgeR DGEList
-#' @import ggplot2 ggsci
+#' @import ggplot2 cowplot ggsci edgeR data.table
 NULL
