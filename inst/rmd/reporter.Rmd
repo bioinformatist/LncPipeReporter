@@ -77,6 +77,7 @@ gc()
 # require(ggsci)
 
 type.list <- search_then_determine(path = params$input)
+theme_set(cowplot::theme_cowplot())
 ```
 
 Home
@@ -117,38 +118,38 @@ Column
 ### Lisence
 GPL v3
 
-Quality control
-=====================================
-Column
--------------------------------------
+<!-- Quality control -->
+<!-- ===================================== -->
+<!-- Column -->
+<!-- ------------------------------------- -->
 
-### Quality control
-This sections presents the fastQC output. Samples were listed in the following table. 
+<!-- ### Quality control -->
+<!-- This sections presents the fastQC output. Samples were listed in the following table.  -->
 
-```{r results='asis'}
-fastqc.dirs <- list.files(path = params$input, pattern = '_fastqc$')
-fastqc.table <- data.table::data.table(
-Sample = substr(fastqc.dirs, 7, nchar(fastqc.dirs) - 7),
-HTML = paste0(
-'[**Click** for HTML](',
-paste0(params$input, .Platform$file.sep, fastqc.dirs, .Platform$file.sep, "fastqc_report.html"),
-')'
-),
-Summary = paste0(
-'[**Click** for summmary](',
-paste0(params$input, .Platform$file.sep, fastqc.dirs, .Platform$file.sep, "summary.txt"),
-')'
-),
-Details = paste0(
-'[**Click** for details](',
-paste0(params$input, .Platform$file.sep, fastqc.dirs, .Platform$file.sep, "fastqc_data.txt"),
-')'
-)
-)
-knitr::kable(fastqc.table, caption = "FastQC results")
-rm(fastqc.dirs, fastqc.table)
-invisible(gc())
-```
+<!-- ```{r results='asis'} -->
+<!-- fastqc.dirs <- list.files(path = params$input, pattern = '_fastqc$') -->
+<!-- fastqc.table <- data.table::data.table( -->
+<!-- Sample = substr(fastqc.dirs, 7, nchar(fastqc.dirs) - 7), -->
+<!-- HTML = paste0( -->
+<!-- '[**Click** for HTML](', -->
+<!-- paste0(params$input, .Platform$file.sep, fastqc.dirs, .Platform$file.sep, "fastqc_report.html"), -->
+<!-- ')' -->
+<!-- ), -->
+<!-- Summary = paste0( -->
+<!-- '[**Click** for summmary](', -->
+<!-- paste0(params$input, .Platform$file.sep, fastqc.dirs, .Platform$file.sep, "summary.txt"), -->
+<!-- ')' -->
+<!-- ), -->
+<!-- Details = paste0( -->
+<!-- '[**Click** for details](', -->
+<!-- paste0(params$input, .Platform$file.sep, fastqc.dirs, .Platform$file.sep, "fastqc_data.txt"), -->
+<!-- ')' -->
+<!-- ) -->
+<!-- ) -->
+<!-- knitr::kable(fastqc.table, caption = "FastQC results") -->
+<!-- rm(fastqc.dirs, fastqc.table) -->
+<!-- invisible(gc()) -->
+<!-- ``` -->
 
 Column
 -------------------------------------
