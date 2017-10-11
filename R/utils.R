@@ -64,4 +64,3 @@ search_then_determine <- function(path = system.file(paste0("extdata", .Platform
   
   return(type.list)
 }
-
