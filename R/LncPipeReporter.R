@@ -9,5 +9,5 @@
 #' @docType package
 #' @name LncPipeReporter
 #' @importFrom plotly ggplotly "%>%" layout
-#' @import ggplot2 cowplot ggsci edgeR data.table
+#' @import ggplot2 ggsci edgeR data.table
 NULL
