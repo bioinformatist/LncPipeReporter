@@ -11,7 +11,7 @@ output:
 params:
   input: 
     label: 'Input directory (results of up-stream analysis)'
-    value: !r system.file(file.path("extdata", "demo_results"),package = "LncPipeReporter")
+    value: !r system.file(file.path("extdata", "demo_results"), package = "LncPipeReporter")
   output:
     label: "Output file (In HTML format)"
     value: 'reporter.html'
