@@ -11,7 +11,9 @@ This project is a part of LncPipe that take charge of automatically generating r
 Configuration
 -------------
 
-LncPipe Reporter currently only support **Unix-like operation system** now.
+LncPipe Reporter currently only support **Unix-like operation system**.
+
+> Because it contains several lines of *Perl 5 one-liner* for parsing multiple log files. I'll use pure R code instead in the future to make it a cross-platform package.
 
 The main Rmarkdown file of LncPipe Reporter is an **R Markdown v2 document**, which need install `pandoc` first:
 
@@ -23,43 +25,55 @@ $ sudo pacman -S pandoc
 
 For those runtime environment with `RStudio` (both desktop or server version is OK) installed before or more instructions, see [the rmarkdown document](https://github.com/rstudio/rmarkdown/blob/master/PANDOC.md).
 
-To install additional R packages:
+To install this package:
 
 ``` r
-install.packages(c("curl", "httr", "data.table", "cowplot", "knitr", "heatmaply", "ggsci", "flexdashboard"))
 install.packages("devtools")
-devtools::install_github(c('ramnathv/htmlwidgets', "ropensci/plotly", "vqv/ggbiplot"))
-source("https://bioconductor.org/biocLite.R")
-biocLite("edgeR")
+devtools::install_github(c("bioinformatist/LncPipeReporter"))
 ```
 
 How to use
 ----------
 
-### Simply run with default parameters
+### Try the **simplest run** with default parameters
 
-``` bash
-$ Rscript -e "rmarkdown::render('./reporter.Rmd')"
+``` r
+library(LncPipeReporter)
+run_reporter()
 ```
 
-Parameters with their labels and default values were listed
+### Specify the parameter values with **user-interface**
 
-### Specify the parameter values with user-interface
-
--   With R package `knitr`: Choose "Knit" -&gt; "Knit with Parameters" in RStudio, then adjust the parameters in the message dialog box.
 -   In the browser: Call `rmarkdown::render` function in R Console with its `params` set to `ask`, just like:
 
-``` bash
-$ Rscript -e "rmarkdown::render('./reporter.Rmd', params = 'ask')"
+``` r
+library(LncPipeReporter)
+# DO NOT use T as short name of TRUE
+run_reporter(ask = TRUE)
 ```
 
-### Specify the parameter values in command line (Recommended)
+### Call with **user-defined** parameter values
+
+``` r
+library(LncPipeReporter)
+run_reporter(input = system.file(file.path("extdata", "demo_results"),package = "LncPipeReporter"),
+             output = 'reporter.html',
+             theme = 'npg',
+             cdf.percent = 10,
+             max.lncrna.len = 10000,
+             min.expressed.sample = 50,
+             ask = FALSE)
+```
+
+### Call in **shell scripts** or **command line** (**Nextflow**, etc.)
 
 List the paramters with values as a R `list` object:
 
 ``` bash
-$ Rscript -e "rmarkdown::render('./reporter.Rmd', params = list(output = 'output.html'))"
+$ Rscript -e "library(LncPipeReporter); run_reporter(...)"
 ```
+
+Parameters with their names and default values were listed below:
 
 ### Parameters
 
@@ -79,32 +93,32 @@ $ Rscript -e "rmarkdown::render('./reporter.Rmd', params = list(output = 'output
 <tbody>
 <tr class="odd">
 <td>input</td>
-<td>demo_results</td>
+<td><code>extdata/demo_results</code></td>
 <td>Absolute path of input directory (results of up-stream analysis)</td>
 </tr>
 <tr class="even">
 <td>output</td>
-<td>reporter.html</td>
+<td><code>~/reporter.html</code></td>
 <td>Output file name (In HTML format)</td>
 </tr>
 <tr class="odd">
 <td>theme</td>
-<td>npg</td>
+<td><code>npg</code></td>
 <td>Journal palette applied to all plots supplied by <a href="https://cran.r-project.org/web/packages/ggsci/vignettes/ggsci.html#discrete-color-palettes">ggsci</a></td>
 </tr>
 <tr class="even">
 <td>cdf.percent</td>
-<td>10%</td>
+<td><code>10%</code></td>
 <td>Percentage of values to display when calculating coding potential</td>
 </tr>
 <tr class="odd">
 <td>max.lncrna.len</td>
-<td>10000</td>
+<td><code>10000</code></td>
 <td>Maximum length of lncRNAs to display when calculating distribution</td>
 </tr>
 <tr class="even">
 <td>min.expressed.sample</td>
-<td>50%</td>
+<td><code>50%</code></td>
 <td>Minimal percentage of expressed samples</td>
 </tr>
 </tbody>
@@ -113,7 +127,7 @@ $ Rscript -e "rmarkdown::render('./reporter.Rmd', params = list(output = 'output
 Gallery
 -------
 
-Later.
+Coming soon.
 
 License
 -------
