@@ -56,7 +56,6 @@ search_then_determine <- function(path = system.file(paste0("extdata", .Platform
                           USE.NAMES = FALSE, 
                           function(x) paste0(path, .Platform$file.sep, x))
   
-  parsing.list <- parsing.list[- grep("fastqc", parsing.list)]
   file.headlines <- sapply(parsing.list, function(x) 
     tryCatch({fread(x, fill = TRUE, nrows = 1, header = FALSE)}, error = function(e) {}))
   
