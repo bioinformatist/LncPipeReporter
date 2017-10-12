@@ -20,8 +20,7 @@ toUpperFirstLetter <- function(x) {
 #'
 #' @examples
 #' search_then_determine()
-search_then_determine <- function(path = system.file(paste0("extdata", .Platform$file.sep, "demo_results"),
-                                                    package = "LncPipeReporter")) {
+search_then_determine <- function(path = system.file(file.path("extdata", "demo_results"),package = "LncPipeReporter")) {
   # Initialize an empty list for storing file types
   type.list <- list()
   
