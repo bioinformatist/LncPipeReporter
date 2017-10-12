@@ -34,7 +34,7 @@ For those runtime environment with `RStudio` (both desktop or server version is 
 To install this package:
 ```{r}
 install.packages("devtools")
-devtools::install_github(c("bioinformatist/LncPipeReporter"))
+devtools::install_github("bioinformatist/LncPipeReporter")
 ```
 
 ## How to use
