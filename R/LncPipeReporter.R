@@ -8,6 +8,6 @@
 #'
 #' @docType package
 #' @name LncPipeReporter
-#' @importFrom plotly ggplotly "%>%" layout
+#' @importFrom plotly ggplotly "%>%" layout plot_ly
 #' @import ggplot2 ggsci edgeR data.table
 NULL
