@@ -35,14 +35,14 @@ devtools::install_github("bioinformatist/LncPipeReporter")
 How to use
 ----------
 
-### Try the <font color="#FF0000">simplest run</font> with default parameters
+### Try the simplest run with default parameters
 
 ``` r
 library(LncPipeReporter)
 run_reporter()
 ```
 
-### Specify the parameter values with <font color="#FF0000">user-interface</font>
+### Specify the parameter values with user-interface
 
 -   In the browser: Call `rmarkdown::render` function in R Console with its `params` set to `ask`, just like:
 
@@ -52,7 +52,7 @@ library(LncPipeReporter)
 run_reporter(ask = TRUE)
 ```
 
-### Call with <font color="#FF0000">user-defined</font> parameter values
+### Call with user-defined parameter values
 
 ``` r
 library(LncPipeReporter)
@@ -65,7 +65,7 @@ run_reporter(input = system.file(file.path("extdata", "demo_results"),package = 
              ask = FALSE)
 ```
 
-### Call in <font color="#FF0000">shell scripts</font> or <font color="#FF0000">command line</font> (<font color="#FF0000">Nextflow</font>, etc.)
+### Call in shell scripts or command line (Nextflow, etc.)
 
 List the paramters with values as a R `list` object:
 
