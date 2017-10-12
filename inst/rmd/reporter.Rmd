@@ -11,8 +11,7 @@ output:
 params:
   input: 
     label: 'Input directory (results of up-stream analysis)'
-    value: !r system.file(paste0("extdata", .Platform$file.sep, "demo_results"),
-                                             package = "LncPipeReporter")
+    value: !r system.file(file.path("extdata", "demo_results"),package = "LncPipeReporter")
   output:
     label: "Output file (In HTML format)"
     value: 'reporter.html'
@@ -111,8 +110,10 @@ Column
 
 ```
 ### Authors 
-[Qi Zhao](https://github.com/likelet) from Sun Yat-sen University Cancer Center, Guangdong, China.<br>
-[Yu Sun](https://github.com/bioinformatist) from Nankai University. Tianjin, China. 
+
+[Qi Zhao](https://github.com/likelet) from Sun Yat-sen University Cancer Center, Guangdong, China.
+
+[Yu Sun](http://icannotendure.space/) [(GitHub)](https://github.com/bioinformatist) from Nankai University. Tianjin, China. 
 ### Citations
 
 ### Lisence
@@ -356,7 +357,7 @@ plot_ly(cls, labels = ~Class, values = ~count, type = 'pie',
         textinfo = 'label+percent',
         insidetextfont = list(color = '#FFFFFF'),
         hoverinfo = 'text',
-        text = ~paste('Total count:', count),
+        text = ~paste(Class, 'total count:', count),
         marker = list(colors = colors,
                       line = list(color = '#FFFFFF', width = 1)),
                       #The 'pull' attribute can also be used to create space between the sectors
