@@ -151,11 +151,6 @@ GPL v3
 <!-- invisible(gc()) -->
 <!-- ``` -->
 
-Column
--------------------------------------
-
-### Description
-
 STAR {data-navmenu="Aligning"}
 ===================================== 
 
@@ -354,7 +349,20 @@ invisible(gc())
 ### lncRNA classification
 
 ```{r lncRNA classification}
-
+cls <- lncRNA[, .(count = .N), by = Class]
+colors <- c('rgb(211,94,96)', 'rgb(128,133,133)', 'rgb(144,103,167)', 'rgb(171,104,87)', 'rgb(114,147,203)')
+plot_ly(cls, labels = ~Class, values = ~count, type = 'pie',
+        textposition = 'inside',
+        textinfo = 'label+percent',
+        insidetextfont = list(color = '#FFFFFF'),
+        hoverinfo = 'text',
+        text = ~paste('Total count:', count),
+        marker = list(colors = colors,
+                      line = list(color = '#FFFFFF', width = 1)),
+                      #The 'pull' attribute can also be used to create space between the sectors
+        showlegend = FALSE) %>%
+  layout(xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
 ```
 
 Column
@@ -362,8 +370,8 @@ Column
 
 ### Table
 
-```{r}
-DT::datatable(lncRNA.gtf)
+```{r lncRNA table}
+DT::datatable(lncRNA.gtf[, -6])
 ```
 
 ### Description
