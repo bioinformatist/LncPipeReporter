@@ -20,11 +20,13 @@ Imports: plotly,
     heatmaply,
     edgeR,
     ggplot2,
-    knitr
+    knitr,
+    flexdashboard,
+    cowplot,
+    ggbiplot
 biocViews: Software
 Suggests: cowplot
-Remotes: vqv/ggbiplot,
-    ramnathv/htmlwidgets,
+Remotes: ramnathv/htmlwidgets,
     ropensci/plotly
 RoxygenNote: 6.0.1
 Roxygen: list(markdown = TRUE)
