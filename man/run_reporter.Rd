@@ -4,10 +4,10 @@
 \alias{run_reporter}
 \title{Run the main reporting pipeline.}
 \usage{
-run_reporter(input = system.file(paste0("extdata", .Platform$file.sep,
-  "demo_results"), package = "LncPipeReporter"), output = "reporter.html",
-  theme = "npg", cdf.percent = 10, max.lncrna.len = 10000,
-  min.expressed.sample = 50)
+run_reporter(input = system.file(file.path("extdata", "demo_results"), package
+  = "LncPipeReporter"), output = "reporter.html", theme = "npg",
+  cdf.percent = 10, max.lncrna.len = 10000, min.expressed.sample = 50,
+  ask = FALSE)
 }
 \arguments{
 \item{input}{absolute path of input directory (results of up-stream analysis).}

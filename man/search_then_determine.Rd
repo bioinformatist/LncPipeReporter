@@ -4,8 +4,8 @@
 \alias{search_then_determine}
 \title{Search the data folder recursively then determine their types}
 \usage{
-search_then_determine(path = system.file(paste0("extdata", .Platform$file.sep,
-  "demo_results"), package = "LncPipeReporter"))
+search_then_determine(path = system.file(file.path("extdata", "demo_results"),
+  package = "LncPipeReporter"))
 }
 \arguments{
 \item{path}{path for searching.}
