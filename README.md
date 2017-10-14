@@ -30,7 +30,7 @@ To install this package:
 ``` r
 install.packages("devtools")
 #install ggbiplot mannually since it can not be installed automaticlly
-install_github("vqv/ggbiplot")
+devtools::install_github("vqv/ggbiplot")
 # install LncPipeReporter
 devtools::install_github("bioinformatist/LncPipeReporter")
 ```
