@@ -22,11 +22,11 @@ Imports: plotly,
     ggplot2,
     knitr,
     flexdashboard,
-    cowplot,
-    ggbiplot
+    cowplot
 biocViews: Software
 Suggests: cowplot
 Remotes: ramnathv/htmlwidgets,
-    ropensci/plotly
+    ropensci/plotly,
+    vqv/ggbiplot
 RoxygenNote: 6.0.1
 Roxygen: list(markdown = TRUE)
