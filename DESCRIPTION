@@ -23,7 +23,8 @@ Imports: plotly,
     knitr,
     flexdashboard,
     cowplot,
-    ggbiplot
+    ggbiplot,
+    DT
 biocViews: Software
 Suggests: cowplot
 Remotes: ramnathv/htmlwidgets,
