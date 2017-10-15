@@ -1,6 +1,6 @@
-#' Change the first letter of sentence/phrase to uppercase
+#' Change the first letter of sentence/phrase to uppercase.
 #'
-#' @param x The sentence/phrase.
+#' @param x the sentence/phrase.
 #'
 #' @return The sentence/phrase converted.
 #'
@@ -12,7 +12,7 @@ toUpperFirstLetter <- function(x) {
 }
 
 
-#' Search the data folder recursively then determine their types
+#' Search the data folder recursively then determine their types.
 #'
 #' @param path path for searching.
 #'
@@ -28,7 +28,7 @@ search_then_determine <- function(path = system.file(file.path("extdata", "demo_
     file.header <- paste(x[,1], x[,2])
     if (grepl("Left", file.header)) {
       # It's highly not recommended to use <<- symbol, 
-      # but here is to build a temporary function called many times in lapply.
+      # but here is to build a temporary function called many times in lapply
       type.list[['Tophat2']] <<- x.name
     } else if (grepl("LINC", file.header)) {
       type.list[['lncRNA']] <<- x.name
@@ -36,6 +36,7 @@ search_then_determine <- function(path = system.file(file.path("extdata", "demo_
       if (is.null(type.list[['STAR']])) {
         type.list[['STAR']] <<- x.name
       } else {
+        # Check if this sublist is empty. If not, append element to it
         type.list[['STAR']][length(type.list[['STAR']]) + 1] <<- x.name
       }
     } else if (grepl(":", file.header)) {
@@ -61,4 +62,35 @@ search_then_determine <- function(path = system.file(file.path("extdata", "demo_
   lapply(names(file.headlines), function(x) determine_type(file.headlines[[x]], x))
   
   return(type.list)
+}
+
+#' Generate title (h1 level) in [flexdashboard](../../flexdashboard/html/00Index.html) style
+#'
+#' @param title the content of title.
+#' @param nav which (what) menu the title belong to.
+#'
+#' @return Pretty printed (by [cat] but not [print]) title.
+#'
+#' @examples
+#' generate_title("Qi Fat and Yu Fat", "triple-six")
+generate_title <- function(title, nav) {
+  cat(paste0(title, ' {data-navmenu="', nav, '"}', '\n', paste(rep('=', 37), collapse = '')))
+}
+
+#' Test and print if a specific kind of file exists.
+#'
+#' @param l list of file type. Generally produced by [search_then_determine].
+#'
+#' @return None
+#'
+#' @examples
+#' type.list <- search_then_determine()
+#' test_block_data(type.list)
+test_block_data <- function(l) {
+  if (is.null(l[['Tophat2']])) print("No Tophat2 log file detected!")
+  if (is.null(l[['lncRNA']])) print("No lncRNA information detected!")
+  if (is.null(l[['STAR']])) print("No STAR log file detected!")
+  if (is.null(l[['Design']])) print("No experiment design information detected!")
+  if (is.null(l[['RSEM']])) print("No RSEM matrix detected!")
+  if (is.null(l[['Hisat2']])) print("No RSEM matrix detected!")
 }
