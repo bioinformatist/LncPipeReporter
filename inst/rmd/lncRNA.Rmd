@@ -1,0 +1,126 @@
+---
+title: "Untitled"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+```
+
+```{r lncRNA data prepare}
+lncRNA <- fread(type.list$lncRNA)
+setnames(lncRNA, c('Gene', 'Transcript', 'Type', 'Potential', 'Length', '我怎么知道这是什么东西？', 'Class'))
+lncRNA[, Type := toUpperFirstLetter(sub("_", " ", Type))]
+```
+
+CDF {data-navmenu="lncRNA"}
+=====================================
+
+```{r}
+# Order first, for using geom_line later (geom_step behaves badly when calling plotly, see https://github.com/ropensci/plotly/issues/1030)
+# cdf <- cdf[order(cdf[, 1], cdf[, 2])]
+# Subset data randomly
+lncRNA.subset <- lncRNA[sample(nrow(lncRNA),nrow(lncRNA) * params$cdf.percent / 100),]
+```
+
+Column
+-------------------------------------
+
+### *CDF* against *CPAT*
+
+```{r}
+p <- ggplot() +
+  geom_line(data = lncRNA.subset, aes(x = Potential, colour = Type), size = 2, stat = 'ecdf') +
+  scale_x_continuous(expand  = c(.01, 0)) + scale_y_continuous(expand = c(0, 0)) +
+  labs(x = 'Coding Probablity(CPAT)', title = "Coding Potential", y = "CDF") +
+  geom_hline(yintercept = 1, colour = "grey", linetype = "dashed", size = 1) +
+  get(paste0('scale_color_',params$theme))()
+  ggplotly(p)
+rm(p)
+invisible(gc())
+```
+
+Column
+-------------------------------------
+
+### *CPAT* table
+
+```{r}
+DT::datatable(lncRNA) %>% DT::formatRound('Potential', digits = 2)
+```
+
+### Description
+
+Stats {data-navmenu="lncRNA"}
+=====================================
+
+```{r parsing GTF file}
+  # Use sum of exon length as transcript length
+lncRNA.gtf <- unique(lncRNA[, Length := sum(Length), by = .(Gene, Type)], by = 'Gene')
+```
+
+Column {.tabset}
+-------------------------------------
+
+### lncRNA length distribution with type
+
+```{r}
+lncRNA.gtf[Length > params$max.lncrna.len, Length := params$max.lncrna.len]
+p <- ggplot() + geom_density(data = lncRNA.gtf, aes(x = Length, colour = Type), size = 1.5) +
+  xlab('Transcript length') + ylab('Density') +
+  scale_x_continuous(breaks = seq.int(200, params$max.lncrna.len, length.out = 10),
+                     labels = c(seq.int(200, params$max.lncrna.len, length.out = 9),
+                                paste0(params$max.lncrna.len, '+')), 
+                     expand = c(0.01, 0)) +
+  scale_y_continuous(expand = c(0.01, 0)) +
+  get(paste0('scale_color_',params$theme))()
+ggplotly(p) %>% layout(margin = list(r = 50))
+rm(p)
+invisible(gc())
+```
+
+### Total lncRNA length distribution
+
+```{r}
+p <- ggplot() + geom_histogram(data = lncRNA.gtf, aes(x = Length), binwidth = 100) +
+  scale_x_continuous(breaks = seq.int(200, params$max.lncrna.len, length.out = 10),
+                     labels = c(seq.int(200, params$max.lncrna.len, length.out = 9),
+                                paste0(params$max.lncrna.len, '+')),
+                     expand = c(0.01, 0)) +
+  scale_y_continuous(expand = c(0, 10)) + labs(x = 'lncRNA length', y = 'Count')
+ggplotly(p) %>% layout(margin = list(r = 50))
+rm(p)
+invisible(gc())
+```
+
+### lncRNA classification
+
+```{r lncRNA classification}
+cls <- lncRNA[, .(count = .N), by = Class]
+colors <- c('rgb(211,94,96)', 'rgb(128,133,133)', 'rgb(144,103,167)', 'rgb(171,104,87)', 'rgb(114,147,203)')
+plot_ly(cls, labels = ~Class, values = ~count, type = 'pie',
+        textposition = 'inside',
+        textinfo = 'label+percent',
+        insidetextfont = list(color = '#FFFFFF'),
+        hoverinfo = 'text',
+        text = ~paste(Class, 'total count:', count),
+        marker = list(colors = colors,
+                      line = list(color = '#FFFFFF', width = 1)),
+                      #The 'pull' attribute can also be used to create space between the sectors
+        showlegend = FALSE) %>%
+  layout(xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+```
+
+Column
+-------------------------------------
+
+### Table
+
+```{r lncRNA table}
+DT::datatable(lncRNA.gtf[, -6])
+```
+
+### Description

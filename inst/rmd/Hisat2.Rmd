@@ -1,0 +1,51 @@
+---
+title: "Untitled"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+```
+
+HISAT2 {data-navmenu="Aligning"}
+=====================================
+
+```{r}
+hisat <- fread(paste0("grep -H '' ",
+                      paste(type.list$Hisat2, collapse=" "),
+                      " | perl -F':|\\(|\\)|(>?\\d\\stimes?)' -lanE '/%/ and /aligned/ ? say join qq{\t}, @F : next'"),
+               header = FALSE)
+hisat <- hisat[, c(1, 3, 5, 7, 8)][,
+                                   ':=' (V5 =  as.numeric(sub("%", "", V5, fixed = TRUE)) / 100,
+                                         V7 = sub(' exactly', "", V7))][, V1 := tstrsplit(V1, .Platform$file.sep)[[length(tstrsplit(V1, .Platform$file.sep))]]][, V1 := tstrsplit(V1, '\\.')[[1]]]
+setnames(hisat, c('Sample', 'Num', 'Percentage', 'Type', 'Times'))
+```
+
+Column
+-------------------------------------
+
+### *HISAT* percentage plot
+
+```{r}
+p <- ggplot() +
+  geom_bar(data = hisat, aes(x = Type, y = Percentage, fill = Times), stat = 'identity') +
+  scale_y_continuous(labels = scales::percent) +
+  coord_flip() + facet_grid(Sample ~ .) + get(paste0('scale_fill_',params$theme))()
+ggplotly(p)
+rm(p)
+invisible(gc())
+```
+
+Column
+-------------------------------------
+
+### *HISAT* log table
+
+```{r}
+DT::datatable(hisat) %>% DT::formatRound('Percentage', digits = 2)
+rm(hisat)
+```
+
+### Description

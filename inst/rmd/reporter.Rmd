@@ -99,24 +99,40 @@ This report summarized all output files produced by [LncPipe](https://git.oschin
 Column
 -------------------------------------
 
-### Nextflow running parameters
-```bash
+### Quick start
+
+#### Call in command line
+
+```{bash}
 
 ```
 
-### Reporter runing parameters
-```
+#### Reporter runing parameters
+
+```{r}
 
 ```
 ### Authors 
 
 [Qi Zhao](https://github.com/likelet) from Sun Yat-sen University Cancer Center, Guangdong, China.
 
-[Yu Sun](http://icannotendure.space/) [(GitHub)](https://github.com/bioinformatist) from Nankai University. Tianjin, China. 
+[Yu Sun](http://icannotendure.space/) ([GitHub](https://github.com/bioinformatist)) from Nankai University. Tianjin, China. 
+
 ### Citations
 
+Coming soon!
+
 ### Lisence
-GPL v3
+
+[GPL v3 License](LICENSE)
+
+### Status
+
+```{r, message=TRUE, warning=TRUE}
+test_block_data(type.list)
+```
+
+###
 
 <!-- Quality control -->
 <!-- ===================================== -->
@@ -151,470 +167,14 @@ GPL v3
 <!-- invisible(gc()) -->
 <!-- ``` -->
 
-STAR {data-navmenu="Aligning"}
-===================================== 
-
-```{r star parsing}
-# Call perl one-liner to concatenate all log files in the list
-log.summary <- fread(paste0("grep -H '' ",
-                            paste(type.list$STAR, collapse=" "),
-                            " | perl -F':\\s{2,}|\\s\\|\\t' -lanE'/:$/ ? next : say join qq{\t}, @F'"),
-                     header = FALSE)
-# Extract lines and get sample names
-log.summary <- log.summary[V2 %like% c('of i|Uni|mu|many l|sho|oth')][, V1 := tstrsplit(V1, .Platform$file.sep)[[length(tstrsplit(V1, .Platform$file.sep))]]][, V1 := tstrsplit(V1, '\\.')[[1]]]
-# Convert percentage (characters) into decimals
-log.percentage <- log.summary[V2 %like% '%'][, ':=' (V2 = toUpperFirstLetter(gsub('% of reads | reads %', '', V2)), 
-                                                     V3 = as.numeric(sub("%", "", V3, fixed = TRUE)) / 100)]
-setnames(log.percentage, c('Sample', 'Type', 'Percentage'))
-##############################################################################################################################
-# system.time(
-#   log.list[V2 %like% c('Uni')]
-# )
-#  user  system elapsed
-# 0.000   0.000   0.001
-
-# system.time(
-#   log.list[V2 %in% c('Uniquely mapped reads number', 'Uniquely mapped reads %')]
-# )
-#  user  system elapsed
-# 0.003   0.000   0.003
-##############################################################################################################################
+```{r star-child, child='STAR.Rmd', eval=!is.null(type.list[['STAR']])}
 ```
 
-Column
--------------------------------------
-
-### *STAR* percentage plot
-
-```{r star plot}
-# Make donut chart when there's only one sample
-if (nrow(unique(log.percentage[,1])) == 1) {
-  log.percentage %>%
-  plot_ly(labels = ~Type, values = ~Percentage) %>%
-  add_pie(hole = 0.6) %>%
-  layout(title = "",  showlegend = TRUE,
-         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
-         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
-} else {
-  p <- ggplot() + 
-    geom_bar(data = log.percentage, aes(x = Sample, y = Percentage, fill = Type), stat = 'identity') +
-    scale_y_continuous(labels = scales::percent) + coord_flip() +
-    get(paste0('scale_fill_',params$theme))()
-  ggplotly(p)
-}
-
-
-rm(p)
-invisible(gc())
+```{r hisat2-child, child='Hisat2.Rmd', eval=!is.null(type.list[['Hisat2']])}
 ```
 
-Column
--------------------------------------
-
-### *STAR* log table
-
-```{r star table}
-DT::datatable(log.summary, colnames = c('Sample', 'Type', 'Value'), extensions = 'Buttons') %>% DT::formatRound('V3', digits = 2)
+```{r lncRNA-child, child='lncRNA.Rmd', eval=!is.null(type.list[['lncRNA']])}
 ```
 
-### Description
-
-HISAT2 {data-navmenu="Aligning"}
-=====================================
-
-```{r}
-hisat <- fread(paste0("grep -H '' ",
-                      paste(type.list$Hisat2, collapse=" "),
-                      " | perl -F':|\\(|\\)|(>?\\d\\stimes?)' -lanE '/%/ and /aligned/ ? say join qq{\t}, @F : next'"),
-               header = FALSE)
-hisat <- hisat[, c(1, 3, 5, 7, 8)][,
-                                   ':=' (V5 =  as.numeric(sub("%", "", V5, fixed = TRUE)) / 100,
-                                         V7 = sub(' exactly', "", V7))][, V1 := tstrsplit(V1, .Platform$file.sep)[[length(tstrsplit(V1, .Platform$file.sep))]]][, V1 := tstrsplit(V1, '\\.')[[1]]]
-setnames(hisat, c('Sample', 'Num', 'Percentage', 'Type', 'Times'))
+```{r DE-child, child='DE.Rmd', eval=!is.null(type.list[['Design']])}
 ```
-
-Column
--------------------------------------
-
-### *HISAT* percentage plot
-
-```{r}
-p <- ggplot() +
-  geom_bar(data = hisat, aes(x = Type, y = Percentage, fill = Times), stat = 'identity') +
-  scale_y_continuous(labels = scales::percent) +
-  coord_flip() + facet_grid(Sample ~ .) + get(paste0('scale_fill_',params$theme))()
-ggplotly(p)
-rm(p)
-invisible(gc())
-```
-
-Column
--------------------------------------
-
-### *HISAT* log table
-
-```{r}
-DT::datatable(hisat) %>% DT::formatRound('Percentage', digits = 2)
-rm(hisat)
-```
-
-### Description
-
-```{r lncRNA data prepare}
-lncRNA <- fread(type.list$lncRNA)
-setnames(lncRNA, c('Gene', 'Transcript', 'Type', 'Potential', 'Length', '我怎么知道这是什么东西？', 'Class'))
-lncRNA[, Type := toUpperFirstLetter(sub("_", " ", Type))]
-```
-
-CDF {data-navmenu="lncRNA"}
-=====================================
-
-```{r}
-# Order first, for using geom_line later (geom_step behaves badly when calling plotly, see https://github.com/ropensci/plotly/issues/1030)
-# cdf <- cdf[order(cdf[, 1], cdf[, 2])]
-# Subset data randomly
-lncRNA.subset <- lncRNA[sample(nrow(lncRNA),nrow(lncRNA) * params$cdf.percent / 100),]
-```
-
-Column
--------------------------------------
-
-### *CDF* against *CPAT*
-
-```{r}
-p <- ggplot() +
-  geom_line(data = lncRNA.subset, aes(x = Potential, colour = Type), size = 2, stat = 'ecdf') +
-  scale_x_continuous(expand  = c(.01, 0)) + scale_y_continuous(expand = c(0, 0)) +
-  labs(x = 'Coding Probablity(CPAT)', title = "Coding Potential", y = "CDF") +
-  geom_hline(yintercept = 1, colour = "grey", linetype = "dashed", size = 1) +
-  get(paste0('scale_color_',params$theme))()
-  ggplotly(p)
-rm(p)
-invisible(gc())
-```
-
-Column
--------------------------------------
-
-### *CPAT* table
-
-```{r}
-DT::datatable(lncRNA) %>% DT::formatRound('Potential', digits = 2)
-```
-
-### Description
-
-Stats {data-navmenu="lncRNA"}
-=====================================
-
-```{r parsing GTF file}
-  # Use sum of exon length as transcript length
-lncRNA.gtf <- unique(lncRNA[, Length := sum(Length), by = .(Gene, Type)], by = 'Gene')
-```
-
-Column {.tabset}
--------------------------------------
-
-### lncRNA length distribution with type
-
-```{r}
-lncRNA.gtf[Length > params$max.lncrna.len, Length := params$max.lncrna.len]
-p <- ggplot() + geom_density(data = lncRNA.gtf, aes(x = Length, colour = Type), size = 1.5) +
-  xlab('Transcript length') + ylab('Density') +
-  scale_x_continuous(breaks = seq.int(200, params$max.lncrna.len, length.out = 10),
-                     labels = c(seq.int(200, params$max.lncrna.len, length.out = 9),
-                                paste0(params$max.lncrna.len, '+')), 
-                     expand = c(0.01, 0)) +
-  scale_y_continuous(expand = c(0.01, 0)) +
-  get(paste0('scale_color_',params$theme))()
-ggplotly(p) %>% layout(margin = list(r = 50))
-rm(p)
-invisible(gc())
-```
-
-### Total lncRNA length distribution
-
-```{r}
-p <- ggplot() + geom_histogram(data = lncRNA.gtf, aes(x = Length), binwidth = 100) +
-  scale_x_continuous(breaks = seq.int(200, params$max.lncrna.len, length.out = 10),
-                     labels = c(seq.int(200, params$max.lncrna.len, length.out = 9),
-                                paste0(params$max.lncrna.len, '+')),
-                     expand = c(0.01, 0)) +
-  scale_y_continuous(expand = c(0, 10)) + labs(x = 'lncRNA length', y = 'Count')
-ggplotly(p) %>% layout(margin = list(r = 50))
-rm(p)
-invisible(gc())
-```
-
-### lncRNA classification
-
-```{r lncRNA classification}
-cls <- lncRNA[, .(count = .N), by = Class]
-colors <- c('rgb(211,94,96)', 'rgb(128,133,133)', 'rgb(144,103,167)', 'rgb(171,104,87)', 'rgb(114,147,203)')
-plot_ly(cls, labels = ~Class, values = ~count, type = 'pie',
-        textposition = 'inside',
-        textinfo = 'label+percent',
-        insidetextfont = list(color = '#FFFFFF'),
-        hoverinfo = 'text',
-        text = ~paste(Class, 'total count:', count),
-        marker = list(colors = colors,
-                      line = list(color = '#FFFFFF', width = 1)),
-                      #The 'pull' attribute can also be used to create space between the sectors
-        showlegend = FALSE) %>%
-  layout(xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
-         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
-```
-
-Column
--------------------------------------
-
-### Table
-
-```{r lncRNA table}
-DT::datatable(lncRNA.gtf[, -6])
-```
-
-### Description
-
-
-
-DE analysis
-=====================================
-
-```{r}
-# DE.analysis <- function(m, group) {
-#   d <- DGEList(counts = rsem.count, group = group)
-#   design <- model.matrix( ~ group)
-#   d <-
-#   d[keep <-
-#   rowSums(cpm(d) > 1) >= nrow(design.table) * params$min.expressed.sample / 100, , keep.lib.sizes =
-#   FALSE]
-#   d <- calcNormFactors(d)
-#   d <- estimateDisp(d, design = design)
-#   de <- exactTest(d)
-#   de <- topTags(de, n = length(rownames(de$table)))
-#   deg <- row.names(de$table[with(de$table, PValue < 0.05),][order(-de$table[with(de$table, PValue < 0.05),]$logCPM),][1:20,])
-#   log.cpm <- cpm(d, prior.count=2, log=TRUE)
-#   log.cpm <- data.frame(log.cpm)
-#   heatmap.m <- log.cpm[deg,]
-#   return(list(de$table, log.cpm, heatmap.m))
-# }
-
-rsem.count <- fread(type.list$RSEM)
-rna.id <- rsem.count[,1]
-rna.type <- rsem.count[,2]
-design.table <- fread(paste0("perl -F':|,' -lanE'BEGIN{say qq{SampleID\tcondition}} $fuck = shift @F; say qq{$_\t$fuck} for @F' ", type.list$Design), header = TRUE)
-rsem.count <- rsem.count[, round(.SD), .SDcols = -(1:2), with = TRUE]
-group <- as.factor(design.table$condition)
-d <- edgeR::DGEList(counts = rsem.count, group = group)
-design <- model.matrix( ~ group)
-# Important!!! The function keep.lib.sizes belongs to subsetting family in package edgeR.
-# The DGEList S3 generic must be imported first.
-# According to the source code:
-# assign("[.DGEList",
-# function(object, i, j, keep.lib.sizes=TRUE)
-# You should: 
-# @importFrom edgeR "[.DGEList"
-d <- d[keep <- rowSums(edgeR::cpm(d) > 1) >= nrow(design.table) * params$min.expressed.sample / 100, ,
-       keep.lib.sizes = FALSE]
-d <- calcNormFactors(d)
-d <- estimateDisp(d, design = design)
-de <- exactTest(d)
-de <- topTags(de, n = length(rownames(de$table)))
-deg <- row.names(de$table[with(de$table,
-                               PValue < 0.05),][order(-de$table[with(de$table,
-                                                                     PValue < 0.05),]$logCPM),][1:20,])
-log.cpm <- edgeR::cpm(d, prior.count=2, log=TRUE)
-log.cpm <- data.frame(log.cpm)
-heatmap.m <- log.cpm[deg,]
-```
-
-Column {.tabset}
--------------------------------------
-
-### Vocalno plot
-
-```{r}
-de$table$threshold <-
-  as.factor(abs(de$table$logFC) > 2 & de$table$PValue < 0.05)
-  p <-
-  ggplot(data = de$table, aes(
-  x = logFC,
-  y = -log10(PValue),
-  colour = threshold
-  )) + geom_point(size = 1.75, alpha = 0.4) + xlab("log2 fold change") + ylab("-log10 p-value") +
-  # plotly does not support expression object now
-  # xlab(expression("log"[2]*"(Fold Change)")) + ylab(expression("-log"[10]*"(p-value)")) +
-  geom_vline(
-  xintercept = 0,
-  colour = "grey",
-  linetype = "dashed",
-  size = 1
-  ) +
-  geom_hline(
-  yintercept = -log10(0.05),
-  colour = "grey",
-  linetype = "dashed",
-  size = 1
-  ) + theme(legend.position = "none") + scale_x_continuous(limits = c(-10, 10)) + get(paste0('scale_color_',params$theme))()
-  ggplotly(p)
-```
-
-### Principle Components Analysis
-
-```{r}
-pca.m <- prcomp(t(log.cpm), scale. = FALSE)
-design.table$condition <- toUpperFirstLetter(design.table$condition)
-p <-
-  ggbiplot::ggbiplot(
-    pca.m,
-    groups = design.table$condition,
-    ellipse = TRUE,
-    circle = TRUE,
-    var.axes = FALSE
-  ) + labs(color = "Groups") + get(paste0('scale_color_',params$theme))()
-ggplotly(p)
-rm(pca.m, p)
-invisible(gc())
-```
-
-### Heatmap
-
-```{r}
-# pheatmap version
-# pheatmap(heatmap.m, trace = 'none', margin = c(13, 13), display_numbers = TRUE, number_format = '%.1e')
-
-# ggplot2 %>% plotly version
-# ggheatmap <- function(exprs) {
-#   # https://plot.ly/ggplot2/ggdendro-dendrograms/
-#   require(ggdendro)
-#   # require(stringr)
-#   
-#   features <- row.names(exprs)
-#   exprs <- t(scale(t(exprs)))
-#   
-#   dd.col <- as.dendrogram(hclust(dist(exprs)))
-#   dd.row <- as.dendrogram(hclust(dist(t(exprs))))
-#   col.order <- order.dendrogram(dd.col)
-#   dy <- dendro_data(dd.col)
-#   row.order <- order.dendrogram(dd.row)
-#   dx <- dendro_data(dd.row)
-#   
-#   ggdend <- function(df) {
-#   ggplot() +
-#   geom_segment(data = df, aes(
-#   x = x,
-#   y = y,
-#   xend = xend,
-#   yend = yend
-#   )) +
-#   labs(x = "", y = "") + theme_minimal() +
-#   theme(
-#   axis.text = element_blank(),
-#   axis.ticks = element_blank(),
-#   panel.grid = element_blank()
-#   )
-#   }
-#   
-#   exprs <-
-#   data.table(features, t(scale(t(exprs)))[col.order, row.order])
-#   exprs <- melt(exprs, id = 1, variable.name = 'sample.name')
-#   
-#   dendro.data.x <- dendro_data(dd.row)
-#   dendro.data.y <- dendro_data(dd.col)
-#   
-#   px <- ggdend(dx$segments)
-#   py <- ggdend(dy$segments) + coord_flip()
-#   
-#   heatmap.exprs <-
-#   ggplot(exprs, aes(x = sample.name, y = features)) + geom_raster(aes(fill =
-#   value)) + scale_fill_gradient2(
-#   low = "green",
-#   mid = "black",
-#   high = "red",
-#   midpoint = 0
-#   ) + theme(axis.ticks = element_blank(),
-#   axis.text = element_text(
-#   size = rel(0.4),
-#   angle = 45,
-#   vjust = 0
-#   ))
-#   
-#   eaxis <- list(showticklabels = FALSE,
-#   showgrid = FALSE,
-#   zeroline = FALSE)
-#   
-#   p_empty <- plot_ly() %>%
-#   # note that margin applies to entire plot, so we can
-#   # add it here to make tick labels more readable
-#   layout(xaxis = eaxis,
-#   yaxis = eaxis)
-#   
-#   subplot(
-#   px,
-#   p_empty,
-#   heatmap.exprs,
-#   py,
-#   nrows = 2,
-#   widths = c(0.8, 0.2),
-#   heights = c(0.2, 0.8)
-#   )
-# }
-# ggheatmap(heatmap.m)
-# rm(ggheatmap)
-
-heatmaply::heatmaply(heatmap.m, scale = 'row', xlab = "Sample", margins = c(60,100,40,20)) %>% layout(margin = list(l = 50, b = 50))
-# invisible(gc())
-```
-
-### Correlation heatmap
-
-```{r Correlation heatmap}
-# ggplot2 %>% plotly version
-# p <- ggplot() + geom_raster(data = melt(cor(heatmap.m)), aes(x = Var1, y = Var2, fill = value)) + labs(x = '', y = '') + guides(fill=guide_legend(title='Cor value')) + theme(axis.text = element_text(size = rel(0.8)), axis.text.x = element_text(angle = 60, vjust = 0.7))
-# ggplotly(p)
-
-heatmaply::heatmaply(cor(heatmap.m), margins = c(40, 40),
-          k_col = 2, k_row = 2,
-          limits = c(-1,1)) %>% layout(margin = list(l = 50, b = 50))
-
-```
-
-Column
--------------------------------------
-
-### Differential expressed lncRNAs table
-
-```{r}
-DT::datatable(de$table[, -5]) %>% DT::formatRound(c('logFC', 'logCPM', 'PValue', "FDR"), digits = 2)
-```
-
-### Descirption
-This is description.
-
-Compare
-=====================================
-
-Column {.tabset}
--------------------------------------
-
-### Density
-
-```{r compare density}
-compare.dt <- data.table::data.table(Type = as.vector(t(rna.type))[as.numeric(row.names(log.cpm))], log.cpm)
-p <- ggplot() + geom_density(data = melt(compare.dt, id = 'Type'), aes(x = value, colour = Type)) + get(paste0('scale_color_',params$theme))()
-ggplotly(p)
-```
-
-### Violin plot
-
-```{r compare violin}
-compare.dt <- data.table(Type = as.vector(t(rna.type))[as.numeric(row.names(log.cpm))], log.cpm)
-p <- ggplot() + geom_boxplot(data = melt(compare.dt, id = 'Type'), aes(x = Type, y = value), notch = TRUE)
-ggplotly(p)
-```
-
-Column
--------------------------------------
-
-### Description
