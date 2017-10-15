@@ -1,6 +1,5 @@
 ---
 title: "LncPipe Reports"
-author: "Yu Sun"
 date: '`r date()`'
 output:
   flexdashboard::flex_dashboard:
