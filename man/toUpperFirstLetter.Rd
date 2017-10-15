@@ -2,18 +2,18 @@
 % Please edit documentation in R/utils.R
 \name{toUpperFirstLetter}
 \alias{toUpperFirstLetter}
-\title{Change the first letter of sentence/phrase to uppercase}
+\title{Change the first letter of sentence/phrase to uppercase.}
 \usage{
 toUpperFirstLetter(x)
 }
 \arguments{
-\item{x}{The sentence/phrase.}
+\item{x}{the sentence/phrase.}
 }
 \value{
 The sentence/phrase converted.
 }
 \description{
-Change the first letter of sentence/phrase to uppercase
+Change the first letter of sentence/phrase to uppercase.
 }
 \examples{
 toUpperFirstLetter('the man called Qi Zhao is handsome!')
