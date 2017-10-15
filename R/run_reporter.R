@@ -6,6 +6,7 @@
 #' @param cdf.percent percentage of values to display when calculating coding potential.
 #' @param max.lncrna.len maximum length of lncRNAs to display when calculating distribution (percentage).
 #' @param min.expressed.sample minimal percentage of expressed samples (percentage).
+#' @param ask need set parameters with graphical user-interface in browser?
 #'
 #' @return None
 #' @export
@@ -19,7 +20,7 @@
 #' run_reporter(input = system.file(paste0("extdata", .Platform$file.sep, "demo_results"),
 #'              package = "LncPipeReporter"),
 #'              output = 'reporter.html', theme = 'npg', cdf.percent = 10,
-#'              max.lncrna.len = 10000, min.expressed.sample = 50)
+#'              max.lncrna.len = 10000, min.expressed.sample = 50, ask = FALSE)
 #' 
 run_reporter <- function(input = system.file(file.path("extdata", "demo_results"),package = "LncPipeReporter"),
                          output = 'reporter.html',

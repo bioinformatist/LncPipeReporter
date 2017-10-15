@@ -21,6 +21,8 @@ run_reporter(input = system.file(file.path("extdata", "demo_results"), package
 \item{max.lncrna.len}{maximum length of lncRNAs to display when calculating distribution (percentage).}
 
 \item{min.expressed.sample}{minimal percentage of expressed samples (percentage).}
+
+\item{ask}{need set parameters with graphical user-interface in browser?}
 }
 \value{
 None
@@ -38,6 +40,6 @@ Also you can use statement like \code{rmarkdown::render('./reporter.Rmd', params
 run_reporter(input = system.file(paste0("extdata", .Platform$file.sep, "demo_results"),
              package = "LncPipeReporter"),
              output = 'reporter.html', theme = 'npg', cdf.percent = 10,
-             max.lncrna.len = 10000, min.expressed.sample = 50)
+             max.lncrna.len = 10000, min.expressed.sample = 50, ask = FALSE)
 
 }

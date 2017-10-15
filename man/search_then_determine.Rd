@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{search_then_determine}
 \alias{search_then_determine}
-\title{Search the data folder recursively then determine their types}
+\title{Search the data folder recursively then determine their types.}
 \usage{
 search_then_determine(path = system.file(file.path("extdata", "demo_results"),
   package = "LncPipeReporter"))
@@ -14,7 +14,7 @@ search_then_determine(path = system.file(file.path("extdata", "demo_results"),
 A list with types containing file absolute path in vector.
 }
 \description{
-Search the data folder recursively then determine their types
+Search the data folder recursively then determine their types.
 }
 \examples{
 search_then_determine()
