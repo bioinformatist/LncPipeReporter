@@ -1,6 +1,6 @@
 Package: LncPipeReporter
 Type: Package
-Title: Automatically Aggregating and Summarizing Bioinformatics Results for Interactive Report
+Title: Automatically Aggregating and Summarizing lncRNA Analysis Results for Interactive Report
 Version: 0.1.0
 Authors@R: as.person(c(
     "Yu Sun <sun_yu@mail.nankai.edu.cn> [aut, cre]", 
