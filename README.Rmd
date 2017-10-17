@@ -1,5 +1,5 @@
 ---
-title: "LncPipe Reporter"
+title: "LncPipeReporter"
 output: github_document
 always_allow_html: yes
 ---
@@ -37,12 +37,12 @@ This project is a part of LncPipe (but can also be used solely) that take charge
 
 ## Configuration
 
-LncPipe Reporter currently only support **Unix-like operation system**.
+LncPipeReporter currently only support **Unix-like operation system**.
 
 > Because it contains several lines of *Perl 5 one-liner* for parsing multiple log files.
 I'll use pure R code instead in the future to make it a cross-platform package.
 
-The LncPipe Reporter is constructed from Rmarkdown files of **R Markdown v2 document**,
+The main reporter *Rmd* file is constructed from Rmarkdown files of **R Markdown v2 document**,
 so **you must install `pandoc` first**:
 
 For Arch Linux:
@@ -62,8 +62,11 @@ devtools::install_github("bioinformatist/LncPipeReporter")
 To test installation:
 ```{r}
 library(LncPipeReporter)
+# For testing multipe sample case (default)
 run_reporter()
+# For testing lacking certain parts case
 run_reporter(input = system.file(file.path("extdata", "demo_results_lack_part"),package = "LncPipeReporter"))
+# For testing single sample case
 run_reporter(input = system.file(file.path("extdata", "demo_results_single_sample"),package = "LncPipeReporter"))
 ```
 
