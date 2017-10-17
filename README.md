@@ -1,4 +1,4 @@
-LncPipe Reporter
+LncPipeReporter
 ================
 
 A R package for automatically aggregating and summarizing lncRNA analysis results.
@@ -31,11 +31,11 @@ Features
 Configuration
 -------------
 
-LncPipe Reporter currently only support **Unix-like operation system**.
+LncPipeReporter currently only support **Unix-like operation system**.
 
 > Because it contains several lines of *Perl 5 one-liner* for parsing multiple log files. I'll use pure R code instead in the future to make it a cross-platform package.
 
-The LncPipe Reporter is constructed from Rmarkdown files of **R Markdown v2 document**, so **you must install `pandoc` first**:
+The LncPipeReporter is constructed from Rmarkdown files of **R Markdown v2 document**, so **you must install `pandoc` first**:
 
 For Arch Linux:
 
@@ -57,7 +57,9 @@ To test installation:
 ``` r
 library(LncPipeReporter)
 run_reporter()
+#for multipe sample output 
 run_reporter(input = system.file(file.path("extdata", "demo_results_lack_part"),package = "LncPipeReporter"))
+#for single sample output
 run_reporter(input = system.file(file.path("extdata", "demo_results_single_sample"),package = "LncPipeReporter"))
 ```
 
