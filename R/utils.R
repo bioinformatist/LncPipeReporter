@@ -27,9 +27,13 @@ search_then_determine <- function(path = system.file(file.path("extdata", "demo_
   determine_type <- function(x, x.name) {
     file.header <- paste(x[,1], x[,2])
     if (grepl("Left", file.header)) {
+      if (is.null(type.list[['Tophat2']])) {
       # It's highly not recommended to use <<- symbol, 
       # but here is to build a temporary function called many times in lapply
       type.list[['Tophat2']] <<- x.name
+      } else {
+        type.list[['Tophat2']][length(type.list[['Tophat2']]) + 1] <<- x.name
+      }
     } else if (grepl("LINC", file.header)) {
       type.list[['lncRNA']] <<- x.name
     } else if (grepl("Started", file.header)) {
