@@ -24,7 +24,8 @@ Imports: plotly,
     flexdashboard,
     cowplot,
     ggbiplot,
-    DT
+    DT,
+    shiny
 biocViews: Software
 Suggests: cowplot
 Remotes: ramnathv/htmlwidgets,
