@@ -98,17 +98,7 @@ This report summarized all output files produced by [LncPipe](https://git.oschin
 4. Differential expression analysis if design file was feed. Abandunce of each transcript was assessed and compared between conditions. We also provide exploration analysis like PCA and clustering to help check the experimental design.
 5. Comparison analysis was also performed between coding gene, known lncRNA and novel lncRNAs 
 
-
-Column
--------------------------------------
-
 ### Quick start
-
-#### Call in command line
-
-```{bash, eval = FALSE, echo = TRUE}
-$ Rscript -e "library(LncPipeReporter); run_reporter(...)"
-```
 
 #### Run in R
 
@@ -122,11 +112,22 @@ run_reporter(input = system.file(file.path("extdata", "demo_results"),package = 
              min.expressed.sample = 50,
              ask = FALSE)
 ```
+
+#### Call in command line
+
+```{bash, eval = FALSE, echo = TRUE}
+# Replace ... with arguments
+$ Rscript -e "library(LncPipeReporter); run_reporter(...)"
+```
+
 ### Authors 
 
 [Qi Zhao](https://github.com/likelet) from Sun Yat-sen University Cancer Center, Guangdong, China.
 
-[Yu Sun](http://icannotendure.space/) ([GitHub](https://github.com/bioinformatist)) from Nankai University. Tianjin, China. 
+[Yu Sun](http://icannotendure.space/) ([GitHub](https://github.com/bioinformatist)) from Nankai University. Tianjin, China.
+
+Column
+-------------------------------------
 
 ### Status
 
@@ -143,8 +144,6 @@ Coming soon!
 ### Lisence
 
 [GPL v3 License](../LICENSE)
-
-
 
 <!-- Quality control -->
 <!-- ===================================== -->
