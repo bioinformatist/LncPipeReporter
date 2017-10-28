@@ -18,6 +18,11 @@ tophat[, V1 := tstrsplit(V1, .Platform$file.sep)[[length(tstrsplit(V1, .Platform
 setnames(tophat, c("Sample", "Direction", "Type", "Number"))
 ```
 
+Column
+-------------------------------------
+
+### *TopHat2* aligning report plot
+
 ```{r tophat plot}
 p <- ggplot() +
   geom_bar(data = tophat, aes(x = Direction, y = Number, fill = Type), stat = 'identity') +
@@ -25,6 +30,11 @@ p <- ggplot() +
 ggplotly(p)
 ```
 
+### *TopHat2* aligning report table
+
 ```{r tophat table}
 DT::datatable(tophat)
 ```
+
+### Description
+

@@ -15,7 +15,7 @@ setnames(lncRNA, c('Gene', 'Transcript', 'Type', 'Potential', 'Length', '我怎�
 lncRNA[, Type := toUpperFirstLetter(sub("_", " ", Type))]
 ```
 
-CDF {data-navmenu="lncRNA"}
+CDF {data-navmenu="assembly"}
 =====================================
 
 ```{r}
@@ -53,7 +53,9 @@ DT::datatable(lncRNA) %>% DT::formatRound('Potential', digits = 2)
 
 ### Description
 
-Stats {data-navmenu="lncRNA"}
+
+
+Stats {data-navmenu="assembly"}
 =====================================
 
 ```{r parsing GTF file}
@@ -124,3 +126,5 @@ DT::datatable(lncRNA.gtf[, -6])
 ```
 
 ### Description
+
+
