@@ -221,7 +221,18 @@ DT::datatable(de$table[, -5]) %>% DT::formatRound(c('logFC', 'logCPM', 'PValue',
 ```
 
 ### Descirption
-This is description.
+**Title**: Differential expression analysis of novel and known lncRNA from LncPipe
+**What we have done**: `Design.matrix` file and read matrix were fed into [edgeR](version information), an R packages for identification differential expressed gene from RNA-seq Chip-seq experiment et.al. Before conducted tests, raw reads count matrix were filtered according to the user-defined parameter `min.expressed.sample`, which can be explained as follows: raw reads count was first normalized in to cpm (Counts Per Million reads) matrix , gene with cpm >1 in more than `min.expressed.sample` numbers were retained into futher analysis. In edgeR, we only consider the simplest experimetal design that only two condition were perfered. Experimental without repelicates were not supported in this anaysis. Source code of differential expression analysis can be freely accessed by https://github.com/bioinformatist/LncPipeReporter/edit/master/inst/rmd/DE.Rmd <br>
+**What dose plots Mean**: In this section, `Desenty plots`, `Vocalno plots`, `PCA analysis` and `Heatmap plot ` were show at right panel.
+`Desenty plots` descripts the reads count distribution among lncRAN features, it can help check the libaray quality of each sample.<br> LncRNAs from samples with the similar condition were expected have the same distribution. The axis X means the reads count number, axis Y denotes the density or fraction of lncRNA expressed at each reads count.<br>
+`Vocalno plots` show the mean foldchange of lncRNA expression in differ conditions against corrected test significant values (-logFDR). At default situation, points at up-left corner are considered as down regulated and the points at up-right are up regulated.<br>
+`PCA analysis` shows Principle Components Analysis result of lncRNA expression matrix, two highest PC were extracted as X and Y axis into scatter plot. Points were colored with different condition involved in this analysis. Theoretically, samples from the same library should be closer than those not. This plot canbe used to control the variance introduced by biological/technical replicates or treatment conditions. In our analysis, PCA analysis were performed using all expressed lncRNA and can be deem as a unsupervised clustering analysis method.<br>
+`Heatmap`  heatmap plot the correlation matrix, all expressed lncRNA are involved and unsupervised hierarchical clustering method were applied for cluster samples based on correlation matrix, which was displayed in a dendrogram in side.
+
+**Reference** <br>
+ McCarthy DJ, Chen Y and Smyth GK (2012). Differential expression analysis of multifactor RNA-Seq experiments with respect to
+  biological variation. Nucleic Acids Research 40, 4288-4297
+
 
 Compare
 =====================================
