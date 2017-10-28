@@ -3,6 +3,9 @@ title: "LncPipe Reports"
 date: '`r date()`'
 output:
   flexdashboard::flex_dashboard:
+    mathjax: null
+    self_contained: false
+    lib_dir: ~/LncPipeReports/libs
     navbar:
       - { title: "About", href: "https://icannotendure.space/", align: right }
       - { icon: "ion-social-github", href: "https://github.com/bioinformatist/multiIP", align: right }
@@ -103,13 +106,13 @@ Column
 
 #### Call in command line
 
-```{bash, eval = FALSE}
+```{bash, eval = FALSE, echo = TRUE}
 $ Rscript -e "library(LncPipeReporter); run_reporter(...)"
 ```
 
 #### Run in R
 
-```{r, eval = FALSE}
+```{r, eval = FALSE, echo = TRUE}
 library(LncPipeReporter)
 run_reporter(input = system.file(file.path("extdata", "demo_results"),package = "LncPipeReporter"),
              output = 'reporter.html',
@@ -126,6 +129,8 @@ run_reporter(input = system.file(file.path("extdata", "demo_results"),package = 
 [Yu Sun](http://icannotendure.space/) ([GitHub](https://github.com/bioinformatist)) from Nankai University. Tianjin, China. 
 
 ### Status
+
+Status of logs presentation:
 
 ```{r, message=TRUE, warning=TRUE}
 test_block_data(type.list)

@@ -32,11 +32,11 @@ run_reporter <- function(input = system.file(file.path("extdata", "demo_results"
   if (ask) {
     rmarkdown::render(system.file(file.path('rmd', 'reporter.Rmd'),
                                   package = 'LncPipeReporter'),
-                      output_dir = path.expand('~'), params = 'ask')
+                      output_dir = path.expand('~/LncPipeReports'), params = 'ask')
   } else {
     rmarkdown::render(system.file(file.path('rmd', 'reporter.Rmd'),
                                   package = 'LncPipeReporter'),
-                      output_dir = path.expand('~'),
+                      output_dir = path.expand('~/LncPipeReports'),
                       params = list(input = input,
                                     output = output,
                                     theme = theme,
