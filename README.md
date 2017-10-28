@@ -22,14 +22,16 @@ Features
     -   [RSEM or expression matrix from other tools](inst/extdata/demo_results/lncRNA.rsem.count.txt)
     -   [Basic features of lncRNAs](inst/extdata/demo_results/basic_charac.txt)
 
--   **File can be found anywhere**. Users can put all up-stream analysis result files simply in a folder (even with other files). They will be found out **recursively** from the folder and its subdirectories.
+-   **File can be found anywhere.** Users can put all up-stream analysis result files simply in a folder (even with other files). They will be found out **recursively** from the folder and its subdirectories.
 
 -   **File types can be guessed.** Users **never** need designate file types explicitly or even send a file containing name list as a paramter when use LncPipe reporter.
 
 -   **Flexible use.** User can send **arbitrary type or number** of files at a time, for instance, more than one STAR log files, or both STAR and HISAT2 log files, or even without any alignment log files.
 
-Configuration
--------------
+-   **More themes available.** The users and apply a series of pretty theme brought by ggsci. See [Parameters](#parameters) for details.
+
+Installation
+------------
 
 LncPipeReporter currently only support **Unix-like operation system**.
 
@@ -39,18 +41,61 @@ The main reporter *Rmd* file is constructed from Rmarkdown files of **R Markdown
 
 For Arch Linux:
 
-``` bash
+``` shell
 $ sudo pacman -S pandoc
 ```
 
 For other operation systems or Linux distributions, see [pandoc's official documentation](https://pandoc.org/installing.html).
 
-To install this package:
+### Install binary version (recommended) (still not work now, repairing)
+
+``` r
+install.packages("https://github.com/bioinformatist/LncPipeReporter/releases/download/v0.1.0/LncPipeReporter_0.1.0_R_x86_64-pc-linux-gnu.tar.gz", repos = NULL)
+```
+
+If it fails to download, you can manually download the tarball with `aria2c` then run `install.packages()` with argument `repos = NULL`.
+
+### Build from source
+
+> You can't build from source in **Microsoft-R-Open** now due to [its bug](https://github.com/Microsoft/microsoft-r-open/issues/26).
+
+For some packages need `fortran` for compiling, you should install fortran compiler first:
+
+``` shell
+$ sudo apt-get install gfortran
+```
+
+Run in R session:
 
 ``` r
 install.packages("devtools")
 devtools::install_github("bioinformatist/LncPipeReporter")
 ```
+
+If `devtools::install_github()` raise `Installation failed: Problem with the SSL CA cert (path? access rights?)` error, try:
+
+``` r
+install.packages(c("curl", "httr"))
+```
+
+During installation there may be some configuration error (lack of libraries):
+
+``` pre
+------------------------- ANTICONF ERROR ---------------------------
+Configuration failed because libcurl was not found. Try installing:
+ * deb: libcurl4-openssl-dev (Debian, Ubuntu, etc)
+ * rpm: libcurl-devel (Fedora, CentOS, RHEL)
+ * csw: libcurl_dev (Solaris)
+If libcurl is already installed, check that 'pkg-config' is in your
+PATH and PKG_CONFIG_PATH contains a libcurl.pc file. If pkg-config
+is unavailable you can set INCLUDE_DIR and LIB_DIR manually via:
+R CMD INSTALL --configure-vars='INCLUDE_DIR=... LIB_DIR=...'
+--------------------------------------------------------------------
+```
+
+Just follow the instruction to satisfy the dependencies. For instance, you can run `sudo apt-get install libcurl4-openssl-dev` in *Ubuntu* to fix the problem above.
+
+> LncPipeReporter use Bioconductor package *edgeR* to perform differential expression analysis, so if you get `'BiocInstaller' must be installed to install Bioconductor packages.`, please choose `1 (Yes)`. Since then you may see `Installation failed: cannot open the connection to 'https://bioconductor.org/biocLite.R'`, run `source('http://bioconductor.org/biocLite.R')`, finally try the installation commands above again.
 
 To test installation:
 
@@ -158,10 +203,36 @@ Parameters with their names and default values were listed below:
 
 For details, please type `help(run_reporter)` or `?run_reporter` in R session for documentation.
 
+Results
+-------
+
+By default, LncPipeReporter will generate a directory named as `LncPipeReports` at your `$HOME` that holds all results as well as dependencies,so you should always move/copy the **whole** folder.
+
+``` pre
+LncPipeReports
+├── libs
+│   ├── bootstrap-3.3.5
+│   ├── crosstalk-1.0.0
+│   ├── datatables-binding-0.2
+│   ├── dt-core-1.10.12
+│   ├── dt-ext-buttons-1.10.12
+│   ├── dt-plugin-searchhighlight-1.10.12
+│   ├── htmlwidgets-0.9
+│   ├── ionicons-2.0.1
+│   ├── jquery-1.12.4
+│   ├── jszip-1.10.12
+│   ├── pdfmake-1.10.12
+│   ├── plotly-binding-4.7.1
+│   ├── plotlyjs-1.29.2
+│   ├── stickytableheaders-0.1.19
+│   └── typedarray-0.1
+└── reporter.html
+```
+
 Gallery
 -------
 
-Coming tomorrow.
+Coming soon.
 
 License
 -------
