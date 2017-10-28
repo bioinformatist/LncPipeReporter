@@ -229,6 +229,10 @@ DT::datatable(de$table[, -5]) %>% DT::formatRound(c('logFC', 'logCPM', 'PValue',
 `PCA analysis` shows primary components analysis result of lncRNA expression matrix, two highest PC were extracted as X and Y axis into scatter plot. Points were colored with different condition involved in this analysis. Theoretically, samples from the same library should be closer than those not. This plot canbe used to control the variance introduced by biological/technical replicates or treatment conditions. In our analysis, PCA analysis were performed using all expressed lncRNA and can be deem as a unsupervised clustering analysis method.
 `Heatmap`  heatmap plot the correlation matrix, all expressed lncRNA are involved and unsupervised hierarchical clustering method were applied for cluster samples based on correlation matrix, which was displayed in a dendrogram in side.
 
+**Reference** 
+ McCarthy DJ, Chen Y and Smyth GK (2012). Differential expression analysis of multifactor RNA-Seq experiments with respect to
+  biological variation. Nucleic Acids Research 40, 4288-4297
+
 
 Compare
 =====================================
