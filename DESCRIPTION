@@ -25,9 +25,9 @@ Imports: plotly,
     cowplot,
     ggbiplot,
     DT,
-    shiny
+    shiny,
+    cowplot
 biocViews: Software
-Suggests: cowplot
 Remotes: ramnathv/htmlwidgets,
     ropensci/plotly,
     vqv/ggbiplot
