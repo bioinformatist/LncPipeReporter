@@ -1,7 +1,8 @@
 #' Run the main reporting pipeline.
 #'
 #' @param input absolute path of input directory (results of up-stream analysis).
-#' @param output output file name (In HTML format).
+#' @param output index file name (In HTML format).
+#' @param output_dir output directory (who holds all results and dependencies).
 #' @param theme journal palette applied to all plots supplied by package [ggsci](../../ggsci/doc/ggsci.html).
 #' @param cdf.percent percentage of values to display when calculating coding potential.
 #' @param max.lncrna.len maximum length of lncRNAs to display when calculating distribution (percentage).
@@ -17,6 +18,10 @@
 #' Also you can use statement like `rmarkdown::render('./reporter.Rmd', params = 'ask')` to call the interface in browser.
 #' 
 #' @examples
+#' run_reporter()
+#' 
+#' run_reporter(ask = TRUE)
+#' 
 #' run_reporter(input = system.file(paste0("extdata", .Platform$file.sep, "demo_results"),
 #'              package = "LncPipeReporter"),
 #'              output = 'reporter.html', theme = 'npg', cdf.percent = 10,

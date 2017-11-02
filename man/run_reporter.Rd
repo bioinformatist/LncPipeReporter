@@ -13,7 +13,9 @@ run_reporter(input = system.file(file.path("extdata", "demo_results"), package
 \arguments{
 \item{input}{absolute path of input directory (results of up-stream analysis).}
 
-\item{output}{output file name (In HTML format).}
+\item{output}{index file name (In HTML format).}
+
+\item{output_dir}{output directory (who holds all results and dependencies).}
 
 \item{theme}{journal palette applied to all plots supplied by package \href{../../ggsci/doc/ggsci.html}{ggsci}.}
 
@@ -38,6 +40,10 @@ There're also default paramter values in the script -- sometimes if the user try
 Also you can use statement like \code{rmarkdown::render('./reporter.Rmd', params = 'ask')} to call the interface in browser.
 }
 \examples{
+run_reporter()
+
+run_reporter(ask = TRUE)
+
 run_reporter(input = system.file(paste0("extdata", .Platform$file.sep, "demo_results"),
              package = "LncPipeReporter"),
              output = 'reporter.html', theme = 'npg', cdf.percent = 10,
