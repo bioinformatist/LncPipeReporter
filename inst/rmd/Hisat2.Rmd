@@ -26,13 +26,14 @@ setnames(hisat, c('Sample', 'Num', 'Percentage', 'Type', 'Times'))
 Column
 -------------------------------------
 
-### *HISAT* percentage plot
+### *HISAT2* percentage plot
 
 ```{r}
 p <- ggplot() +
   geom_bar(data = hisat, aes(x = Type, y = Percentage, fill = Times), stat = 'identity') +
   scale_y_continuous(labels = scales::percent) +
   coord_flip() + facet_grid(Sample ~ .) + get(paste0('scale_fill_',params$theme))()
+save_plot(file.path(params$figures, 'HISAT2.tiff'), p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
 ggplotly(p)
 rm(p)
 invisible(gc())
@@ -41,10 +42,11 @@ invisible(gc())
 Column
 -------------------------------------
 
-### *HISAT* log table
+### *HISAT2* log table
 
 ```{r}
-DT::datatable(hisat) %>% DT::formatRound('Percentage', digits = 2)
+fwrite(hisat, file.path(params$tables, 'HISAT2.csv'))
+DT::datatable(head(hisat, n = 80L)) %>% DT::formatRound('Percentage', digits = 2)
 rm(hisat)
 ```
 

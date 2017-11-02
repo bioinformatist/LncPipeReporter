@@ -66,29 +66,17 @@ Column {.tabset}
 ### Vocalno plot
 
 ```{r}
-de$table$threshold <-
-  as.factor(abs(de$table$logFC) > 2 & de$table$PValue < 0.05)
-  p <-
-  ggplot(data = de$table, aes(
-  x = logFC,
-  y = -log10(PValue),
-  colour = threshold
-  )) + geom_point(size = 1.75, alpha = 0.4) + xlab("log2 fold change") + ylab("-log10 p-value") +
+de$table$threshold <- as.factor(abs(de$table$logFC) > 2 & de$table$PValue < 0.05)
+p <- ggplot(data = de$table, aes(x = logFC, y = -log10(PValue), colour = threshold)) +
+  geom_point(size = 1.75, alpha = 0.4) + xlab("log2 fold change") + ylab("-log10 p-value") +
   # plotly does not support expression object now
   # xlab(expression("log"[2]*"(Fold Change)")) + ylab(expression("-log"[10]*"(p-value)")) +
-  geom_vline(
-  xintercept = 0,
-  colour = "grey",
-  linetype = "dashed",
-  size = 1
-  ) +
-  geom_hline(
-  yintercept = -log10(0.05),
-  colour = "grey",
-  linetype = "dashed",
-  size = 1
-  ) + theme(legend.position = "none") + scale_x_continuous(limits = c(-10, 10)) + get(paste0('scale_color_',params$theme))()
-  ggplotly(p)
+  geom_vline(xintercept = 0, colour = "grey", linetype = "dashed", size = 1) +
+  geom_hline(yintercept = -log10(0.05), colour = "grey", linetype = "dashed", size = 1) + 
+  theme(legend.position = "none") + scale_x_continuous(limits = c(-10, 10)) + 
+  get(paste0('scale_color_',params$theme))()
+save_plot(file.path(params$figures, 'vocano.tiff'), p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
+ggplotly(p)
 ```
 
 ### Principle Components Analysis
@@ -96,14 +84,9 @@ de$table$threshold <-
 ```{r}
 pca.m <- prcomp(t(log.cpm), scale. = FALSE)
 design.table$condition <- toUpperFirstLetter(design.table$condition)
-p <-
-  ggbiplot::ggbiplot(
-    pca.m,
-    groups = design.table$condition,
-    ellipse = TRUE,
-    circle = TRUE,
-    var.axes = FALSE
-  ) + labs(color = "Groups") + get(paste0('scale_color_',params$theme))()
+p <- ggbiplot::ggbiplot(pca.m, groups = design.table$condition, ellipse = TRUE, circle = TRUE, var.axes = FALSE) + 
+  labs(color = "Groups") + get(paste0('scale_color_',params$theme))()
+save_plot(file.path(params$figures, 'pca.tiff'), p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
 ggplotly(p)
 rm(pca.m, p)
 invisible(gc())
@@ -217,7 +200,8 @@ Column
 ### Differential expressed lncRNAs table
 
 ```{r}
-DT::datatable(de$table[, -5]) %>% DT::formatRound(c('logFC', 'logCPM', 'PValue', "FDR"), digits = 2)
+fwrite(de$table[, -5], file.path(params$tables, 'DE.csv'))
+DT::datatable(head(de$table[, -5], n = 80L)) %>% DT::formatRound(c('logFC', 'logCPM', 'PValue', "FDR"), digits = 2)
 ```
 
 ### Descirption
@@ -249,8 +233,8 @@ Column {.tabset}
 ### Density
 
 ```{r compare density}
-compare.dt <- data.table::data.table(Type = as.vector(t(rna.type))[as.numeric(row.names(log.cpm))], log.cpm)
-p <- ggplot() + geom_density(data = melt(compare.dt, id = 'Type'), aes(x = value, colour = Type)) + get(paste0('scale_color_',params$theme))()
+compare.dt <- data.table(Type = as.vector(t(rna.type))[as.numeric(row.names(log.cpm))], log.cpm)
+p <- ggplot() + geom_density(data = melt(compare.dt, id = 'Type'), aes(x = value, colour = Type), size = 1.5) + get(paste0('scale_color_',params$theme))()
 ggplotly(p)
 ```
 
