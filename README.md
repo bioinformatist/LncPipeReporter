@@ -6,7 +6,7 @@ A R package for automatically aggregating and summarizing lncRNA analysis result
 Overview
 --------
 
-Most of bioinformatics tools, such as aligners like [STAR](https://github.com/alexdobin/STAR), [TopHat](http://ccb.jhu.edu/software/tophat/index.shtml) and [HISAT2](https://ccb.jhu.edu/software/hisat2/index.shtml) generate log files by default. A lastest nextflow-based lncRNA sequenceing data analysis pipeline, known as [LncPipe](), produces a file containing lncRNA basic features.
+Most of bioinformatics tools, such as aligners like [STAR](https://github.com/alexdobin/STAR), [TopHat](http://ccb.jhu.edu/software/tophat/index.shtml) and [HISAT2](https://ccb.jhu.edu/software/hisat2/index.shtml) generate log files by default. A lastest nextflow-based lncRNA sequenceing data analysis pipeline, known as [LncPipe](https://github.com/likelet/LncPipe), produces a file containing lncRNA basic features.
 
 This project is a part of LncPipe (but can also be used solely) that take charge of automatically generating reports in `HTML` format with interactive plots based on pipeline output. It contains several ploting functions as well as analysis scripts to perform comparison analysis and differential expression analysis when experimental design information was available. We speculated this tools can facilitate understanding the underlining machanism of known and novel lncRNAs in their experiment.
 
@@ -28,7 +28,9 @@ Features
 
 -   **Flexible use.** User can send **arbitrary type or number** of files at a time, for instance, more than one STAR log files, or both STAR and HISAT2 log files, or even without any alignment log files.
 
--   **More themes available.** The users and apply a series of pretty theme brought by ggsci. See [Parameters](#parameters) for details.
+-   **More themes available.** The users can apply for a series of pretty theme brought by ggsci. See [Parameters](#parameters) for details.
+
+-   **High resolution static figures with detailed results in *csv* is provided.** User will get figures which can be used for publication in *tiff* format with *300 ppi resolution* and *lzw compression* performed. Also, LncPipeReporter bring you analysis result tables (comma-separated, can be opened/edited by *MS Excel*, etc.), for details, see [Results](#results).
 
 Installation
 ------------
@@ -47,13 +49,9 @@ $ sudo pacman -S pandoc
 
 For other operation systems or Linux distributions, see [pandoc's official documentation](https://pandoc.org/installing.html).
 
-### Install binary version (recommended) (still not work now, repairing)
+### Install binary version by [packrat](http://rstudio.github.io/packrat/) (**recommended**) (**still not ready**, preparing)
 
-``` r
-install.packages("https://github.com/bioinformatist/LncPipeReporter/releases/download/v0.1.0/LncPipeReporter_0.1.0_R_x86_64-pc-linux-gnu.tar.gz", repos = NULL)
-```
-
-If it fails to download, you can manually download the tarball with `aria2c` then run `install.packages()` with argument `repos = NULL`.
+Coming soon!
 
 ### Build from source
 
@@ -96,6 +94,8 @@ R CMD INSTALL --configure-vars='INCLUDE_DIR=... LIB_DIR=...'
 Just follow the instruction to satisfy the dependencies. For instance, you can run `sudo apt-get install libcurl4-openssl-dev` in *Ubuntu* to fix the problem above.
 
 > LncPipeReporter use Bioconductor package *edgeR* to perform differential expression analysis, so if you get `'BiocInstaller' must be installed to install Bioconductor packages.`, please choose `1 (Yes)`. Since then you may see `Installation failed: cannot open the connection to 'https://bioconductor.org/biocLite.R'`, run `source('http://bioconductor.org/biocLite.R')`, finally try the installation commands above again.
+
+> Please wait for minutes then **try again** if solving some dependencies from *GitHub* fails with `Connection timed out after 100001 milliseconds`.
 
 To test installation:
 
@@ -147,8 +147,10 @@ run_reporter(input = system.file(file.path("extdata", "demo_results"),package = 
 List the paramters with values as a R `list` object:
 
 ``` bash
-$ Rscript -e "library(LncPipeReporter); run_reporter(...)"
+$ Rscript -e "library(LncPipeReporter); run_reporter(input = '.', ...)"
 ```
+
+> `...` stands for other arguments. You should use **single-quotes** here.
 
 Parameters with their names and default values were listed below:
 
@@ -176,40 +178,59 @@ Parameters with their names and default values were listed below:
 <tr class="even">
 <td>output</td>
 <td><code>~/reporter.html</code></td>
-<td>Output file name (In HTML format)</td>
+<td>index file name (In HTML format)</td>
 </tr>
 <tr class="odd">
+<td>output_dir</td>
+<td><code>~/LncPipeReports</code></td>
+<td>output directory (who holds all results and dependencies)</td>
+</tr>
+<tr class="even">
 <td>theme</td>
 <td><code>npg</code></td>
 <td>Journal palette applied to all plots supplied by <a href="https://cran.r-project.org/web/packages/ggsci/vignettes/ggsci.html#discrete-color-palettes">ggsci</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>cdf.percent</td>
 <td><code>10%</code></td>
 <td>Percentage of values to display when calculating coding potential</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>max.lncrna.len</td>
 <td><code>10000</code></td>
 <td>Maximum length of lncRNAs to display when calculating distribution</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>min.expressed.sample</td>
 <td><code>50%</code></td>
 <td>Minimal percentage of expressed samples</td>
 </tr>
+<tr class="even">
+<td>ask</td>
+<td>FALSE</td>
+<td>need set parameters with graphical user-interface in browser?</td>
+</tr>
 </tbody>
 </table>
 
-For details, please type `help(run_reporter)` or `?run_reporter` in R session for documentation.
+For details and examples, please type `help(run_reporter)` or `?run_reporter` in R session for documentation.
 
 Results
 -------
 
-By default, LncPipeReporter will generate a directory named as `LncPipeReports` at your `$HOME` that holds all results as well as dependencies,so you should always move/copy the **whole** folder.
+By default, LncPipeReporter will generate a directory named as `LncPipeReports` at your `$HOME` (**you can [set another place](#parameters) yourself**) that holds all results as well as dependencies, so you should always move/copy the **whole** folder. The contents of the output directory seems like:
 
 ``` pre
 LncPipeReports
+├── figures
+│   ├── CDF.tiff
+│   ├── HISAT2.tiff
+│   ├── lncRNA_length_distribution.tiff
+│   ├── lncRNA_length_distribution_with_type.tiff
+│   ├── pca.tiff
+│   ├── STAR.tiff
+│   ├── TopHat2.tiff
+│   └── vocano.tiff
 ├── libs
 │   ├── bootstrap-3.3.5
 │   ├── crosstalk-1.0.0
@@ -226,7 +247,13 @@ LncPipeReports
 │   ├── plotlyjs-1.29.2
 │   ├── stickytableheaders-0.1.19
 │   └── typedarray-0.1
-└── reporter.html
+├── reporter.html
+└── tables
+    ├── DE.csv
+    ├── HISAT2.csv
+    ├── lncRNAs.csv
+    ├── STAR.csv
+    └── TopHat2.csv
 ```
 
 Gallery

@@ -14,7 +14,7 @@ A R package for automatically aggregating and summarizing lncRNA analysis result
 
 Most of bioinformatics tools, such as aligners like [STAR](https://github.com/alexdobin/STAR),
 [TopHat](http://ccb.jhu.edu/software/tophat/index.shtml)
-and [HISAT2](https://ccb.jhu.edu/software/hisat2/index.shtml) generate log files by default. A lastest nextflow-based lncRNA sequenceing data analysis pipeline, known as [LncPipe](), produces a file containing lncRNA basic features.
+and [HISAT2](https://ccb.jhu.edu/software/hisat2/index.shtml) generate log files by default. A lastest nextflow-based lncRNA sequenceing data analysis pipeline, known as [LncPipe](https://github.com/likelet/LncPipe), produces a file containing lncRNA basic features.
 
 This project is a part of LncPipe (but can also be used solely) that take charge of automatically generating reports in `HTML` format with interactive plots based on pipeline output. It contains several ploting functions as well as analysis scripts to perform comparison analysis and differential expression analysis when experimental design information was available. We speculated this tools can facilitate understanding the underlining machanism of known and novel lncRNAs in their experiment.
 
@@ -37,6 +37,8 @@ This project is a part of LncPipe (but can also be used solely) that take charge
 
 - **More themes available.** The users can apply for a series of pretty theme brought by ggsci. See [Parameters] for details.
 
+- **High resolution static figures with detailed results in *csv* is provided.** User will get figures which can be used for publication in *tiff* format with *300 ppi resolution* and *lzw compression* performed. Also, LncPipeReporter bring you analysis result tables (comma-separated, can be opened/edited by *MS Excel*, etc.), for details, see [Results].
+
 ## Installation
 
 LncPipeReporter currently only support **Unix-like operation system**.
@@ -55,13 +57,9 @@ $ sudo pacman -S pandoc
 
 For other operation systems or Linux distributions, see [pandoc's official documentation](https://pandoc.org/installing.html).
 
-### Install binary version (recommended) (still not work now, repairing)
+### Install binary version by [packrat](http://rstudio.github.io/packrat/) (**recommended**) (**still not ready**, preparing)
 
-```{r}
-install.packages("https://github.com/bioinformatist/LncPipeReporter/releases/download/v0.1.0/LncPipeReporter_0.1.0_R_x86_64-pc-linux-gnu.tar.gz", repos = NULL)
-```
-
-If it fails to download, you can manually download the tarball with `aria2c` then run `install.packages()` with argument `repos = NULL`.
+Coming soon!
 
 ### Build from source
 
@@ -101,6 +99,8 @@ R CMD INSTALL --configure-vars='INCLUDE_DIR=... LIB_DIR=...'
 Just follow the instruction to satisfy the dependencies. For instance, you can run `sudo apt-get install libcurl4-openssl-dev` in *Ubuntu* to fix the problem above.
 
 > LncPipeReporter use Bioconductor package *edgeR* to perform differential expression analysis, so if you get `'BiocInstaller' must be installed to install Bioconductor packages.`, please choose `1 (Yes)`. Since then you may see `Installation failed: cannot open the connection to 'https://bioconductor.org/biocLite.R'`, run `source('http://bioconductor.org/biocLite.R')`, finally try the installation commands above again.
+
+> Please wait for minutes then **try again** if solving some dependencies from *GitHub* fails with `Connection timed out after 100001 milliseconds`.
 
 To test installation:
 ```{r}
@@ -150,8 +150,10 @@ run_reporter(input = system.file(file.path("extdata", "demo_results"),package = 
 List the paramters with values as a R `list` object:
 
 ```{bash}
-$ Rscript -e "library(LncPipeReporter); run_reporter(...)"
+$ Rscript -e "library(LncPipeReporter); run_reporter(input = '.', ...)"
 ```
+
+> `...` stands for other arguments. You should use **single-quotes** here.
 
 Parameters with their names and default values were listed below:
 
@@ -160,20 +162,31 @@ Parameters with their names and default values were listed below:
 | Name | Default value | Description |
 |-----------|--------------|-------------|
 | input | `extdata/demo_results` | Absolute path of input directory (results of up-stream analysis) |
-| output | `~/reporter.html` | Output file name (In HTML format) |
+| output | `~/reporter.html` | index file name (In HTML format) |
+| output_dir | `~/LncPipeReports` | output directory (who holds all results and dependencies) |
 | theme | `npg` | Journal palette applied to all plots supplied by [ggsci](https://cran.r-project.org/web/packages/ggsci/vignettes/ggsci.html#discrete-color-palettes) |
 | cdf.percent | `10%` | Percentage of values to display when calculating coding potential |
 | max.lncrna.len | `10000` | Maximum length of lncRNAs to display when calculating distribution |
 | min.expressed.sample | `50%` | Minimal percentage of expressed samples |
+| ask | FALSE | need set parameters with graphical user-interface in browser? |
 
-For details, please type `help(run_reporter)` or `?run_reporter` in R session for documentation.
+For details and examples, please type `help(run_reporter)` or `?run_reporter` in R session for documentation.
 
 ## Results
 
-By default, LncPipeReporter will generate a directory named as `LncPipeReports` at your `$HOME` that holds all results as well as dependencies,so you should always move/copy the **whole** folder.
+By default, LncPipeReporter will generate a directory named as `LncPipeReports` at your `$HOME` (**you can [set another place](#parameters) yourself**) that holds all results as well as dependencies, so you should always move/copy the **whole** folder. The contents of the output directory seems like:
 
 ```{pre}
 LncPipeReports
+├── figures
+│   ├── CDF.tiff
+│   ├── HISAT2.tiff
+│   ├── lncRNA_length_distribution.tiff
+│   ├── lncRNA_length_distribution_with_type.tiff
+│   ├── pca.tiff
+│   ├── STAR.tiff
+│   ├── TopHat2.tiff
+│   └── vocano.tiff
 ├── libs
 │   ├── bootstrap-3.3.5
 │   ├── crosstalk-1.0.0
@@ -190,7 +203,13 @@ LncPipeReports
 │   ├── plotlyjs-1.29.2
 │   ├── stickytableheaders-0.1.19
 │   └── typedarray-0.1
-└── reporter.html
+├── reporter.html
+└── tables
+    ├── DE.csv
+    ├── HISAT2.csv
+    ├── lncRNAs.csv
+    ├── STAR.csv
+    └── TopHat2.csv
 ```
 
 ## Gallery
