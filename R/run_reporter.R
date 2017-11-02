@@ -24,22 +24,34 @@
 #' 
 run_reporter <- function(input = system.file(file.path("extdata", "demo_results"),package = "LncPipeReporter"),
                          output = 'reporter.html',
+                         output_dir = path.expand('~/LncPipeReports'),
                          theme = 'npg',
                          cdf.percent = 10,
                          max.lncrna.len = 10000,
                          min.expressed.sample = 50,
                          ask = FALSE) {
+  figures.dir <-  file.path(output_dir, 'figures')
+  tables.dir <- file.path(output_dir, 'tables')
+  
+  # Create subdirectories first
+  dir.create(figures.dir, showWarnings = FALSE)
+  dir.create(tables.dir, showWarnings = FALSE)
+  
   if (ask) {
     rmarkdown::render(system.file(file.path('rmd', 'reporter.Rmd'),
                                   package = 'LncPipeReporter'),
-                      output_dir = path.expand('~/LncPipeReports'), params = 'ask')
+                      output_dir = output_dir,
+                      output_options = list(lib_dir = file.path(output_dir, 'libs')), params = 'ask')
   } else {
     rmarkdown::render(system.file(file.path('rmd', 'reporter.Rmd'),
                                   package = 'LncPipeReporter'),
-                      output_dir = path.expand('~/LncPipeReports'),
+                      output_dir = output_dir,
+                      output_options = list(lib_dir = file.path(output_dir, 'libs')),
                       params = list(input = input,
                                     output = output,
                                     theme = theme,
+                                    figures = figures.dir,
+                                    tables = tables.dir,
                                     cdf.percent = cdf.percent,
                                     max.lncrna.len = max.lncrna.len,
                                     min.expressed.sample = min.expressed.sample))
