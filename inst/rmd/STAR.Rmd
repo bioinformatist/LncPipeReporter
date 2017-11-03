@@ -59,7 +59,7 @@ if (nrow(unique(log.percentage[,1])) == 1) {
     geom_bar(data = log.percentage, aes(x = Sample, y = Percentage, fill = Type), stat = 'identity') +
     scale_y_continuous(labels = scales::percent) + coord_flip() +
     get(paste0('scale_fill_',params$theme))()
-  save_plot(file.path(params$figures, 'STAR.tiff'), p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
+  save_plot('STAR.tiff', p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
   ggplotly(p)
 }
 
@@ -74,7 +74,7 @@ Column
 ### *STAR* log table
 
 ```{r star table}
-fwrite(log.summary, file.path(params$tables, 'STAR.csv'))
+fwrite(log.summary, 'STAR.csv')
 DT::datatable(head(log.summary, n = 80L), colnames = c('Sample', 'Type', 'Value'), extensions = 'Buttons') %>% DT::formatRound('V3', digits = 2)
 ```
 

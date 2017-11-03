@@ -39,8 +39,8 @@ run_reporter <- function(input = system.file(file.path("extdata", "demo_results"
   tables.dir <- file.path(output_dir, 'tables')
   
   # Create subdirectories first
-  dir.create(figures.dir, showWarnings = FALSE)
-  dir.create(tables.dir, showWarnings = FALSE)
+  # dir.create(figures.dir, showWarnings = FALSE)
+  # dir.create(tables.dir, showWarnings = FALSE)
   
   if (ask) {
     rmarkdown::render(system.file(file.path('rmd', 'reporter.Rmd'),
@@ -61,5 +61,10 @@ run_reporter <- function(input = system.file(file.path("extdata", "demo_results"
                                     max.lncrna.len = max.lncrna.len,
                                     min.expressed.sample = min.expressed.sample))
   }
+  dir.create(figures.dir)
+  dir.create(tables.dir)
+  
+  file.rename(from = c('STAR.csv', 'HISAT2.csv', 'TopHat2.csv'), to = tables.dir)
+  file.rename(from = c('STAR.tiff', 'HISAT2.tiff', 'TopHat2.tiff', ), to = figures.dir)
 }
 

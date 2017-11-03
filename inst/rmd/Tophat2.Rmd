@@ -27,7 +27,7 @@ Column
 p <- ggplot() +
   geom_bar(data = tophat, aes(x = Direction, y = Number, fill = Type), stat = 'identity') +
   coord_flip() + facet_grid(Sample ~ .) + get(paste0('scale_fill_',params$theme))()
-save_plot(file.path(params$figures, 'TopHat2.tiff'), p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
+save_plot('TopHat2.tiff', p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
 ggplotly(p)
 ```
 
@@ -37,7 +37,7 @@ Column
 ### *TopHat2* aligning report table
 
 ```{r tophat table}
-fwrite(tophat, file.path(params$tables, 'TopHat2.csv'))
+fwrite(tophat, 'TopHat2.csv')
 DT::datatable(head(tophat, n = 80L))
 ```
 
