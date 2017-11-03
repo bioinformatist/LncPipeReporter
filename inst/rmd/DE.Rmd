@@ -200,7 +200,7 @@ Column
 ### Differential expressed lncRNAs table
 
 ```{r}
-fwrite(de$table[, -5], file.path(params$tables, 'DE.csv'))
+fwrite(de$table[, -5], file.path(params$tables, 'DE.csv'), row.names = TRUE)
 DT::datatable(head(de$table[, -5], n = 80L)) %>% DT::formatRound(c('logFC', 'logCPM', 'PValue', "FDR"), digits = 2)
 ```
 
