@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="448.666px" height="667.666px" viewBox="0 0 448.666 667.666" enable-background="new 0 0 448.666 667.666"
+	 xml:space="preserve">
+<g>
+	<rect x="43.835" y="50.5" fill="#FFFFFF" width="48" height="45"/>
+	<rect x="43.835" y="50.5" fill="none" stroke="#000000" stroke-miterlimit="8" width="48" height="45"/>
+	<rect x="49.835" y="56.5" fill="#FFFFFF" width="48" height="45"/>
+	<rect x="49.835" y="56.5" fill="none" stroke="#000000" stroke-miterlimit="8" width="48" height="45"/>
+	<rect x="55.835" y="62.5" fill="#FFFFFF" width="48" height="45"/>
+	<rect x="55.835" y="62.5" fill="none" stroke="#000000" stroke-miterlimit="8" width="48" height="45"/>
+	<rect x="62.835" y="68.5" fill="#FFFFFF" width="48" height="45"/>
+	<rect x="62.835" y="68.5" fill="none" stroke="#000000" stroke-miterlimit="8" width="48" height="45"/>
+	<text transform="matrix(1 0 0 1 71.9421 89.1104)" font-family="'TimesNewRomanPSMT'" font-size="8">R</text>
+	<text transform="matrix(1 0 0 1 77.3103 89.1104)" font-family="'TimesNewRomanPSMT'" font-size="8">a</text>
+	<text transform="matrix(1 0 0 1 80.8132 89.1104)" font-family="'TimesNewRomanPSMT'" font-size="8">w</text>
+	<text transform="matrix(1 0 0 1 86.5662 89.1104)" font-family="'TimesNewRomanPSMT'" font-size="8">d</text>
+	<text transform="matrix(1 0 0 1 90.5662 89.1104)" font-family="'TimesNewRomanPSMT'" font-size="8">a</text>
+	<text transform="matrix(1 0 0 1 94.0691 89.1104)" font-family="'TimesNewRomanPSMT'" font-size="8">t</text>
+	<text transform="matrix(1 0 0 1 96.3162 89.1104)" font-family="'TimesNewRomanPSMT'" font-size="8">a</text>
+	<text transform="matrix(1 0 0 1 74.5071 98.1104)" font-family="'TimesNewRomanPSMT'" font-size="8">(</text>
+	<text transform="matrix(1 0 0 1 77.1389 98.1104)" font-family="'TimesNewRomanPSMT'" font-size="8">.</text>
+	<text transform="matrix(1 0 0 1 79.1321 98.1104)" font-family="'TimesNewRomanPSMT'" font-size="8">f</text>
+	<text transform="matrix(1 0 0 1 81.7639 98.1104)" font-family="'TimesNewRomanPSMT'" font-size="8">a</text>
+	<text transform="matrix(1 0 0 1 85.2668 98.1104)" font-family="'TimesNewRomanPSMT'" font-size="8">s</text>
+	<text transform="matrix(1 0 0 1 88.3879 98.1104)" font-family="'TimesNewRomanPSMT'" font-size="8">t</text>
+	<text transform="matrix(1 0 0 1 90.635 98.1104)" font-family="'TimesNewRomanPSMT'" font-size="8">q</text>
+	<text transform="matrix(1 0 0 1 94.6321 98.1104)" font-family="'TimesNewRomanPSMT'" font-size="8">)</text>
+	<path fill="#FFFFFF" d="M161.835,61c0-5.799,4.701-10.5,10.5-10.5h96c5.799,0,10.5,4.701,10.5,10.5v42
+		c0,5.799-4.701,10.5-10.5,10.5h-96c-5.799,0-10.5-4.701-10.5-10.5V61L161.835,61z"/>
+	<path fill="none" stroke="#000000" stroke-miterlimit="8" d="M161.835,61c0-5.799,4.701-10.5,10.5-10.5h96
+		c5.799,0,10.5,4.701,10.5,10.5v42c0,5.799-4.701,10.5-10.5,10.5h-96c-5.799,0-10.5-4.701-10.5-10.5V61L161.835,61z"/>
+	<text transform="matrix(1 0 0 1 178.8708 74.373)" font-family="'TimesNewRomanPSMT'" font-size="9">Reference genome(.fa)</text>
+	<text transform="matrix(1 0 0 1 181.3708 84.373)" font-family="'TimesNewRomanPSMT'" font-size="9">Gene annotation(.</text>
+	<text transform="matrix(1 0 0 1 245.8704 84.373)" font-family="'TimesNewRomanPSMT'" font-size="9">gtf</text>
+	<text transform="matrix(1 0 0 1 255.8704 84.373)" font-family="'TimesNewRomanPSMT'" font-size="9">) </text>
+	<text transform="matrix(1 0 0 1 179.8708 95.373)" font-family="'TimesNewRomanPSMT'" font-size="9">rRNA</text>
+	<text transform="matrix(1 0 0 1 204.1208 95.373)" font-family="'TimesNewRomanPSMT'" font-size="9">annotation(.</text>
+	<text transform="matrix(1 0 0 1 247.3704 95.373)" font-family="'TimesNewRomanPSMT'" font-size="9">gtf</text>
+	<text transform="matrix(1 0 0 1 257.3704 95.373)" font-family="'TimesNewRomanPSMT'" font-size="9">)</text>
+	<text transform="matrix(1 0 0 1 47.6428 37.9541)" font-family="'TimesNewRomanPSMT'" font-size="12">R</text>
+	<text transform="matrix(1 0 0 1 55.6467 37.9541)" font-family="'TimesNewRomanPSMT'" font-size="12">a</text>
+	<text transform="matrix(1 0 0 1 61.0208 37.9541)" font-family="'TimesNewRomanPSMT'" font-size="12">w</text>
+	<text transform="matrix(1 0 0 1 69.6506 37.9541)" font-family="'TimesNewRomanPSMT'" font-size="12"> r</text>
+	<text transform="matrix(1 0 0 1 76.6467 37.9541)" font-family="'TimesNewRomanPSMT'" font-size="12">ea</text>
+	<text transform="matrix(1 0 0 1 87.3948 37.9541)" font-family="'TimesNewRomanPSMT'" font-size="12">ds</text>
+	<text transform="matrix(1 0 0 1 174.0701 43.6797)" font-family="'TimesNewRomanPSMT'" font-size="12">Known a</text>
+	<text transform="matrix(1 0 0 1 217.4758 43.6797)" font-family="'TimesNewRomanPSMT'" font-size="12">nno</text>
+	<text transform="matrix(1 0 0 1 235.4758 43.6797)" font-family="'TimesNewRomanPSMT'" font-size="12">t</text>
+	<text transform="matrix(1 0 0 1 238.8469 43.6797)" font-family="'TimesNewRomanPSMT'" font-size="12">a</text>
+	<text transform="matrix(1 0 0 1 244.22 43.6797)" font-family="'TimesNewRomanPSMT'" font-size="12">ti</text>
+	<text transform="matrix(1 0 0 1 250.9612 43.6797)" font-family="'TimesNewRomanPSMT'" font-size="12">on</text>
+	<polygon points="224.335,190.5 224.335,211.5 227.835,211.5 220.835,218.5 213.835,211.5 217.335,211.5 217.335,190.5 	"/>
+	<polygon fill="none" stroke="#000000" stroke-miterlimit="8" points="224.335,190.5 224.335,211.5 227.835,211.5 220.835,218.5 
+		213.835,211.5 217.335,211.5 217.335,190.5 	"/>
+	<path fill="#FFFFFF" d="M336.835,61.167c0-5.891,4.774-10.667,10.665-10.667h73.666c5.894,0,10.669,4.776,10.669,10.667v42.666
+		c0,5.892-4.775,10.667-10.669,10.667H347.5c-5.891,0-10.666-4.775-10.666-10.667L336.835,61.167L336.835,61.167z"/>
+	<path fill="none" stroke="#70AD47" stroke-miterlimit="8" d="M336.835,61.167c0-5.891,4.774-10.667,10.665-10.667h73.666
+		c5.894,0,10.669,4.776,10.669,10.667v42.666c0,5.892-4.775,10.667-10.669,10.667H347.5c-5.891,0-10.666-4.775-10.666-10.667
+		L336.835,61.167L336.835,61.167z"/>
+	<text transform="matrix(1 0 0 1 349.804 74.7832)" font-family="'TimesNewRomanPSMT'" font-size="9">Known coding and </text>
+	<text transform="matrix(1 0 0 1 355.429 84.7832)" font-family="'TimesNewRomanPSMT'" font-size="9">noncoding gene </text>
+	<text transform="matrix(1 0 0 1 354.179 95.7832)" font-family="'TimesNewRomanPSMT'" font-size="9">annotations(.</text>
+	<text transform="matrix(1 0 0 1 400.929 95.7832)" font-family="'TimesNewRomanPSMT'" font-size="9">gtf</text>
+	<text transform="matrix(1 0 0 1 410.929 95.7832)" font-family="'TimesNewRomanPSMT'" font-size="9">)</text>
+	<text transform="matrix(1 0 0 1 320.7493 43.6797)" font-family="'TimesNewRomanPSMT'" font-size="12">In</text>
+	<text transform="matrix(1 0 0 1 330.7454 43.6797)" font-family="'TimesNewRomanPSMT'" font-size="12">t</text>
+	<text transform="matrix(1 0 0 1 334.1165 43.6797)" font-family="'TimesNewRomanPSMT'" font-size="12">e</text>
+	<text transform="matrix(1 0 0 1 339.4895 43.6797)" font-family="'TimesNewRomanPSMT'" font-size="12">gr</text>
+	<text transform="matrix(1 0 0 1 349.4856 43.6797)" font-family="'TimesNewRomanPSMT'" font-size="12">a</text>
+	<text transform="matrix(1 0 0 1 354.8606 43.6797)" font-family="'TimesNewRomanPSMT'" font-size="12">t</text>
+	<text transform="matrix(1 0 0 1 358.2297 43.6797)" font-family="'TimesNewRomanPSMT'" font-size="12">e</text>
+	<text transform="matrix(1 0 0 1 363.6047 43.6797)" font-family="'TimesNewRomanPSMT'" font-size="12">d </text>
+	<text transform="matrix(1 0 0 1 372.6047 43.6797)" font-family="'TimesNewRomanPSMT'" font-size="12">a</text>
+	<text transform="matrix(1 0 0 1 377.9788 43.6797)" font-family="'TimesNewRomanPSMT'" font-size="12">nno</text>
+	<text transform="matrix(1 0 0 1 395.9788 43.6797)" font-family="'TimesNewRomanPSMT'" font-size="12">t</text>
+	<text transform="matrix(1 0 0 1 399.3499 43.6797)" font-family="'TimesNewRomanPSMT'" font-size="12">a</text>
+	<text transform="matrix(1 0 0 1 404.7239 43.6797)" font-family="'TimesNewRomanPSMT'" font-size="12">ti</text>
+	<text transform="matrix(1 0 0 1 411.4622 43.6797)" font-family="'TimesNewRomanPSMT'" font-size="12">on</text>
+	<path d="M61.835,153.5c0-3.313,2.686-6,6-6h37c3.312,0,6,2.687,6,6v24c0,3.313-2.688,6-6,6h-37c-3.314,0-6-2.687-6-6V153.5z"/>
+	<path fill="none" stroke="#000000" stroke-miterlimit="8" d="M61.835,153.5c0-3.313,2.686-6,6-6h37c3.312,0,6,2.687,6,6v24
+		c0,3.313-2.688,6-6,6h-37c-3.314,0-6-2.687-6-6V153.5z"/>
+	<text transform="matrix(1 0 0 1 70.8044 162.8496)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">Q</text>
+	<text transform="matrix(1 0 0 1 78.0466 162.8496)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">u</text>
+	<text transform="matrix(1 0 0 1 83.0466 162.8496)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">a</text>
+	<text transform="matrix(1 0 0 1 87.5447 162.8496)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">lit</text>
+	<text transform="matrix(1 0 0 1 95.8196 162.8496)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">y </text>
+	<text transform="matrix(1 0 0 1 71.6194 174.8496)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">c</text>
+	<text transform="matrix(1 0 0 1 76.1184 174.8496)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">on</text>
+	<text transform="matrix(1 0 0 1 86.1184 174.8496)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">t</text>
+	<text transform="matrix(1 0 0 1 88.8762 174.8496)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">r</text>
+	<text transform="matrix(1 0 0 1 92.2463 174.8496)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ol</text>
+	<text transform="matrix(1 0 0 1 7.3137 152.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">F</text>
+	<text transform="matrix(1 0 0 1 13.9436 152.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">a</text>
+	<text transform="matrix(1 0 0 1 18.9436 152.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">s</text>
+	<text transform="matrix(1 0 0 1 22.8259 152.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">t</text>
+	<text transform="matrix(1 0 0 1 25.5837 152.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">Q</text>
+	<text transform="matrix(1 0 0 1 32.8259 152.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">C</text>
+	<text transform="matrix(1 0 0 1 7.3137 164.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">A</text>
+	<text transform="matrix(1 0 0 1 13.9436 164.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">f</text>
+	<text transform="matrix(1 0 0 1 17.3137 164.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">t</text>
+	<text transform="matrix(1 0 0 1 20.0715 164.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 24.5706 164.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">r</text>
+	<text transform="matrix(1 0 0 1 28.4519 164.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">Q</text>
+	<text transform="matrix(1 0 0 1 35.7039 164.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">C</text>
+	<text transform="matrix(1 0 0 1 7.3137 176.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">F</text>
+	<text transform="matrix(1 0 0 1 13.9436 176.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">a</text>
+	<text transform="matrix(1 0 0 1 18.9436 176.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">s</text>
+	<text transform="matrix(1 0 0 1 22.8259 176.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">t</text>
+	<text transform="matrix(1 0 0 1 25.5837 176.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">x_</text>
+	<text transform="matrix(1 0 0 1 35.5837 176.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">t</text>
+	<text transform="matrix(1 0 0 1 38.3416 176.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">ool</text>
+	<polygon points="84.409,112.998 84.349,140.431 82.349,140.427 85.335,146.434 88.349,140.44 86.349,140.436 86.409,113.002 	"/>
+	<polygon points="221.335,113 221.345,141.162 223.345,141.162 220.345,147.163 217.343,141.164 219.343,141.163 219.335,113 	"/>
+	<polygon points="120.835,161.75 145.335,161.75 145.335,158.5 151.835,165 145.335,171.5 145.335,168.25 120.835,168.25 	"/>
+	<polygon fill="none" stroke="#000000" stroke-miterlimit="8" points="120.835,161.75 145.335,161.75 145.335,158.5 151.835,165 
+		145.335,171.5 145.335,168.25 120.835,168.25 	"/>
+	<path d="M160.835,153.667c0-3.406,2.76-6.167,6.166-6.167h107.666c3.405,0,6.168,2.761,6.168,6.167v24.666
+		c0,3.406-2.763,6.167-6.168,6.167H167.001c-3.406,0-6.166-2.761-6.166-6.167V153.667z"/>
+	<path fill="none" stroke="#000000" stroke-miterlimit="8" d="M160.835,153.667c0-3.405,2.76-6.167,6.166-6.167h107.666
+		c3.405,0,6.168,2.762,6.168,6.167v24.666c0,3.406-2.763,6.167-6.168,6.167H167.001c-3.406,0-6.166-2.761-6.166-6.167V153.667z"/>
+	<text transform="matrix(1 0 0 1 172.3826 169.5781)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">A</text>
+	<text transform="matrix(1 0 0 1 179.6248 169.5781)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">li</text>
+	<text transform="matrix(1 0 0 1 185.1404 169.5781)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">gn</text>
+	<text transform="matrix(1 0 0 1 195.1404 169.5781)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">m</text>
+	<text transform="matrix(1 0 0 1 202.8997 169.5781)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 207.3987 169.5781)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">n</text>
+	<text transform="matrix(1 0 0 1 212.3987 169.5781)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">t</text>
+	<text transform="matrix(1 0 0 1 215.1555 169.5781)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10"> </text>
+	<text transform="matrix(1 0 0 1 217.6555 169.5781)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">&amp;</text>
+	<text transform="matrix(1 0 0 1 225.4133 169.5781)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10"> </text>
+	<text transform="matrix(1 0 0 1 227.9133 169.5781)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">A</text>
+	<text transform="matrix(1 0 0 1 235.1555 169.5781)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ss</text>
+	<text transform="matrix(1 0 0 1 242.9192 169.5781)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 247.4172 169.5781)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">m</text>
+	<text transform="matrix(1 0 0 1 255.175 169.5781)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">b</text>
+	<text transform="matrix(1 0 0 1 260.175 169.5781)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">l</text>
+	<text transform="matrix(1 0 0 1 262.9348 169.5781)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">y</text>
+	<polygon points="330.552,79.368 336.53,82.41 330.509,85.368 330.522,83.368 278.327,83 278.341,81 330.535,81.368 	"/>
+	<path fill="none" stroke="#000000" stroke-miterlimit="8" d="M295.835,178.5c-3.314,0-6-2.91-6-6.5s-2.688-6.5-6-6.5
+		c3.312,0,6-2.91,6-6.5s2.686-6.5,6-6.5"/>
+	<text transform="matrix(1 0 0 1 296.3684 158.0986)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">S</text>
+	<text transform="matrix(1 0 0 1 301.8704 158.0986)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">T</text>
+	<text transform="matrix(1 0 0 1 307.9993 158.0986)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">A</text>
+	<text transform="matrix(1 0 0 1 314.6389 158.0986)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">R</text>
+	<text transform="matrix(1 0 0 1 321.2434 158.0986)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">-</text>
+	<text transform="matrix(1 0 0 1 324.6184 158.0986)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">C</text>
+	<text transform="matrix(1 0 0 1 331.2493 158.0986)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">u</text>
+	<text transform="matrix(1 0 0 1 336.7493 158.0986)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">ff</text>
+	<text transform="matrix(1 0 0 1 343.4895 158.0986)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">li</text>
+	<text transform="matrix(1 0 0 1 349.0081 158.0986)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">n</text>
+	<text transform="matrix(1 0 0 1 354.509 158.0986)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">ks</text>
+	<text transform="matrix(1 0 0 1 295.8098 168.1426)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">T</text>
+	<text transform="matrix(1 0 0 1 301.929 168.1426)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">op</text>
+	<text transform="matrix(1 0 0 1 311.929 168.1426)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">h</text>
+	<text transform="matrix(1 0 0 1 317.4309 168.1426)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">at</text>
+	<text transform="matrix(1 0 0 1 325.1848 168.1426)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">-</text>
+	<text transform="matrix(1 0 0 1 328.5598 168.1426)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">C</text>
+	<text transform="matrix(1 0 0 1 335.1907 168.1426)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">u</text>
+	<text transform="matrix(1 0 0 1 340.6907 168.1426)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">ff</text>
+	<text transform="matrix(1 0 0 1 347.4309 168.1426)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">li</text>
+	<text transform="matrix(1 0 0 1 352.9495 168.1426)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">n</text>
+	<text transform="matrix(1 0 0 1 358.4504 168.1426)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">ks</text>
+	<path d="M160.835,232.833c0-5.155,4.178-9.334,9.332-9.334h101.334c5.153,0,9.334,4.179,9.334,9.334v37.333
+		c0,5.154-4.181,9.333-9.334,9.333H170.167c-5.154,0-9.332-4.179-9.332-9.333V232.833z"/>
+	<path fill="none" stroke="#000000" stroke-miterlimit="8" d="M160.835,232.833c0-5.155,4.178-9.334,9.332-9.334h101.334
+		c5.153,0,9.334,4.179,9.334,9.334v37.333c0,5.154-4.181,9.333-9.334,9.333H170.167c-5.154,0-9.332-4.179-9.332-9.333V232.833z"/>
+	<text transform="matrix(1 0 0 1 175.8826 243.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">R</text>
+	<text transform="matrix(1 0 0 1 182.5076 243.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 187.0056 243.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">m</text>
+	<text transform="matrix(1 0 0 1 194.7644 243.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ov</text>
+	<text transform="matrix(1 0 0 1 204.7644 243.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 209.2634 243.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10"> kno</text>
+	<text transform="matrix(1 0 0 1 226.7629 243.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">w</text>
+	<text transform="matrix(1 0 0 1 234.0051 243.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">n g</text>
+	<text transform="matrix(1 0 0 1 246.5051 243.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 251.0032 243.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">n</text>
+	<text transform="matrix(1 0 0 1 256.0032 243.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 260.5012 243.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">s</text>
+	<text transform="matrix(1 0 0 1 264.3821 243.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10"> </text>
+	<text transform="matrix(1 0 0 1 189.7576 255.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">a</text>
+	<text transform="matrix(1 0 0 1 194.2556 255.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">nd </text>
+	<text transform="matrix(1 0 0 1 206.7556 255.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 211.2546 255.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">x</text>
+	<text transform="matrix(1 0 0 1 216.2546 255.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">c</text>
+	<text transform="matrix(1 0 0 1 220.7537 255.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">l</text>
+	<text transform="matrix(1 0 0 1 223.5115 255.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ud</text>
+	<text transform="matrix(1 0 0 1 233.511 255.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 238.009 255.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10"> by </text>
+	<text transform="matrix(1 0 0 1 201.197 267.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">c</text>
+	<text transform="matrix(1 0 0 1 205.696 267.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">r</text>
+	<text transform="matrix(1 0 0 1 209.0662 267.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">it</text>
+	<text transform="matrix(1 0 0 1 214.5833 267.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 219.0823 267.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">r</text>
+	<text transform="matrix(1 0 0 1 222.4509 267.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">i</text>
+	<text transform="matrix(1 0 0 1 225.2102 267.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ons</text>
+	<polygon points="385.24,114.5 385.24,252.353 286.835,252.353 286.835,254.853 280.835,251.853 286.835,248.853 286.835,251.353 
+		384.24,251.353 384.24,114.5 	"/>
+	<text transform="matrix(1 0 0 1 296.3684 247.1807)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">C</text>
+	<text transform="matrix(1 0 0 1 302.9993 247.1807)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">u</text>
+	<text transform="matrix(1 0 0 1 308.4993 247.1807)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">ff</text>
+	<text transform="matrix(1 0 0 1 315.2395 247.1807)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">c</text>
+	<text transform="matrix(1 0 0 1 319.7395 247.1807)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">o</text>
+	<text transform="matrix(1 0 0 1 324.7395 247.1807)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">m</text>
+	<text transform="matrix(1 0 0 1 332.4973 247.1807)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">pa</text>
+	<text transform="matrix(1 0 0 1 342.4973 247.1807)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">r</text>
+	<text transform="matrix(1 0 0 1 346.3782 247.1807)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">e</text>
+	<rect x="40.835" y="220.5" fill="#FFFFFF" width="102" height="60"/>
+	<rect x="40.835" y="220.5" fill="none" stroke="#ED7D31" stroke-miterlimit="8" width="102" height="60"/>
+	<text transform="matrix(1 0 0 1 47.6443 241.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">1. </text>
+	<text transform="matrix(1 0 0 1 57.6443 241.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">L</text>
+	<text transform="matrix(1 0 0 1 63.7625 241.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 68.2615 241.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">ng</text>
+	<text transform="matrix(1 0 0 1 78.2615 241.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">t</text>
+	<text transform="matrix(1 0 0 1 81.0193 241.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">h </text>
+	<text transform="matrix(1 0 0 1 88.5193 241.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">&gt;</text>
+	<text transform="matrix(1 0 0 1 94.1492 241.6465)" font-family="'TimesNewRomanPSMT'" font-size="10"> 200</text>
+	<text transform="matrix(1 0 0 1 47.6443 253.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">2. </text>
+	<text transform="matrix(1 0 0 1 57.6443 253.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">E</text>
+	<text transform="matrix(1 0 0 1 63.7625 253.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">xon nu</text>
+	<text transform="matrix(1 0 0 1 91.2625 253.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">m</text>
+	<text transform="matrix(1 0 0 1 99.0212 253.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">b</text>
+	<text transform="matrix(1 0 0 1 104.0212 253.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 108.5193 253.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">r</text>
+	<text transform="matrix(1 0 0 1 111.8894 253.6465)" font-family="'TimesNewRomanPSMT'" font-size="10"> </text>
+	<text transform="matrix(1 0 0 1 114.3894 253.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">&gt;</text>
+	<text transform="matrix(1 0 0 1 120.0193 253.6465)" font-family="'TimesNewRomanPSMT'" font-size="10"> 2</text>
+	<text transform="matrix(1 0 0 1 47.6443 265.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">3. </text>
+	<text transform="matrix(1 0 0 1 57.6443 265.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">R</text>
+	<text transform="matrix(1 0 0 1 64.2742 265.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 68.7722 265.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">m</text>
+	<text transform="matrix(1 0 0 1 76.5315 265.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">ov</text>
+	<text transform="matrix(1 0 0 1 86.5315 265.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 91.0291 265.6465)" font-family="'TimesNewRomanPSMT'" font-size="10"> </text>
+	<text transform="matrix(1 0 0 1 93.5193 265.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">r</text>
+	<text transform="matrix(1 0 0 1 96.8894 265.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">R</text>
+	<text transform="matrix(1 0 0 1 103.5193 265.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">NA</text>
+	<text transform="matrix(1 0 0 1 118.0022 265.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">s</text>
+	<text transform="matrix(1 0 0 1 42.4963 216.1191)" font-family="'TimesNewRomanPSMT'" font-size="12">F</text>
+	<text transform="matrix(1 0 0 1 49.1223 216.1191)" font-family="'TimesNewRomanPSMT'" font-size="12">ilt</text>
+	<text transform="matrix(1 0 0 1 59.2322 216.1191)" font-family="'TimesNewRomanPSMT'" font-size="12">e</text>
+	<text transform="matrix(1 0 0 1 64.6062 216.1191)" font-family="'TimesNewRomanPSMT'" font-size="12">r</text>
+	<text transform="matrix(1 0 0 1 68.6023 216.1191)" font-family="'TimesNewRomanPSMT'" font-size="12">i</text>
+	<text transform="matrix(1 0 0 1 71.9724 216.1191)" font-family="'TimesNewRomanPSMT'" font-size="12">ng Cr</text>
+	<text transform="matrix(1 0 0 1 98.9724 216.1191)" font-family="'TimesNewRomanPSMT'" font-size="12">it</text>
+	<text transform="matrix(1 0 0 1 105.7122 216.1191)" font-family="'TimesNewRomanPSMT'" font-size="12">e</text>
+	<text transform="matrix(1 0 0 1 111.0862 216.1191)" font-family="'TimesNewRomanPSMT'" font-size="12">r</text>
+	<text transform="matrix(1 0 0 1 115.0823 216.1191)" font-family="'TimesNewRomanPSMT'" font-size="12">i</text>
+	<text transform="matrix(1 0 0 1 118.4534 216.1191)" font-family="'TimesNewRomanPSMT'" font-size="12">ons</text>
+	<polygon points="225.585,284.5 225.585,304 229.835,304 221.335,312.5 212.835,304 217.085,304 217.085,284.5 	"/>
+	<polygon fill="none" stroke="#000000" stroke-miterlimit="8" points="225.585,284.5 225.585,304 229.835,304 221.335,312.5 
+		212.835,304 217.085,304 217.085,284.5 	"/>
+	<path d="M160.835,322.667c0-5.062,4.104-9.167,9.166-9.167h101.666c5.062,0,9.168,4.104,9.168,9.167v36.667
+		c0,5.062-4.105,9.166-9.168,9.166H170.001c-5.062,0-9.166-4.104-9.166-9.166V322.667z"/>
+	<path fill="none" stroke="#000000" stroke-miterlimit="8" d="M160.835,322.667c0-5.062,4.104-9.167,9.166-9.167h101.666
+		c5.062,0,9.168,4.104,9.168,9.167v36.667c0,5.062-4.105,9.166-9.168,9.166H170.001c-5.062,0-9.166-4.104-9.166-9.166V322.667z"/>
+	<text transform="matrix(1 0 0 1 172.0701 338.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">P</text>
+	<text transform="matrix(1 0 0 1 177.572 338.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">r</text>
+	<text transform="matrix(1 0 0 1 180.9412 338.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">o</text>
+	<text transform="matrix(1 0 0 1 185.9412 338.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">t</text>
+	<text transform="matrix(1 0 0 1 188.7 338.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 193.199 338.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">i</text>
+	<text transform="matrix(1 0 0 1 195.9573 338.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">n </text>
+	<text transform="matrix(1 0 0 1 203.4573 338.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">c</text>
+	<text transform="matrix(1 0 0 1 207.9548 338.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">od</text>
+	<text transform="matrix(1 0 0 1 217.9548 338.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">i</text>
+	<text transform="matrix(1 0 0 1 220.7141 338.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ng po</text>
+	<text transform="matrix(1 0 0 1 243.2141 338.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">t</text>
+	<text transform="matrix(1 0 0 1 245.9719 338.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 250.47 338.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">n</text>
+	<text transform="matrix(1 0 0 1 255.47 338.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ti</text>
+	<text transform="matrix(1 0 0 1 260.9875 338.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">a</text>
+	<text transform="matrix(1 0 0 1 265.4856 338.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">l</text>
+	<text transform="matrix(1 0 0 1 268.2434 338.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10"> </text>
+	<text transform="matrix(1 0 0 1 175.6306 350.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ca</text>
+	<text transform="matrix(1 0 0 1 184.6267 350.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">l</text>
+	<text transform="matrix(1 0 0 1 187.3855 350.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">c</text>
+	<text transform="matrix(1 0 0 1 191.8845 350.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">u</text>
+	<text transform="matrix(1 0 0 1 196.8845 350.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">l</text>
+	<text transform="matrix(1 0 0 1 199.6428 350.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">a</text>
+	<text transform="matrix(1 0 0 1 204.1409 350.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ti</text>
+	<text transform="matrix(1 0 0 1 209.6575 350.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">on </text>
+	<text transform="matrix(1 0 0 1 222.1575 350.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">&amp;</text>
+	<text transform="matrix(1 0 0 1 229.9153 350.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10"> </text>
+	<text transform="matrix(1 0 0 1 232.4153 350.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">f</text>
+	<text transform="matrix(1 0 0 1 235.7864 350.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ilt</text>
+	<text transform="matrix(1 0 0 1 244.0608 350.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 248.5598 350.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">r</text>
+	<text transform="matrix(1 0 0 1 251.929 350.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">i</text>
+	<text transform="matrix(1 0 0 1 254.6877 350.5625)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ng </text>
+	<path d="M160.835,416.669c0-5.062,4.104-9.168,9.166-9.168h101.666c5.062,0,9.168,4.105,9.168,9.168v36.666
+		c0,5.062-4.105,9.166-9.168,9.166H170.001c-5.062,0-9.166-4.104-9.166-9.166V416.669z"/>
+	<path fill="none" stroke="#000000" stroke-miterlimit="8" d="M160.835,416.669c0-5.062,4.104-9.168,9.166-9.168h101.666
+		c5.062,0,9.168,4.105,9.168,9.168v36.666c0,5.062-4.105,9.166-9.168,9.166H170.001c-5.062,0-9.166-4.104-9.166-9.166V416.669z"/>
+	<text transform="matrix(1 0 0 1 187.5076 432.6768)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">C</text>
+	<text transform="matrix(1 0 0 1 194.1375 432.6768)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">l</text>
+	<text transform="matrix(1 0 0 1 196.8967 432.6768)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">a</text>
+	<text transform="matrix(1 0 0 1 201.3948 432.6768)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ss</text>
+	<text transform="matrix(1 0 0 1 209.1575 432.6768)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">i</text>
+	<text transform="matrix(1 0 0 1 211.9158 432.6768)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">f</text>
+	<text transform="matrix(1 0 0 1 215.2854 432.6768)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">i</text>
+	<text transform="matrix(1 0 0 1 218.0447 432.6768)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ca</text>
+	<text transform="matrix(1 0 0 1 227.0403 432.6768)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ti</text>
+	<text transform="matrix(1 0 0 1 232.5579 432.6768)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">on </text>
+	<text transform="matrix(1 0 0 1 245.0579 432.6768)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">&amp;</text>
+	<text transform="matrix(1 0 0 1 252.8167 432.6768)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10"> </text>
+	<text transform="matrix(1 0 0 1 191.197 444.6768)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">Q</text>
+	<text transform="matrix(1 0 0 1 198.4392 444.6768)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">u</text>
+	<text transform="matrix(1 0 0 1 203.4392 444.6768)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">a</text>
+	<text transform="matrix(1 0 0 1 207.9373 444.6768)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">n</text>
+	<text transform="matrix(1 0 0 1 212.9373 444.6768)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ti</text>
+	<text transform="matrix(1 0 0 1 218.4548 444.6768)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">f</text>
+	<text transform="matrix(1 0 0 1 221.824 444.6768)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">i</text>
+	<text transform="matrix(1 0 0 1 224.5833 444.6768)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ca</text>
+	<text transform="matrix(1 0 0 1 233.5793 444.6768)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ti</text>
+	<text transform="matrix(1 0 0 1 239.0959 444.6768)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">on</text>
+	<polygon points="224.835,376.499 224.835,396.501 228.835,396.501 220.835,404.501 212.835,396.501 216.835,396.501 
+		216.835,376.499 	"/>
+	<polygon fill="none" stroke="#000000" stroke-miterlimit="8" points="224.835,376.499 224.835,396.501 228.835,396.501 
+		220.835,404.501 212.835,396.501 216.835,396.501 216.835,376.499 	"/>
+	<text transform="matrix(1 0 0 1 296.3684 441.2871)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">Kallisto</text>
+	<rect x="49.835" y="393.501" fill="#FFFFFF" width="48" height="45"/>
+	<rect x="49.835" y="393.501" fill="none" stroke="#70AD47" stroke-miterlimit="8" width="48" height="45"/>
+	<rect x="54.835" y="399.501" fill="#FFFFFF" width="48" height="45"/>
+	<rect x="54.835" y="399.501" fill="none" stroke="#70AD47" stroke-miterlimit="8" width="48" height="45"/>
+	<rect x="61.835" y="405.501" fill="#FFFFFF" width="48" height="45"/>
+	<rect x="61.835" y="405.501" fill="none" stroke="#70AD47" stroke-miterlimit="8" width="48" height="45"/>
+	<rect x="67.835" y="411.501" fill="#FFFFFF" width="48" height="46"/>
+	<rect x="67.835" y="411.501" fill="none" stroke="#70AD47" stroke-miterlimit="8" width="48" height="46"/>
+	<text transform="matrix(1 0 0 1 82.1511 427.6172)" font-family="'TimesNewRomanPSMT'" font-size="8">C</text>
+	<text transform="matrix(1 0 0 1 87.5193 427.6172)" font-family="'TimesNewRomanPSMT'" font-size="8">l</text>
+	<text transform="matrix(1 0 0 1 89.7664 427.6172)" font-family="'TimesNewRomanPSMT'" font-size="8">ea</text>
+	<text transform="matrix(1 0 0 1 96.7712 427.6172)" font-family="'TimesNewRomanPSMT'" font-size="8">n </text>
+	<text transform="matrix(1 0 0 1 83.0911 436.6172)" font-family="'TimesNewRomanPSMT'" font-size="8">r</text>
+	<text transform="matrix(1 0 0 1 85.7229 436.6172)" font-family="'TimesNewRomanPSMT'" font-size="8">ea</text>
+	<text transform="matrix(1 0 0 1 92.7292 436.6172)" font-family="'TimesNewRomanPSMT'" font-size="8">ds</text>
+	<text transform="matrix(1 0 0 1 80.0911 446.6172)" font-family="'TimesNewRomanPSMT'" font-size="8">(</text>
+	<text transform="matrix(1 0 0 1 82.7229 446.6172)" font-family="'TimesNewRomanPSMT'" font-size="8">.</text>
+	<text transform="matrix(1 0 0 1 84.7161 446.6172)" font-family="'TimesNewRomanPSMT'" font-size="8">f</text>
+	<text transform="matrix(1 0 0 1 87.3479 446.6172)" font-family="'TimesNewRomanPSMT'" font-size="8">a</text>
+	<text transform="matrix(1 0 0 1 90.8508 446.6172)" font-family="'TimesNewRomanPSMT'" font-size="8">s</text>
+	<text transform="matrix(1 0 0 1 93.9719 446.6172)" font-family="'TimesNewRomanPSMT'" font-size="8">t</text>
+	<text transform="matrix(1 0 0 1 96.219 446.6172)" font-family="'TimesNewRomanPSMT'" font-size="8">q</text>
+	<text transform="matrix(1 0 0 1 100.2161 446.6172)" font-family="'TimesNewRomanPSMT'" font-size="8">)</text>
+	<text transform="matrix(1 0 0 1 48.241 381.2607)" font-family="'TimesNewRomanPSMT'" font-size="12">C</text>
+	<text transform="matrix(1 0 0 1 56.2449 381.2607)" font-family="'TimesNewRomanPSMT'" font-size="12">l</text>
+	<text transform="matrix(1 0 0 1 59.615 381.2607)" font-family="'TimesNewRomanPSMT'" font-size="12">ea</text>
+	<text transform="matrix(1 0 0 1 70.363 381.2607)" font-family="'TimesNewRomanPSMT'" font-size="12">n r</text>
+	<text transform="matrix(1 0 0 1 83.3591 381.2607)" font-family="'TimesNewRomanPSMT'" font-size="12">ea</text>
+	<text transform="matrix(1 0 0 1 94.1082 381.2607)" font-family="'TimesNewRomanPSMT'" font-size="12">ds</text>
+	<polygon points="154.028,431.573 159.983,434.661 153.94,437.573 153.97,435.573 115.319,435.001 115.349,433.001 153.999,433.573 
+			"/>
+	<path fill="none" stroke="#000000" stroke-miterlimit="8" d="M295.835,355.5c-3.314,0-6-2.91-6-6.5s-2.688-6.5-6-6.5
+		c3.312,0,6-2.91,6-6.5s2.686-6.5,6-6.5"/>
+	<text transform="matrix(1 0 0 1 296.3684 332.4121)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">C</text>
+	<text transform="matrix(1 0 0 1 302.9993 332.4121)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">P</text>
+	<text transform="matrix(1 0 0 1 309.1165 332.4121)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">A</text>
+	<text transform="matrix(1 0 0 1 315.7473 332.4121)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">T</text>
+	<text transform="matrix(1 0 0 1 296.3684 359.873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">PL</text>
+	<text transform="matrix(1 0 0 1 308.6047 359.873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">E</text>
+	<text transform="matrix(1 0 0 1 315.2356 359.873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">K</text>
+	<text transform="matrix(1 0 0 1 296.3684 346.1426)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">C</text>
+	<text transform="matrix(1 0 0 1 302.9993 346.1426)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">N</text>
+	<text transform="matrix(1 0 0 1 310.2512 346.1426)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">C</text>
+	<text transform="matrix(1 0 0 1 316.8811 346.1426)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">I</text>
+	<path d="M160.835,505.669c0-5.062,4.104-9.168,9.166-9.168h101.666c5.062,0,9.168,4.105,9.168,9.168v36.666
+		c0,5.062-4.105,9.166-9.168,9.166H170.001c-5.062,0-9.166-4.104-9.166-9.166V505.669z"/>
+	<path fill="none" stroke="#000000" stroke-miterlimit="8" d="M160.835,505.669c0-5.062,4.104-9.168,9.166-9.168h101.666
+		c5.062,0,9.168,4.105,9.168,9.168v36.666c0,5.062-4.105,9.166-9.168,9.166H170.001c-5.062,0-9.166-4.104-9.166-9.166V505.669z"/>
+	<text transform="matrix(1 0 0 1 173.1951 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">D</text>
+	<text transform="matrix(1 0 0 1 180.4373 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">i</text>
+	<text transform="matrix(1 0 0 1 183.1951 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ff</text>
+	<text transform="matrix(1 0 0 1 189.9348 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 194.4329 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">r</text>
+	<text transform="matrix(1 0 0 1 197.804 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 202.302 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">n</text>
+	<text transform="matrix(1 0 0 1 207.302 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ti</text>
+	<text transform="matrix(1 0 0 1 212.8191 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">a</text>
+	<text transform="matrix(1 0 0 1 217.3171 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">l</text>
+	<text transform="matrix(1 0 0 1 220.0759 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10"> </text>
+	<text transform="matrix(1 0 0 1 222.5759 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">E</text>
+	<text transform="matrix(1 0 0 1 228.6946 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">xp</text>
+	<text transform="matrix(1 0 0 1 238.6946 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">r</text>
+	<text transform="matrix(1 0 0 1 242.0637 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 246.5618 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ss</text>
+	<text transform="matrix(1 0 0 1 254.3254 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">i</text>
+	<text transform="matrix(1 0 0 1 257.0842 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">on</text>
+	<text transform="matrix(1 0 0 1 202.6306 533.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">A</text>
+	<text transform="matrix(1 0 0 1 209.8718 533.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">n</text>
+	<text transform="matrix(1 0 0 1 214.8718 533.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">a</text>
+	<text transform="matrix(1 0 0 1 219.3708 533.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">l</text>
+	<text transform="matrix(1 0 0 1 222.1287 533.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">y</text>
+	<text transform="matrix(1 0 0 1 227.1282 533.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">s</text>
+	<text transform="matrix(1 0 0 1 231.009 533.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">i</text>
+	<text transform="matrix(1 0 0 1 233.7688 533.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">s</text>
+	<text transform="matrix(1 0 0 1 237.6506 533.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10"> </text>
+	<polygon points="224.835,467.501 224.835,487.501 228.835,487.501 220.835,495.501 212.835,487.501 216.835,487.501 
+		216.835,467.501 	"/>
+	<polygon fill="none" stroke="#000000" stroke-miterlimit="8" points="224.835,467.501 224.835,487.501 228.835,487.501 
+		220.835,495.501 212.835,487.501 216.835,487.501 216.835,467.501 	"/>
+	<text transform="matrix(1 0 0 1 296.3684 531.248)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">E</text>
+	<text transform="matrix(1 0 0 1 302.9993 531.248)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">dg</text>
+	<text transform="matrix(1 0 0 1 312.9993 531.248)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 317.4973 531.248)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">R</text>
+	<rect x="50.835" y="501.501" fill="#FFFFFF" width="67" height="45"/>
+	<rect x="50.835" y="501.501" fill="none" stroke="#000000" stroke-miterlimit="8" width="67" height="45"/>
+	<text transform="matrix(1 0 0 1 62.7605 521.3623)" font-family="'TimesNewRomanPSMT'" font-size="10">P</text>
+	<text transform="matrix(1 0 0 1 68.2615 521.3623)" font-family="'TimesNewRomanPSMT'" font-size="10">h</text>
+	<text transform="matrix(1 0 0 1 73.2615 521.3623)" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 77.7605 521.3623)" font-family="'TimesNewRomanPSMT'" font-size="10">no</text>
+	<text transform="matrix(1 0 0 1 87.7605 521.3623)" font-family="'TimesNewRomanPSMT'" font-size="10">t</text>
+	<text transform="matrix(1 0 0 1 90.5183 521.3623)" font-family="'TimesNewRomanPSMT'" font-size="10">yp</text>
+	<text transform="matrix(1 0 0 1 100.5183 521.3623)" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 105.0173 521.3623)" font-family="'TimesNewRomanPSMT'" font-size="10"> </text>
+	<text transform="matrix(1 0 0 1 59.5105 533.3623)" font-family="'TimesNewRomanPSMT'" font-size="10">m</text>
+	<text transform="matrix(1 0 0 1 67.2683 533.3623)" font-family="'TimesNewRomanPSMT'" font-size="10">a</text>
+	<text transform="matrix(1 0 0 1 71.7673 533.3623)" font-family="'TimesNewRomanPSMT'" font-size="10">t</text>
+	<text transform="matrix(1 0 0 1 74.5256 533.3623)" font-family="'TimesNewRomanPSMT'" font-size="10">r</text>
+	<text transform="matrix(1 0 0 1 77.8953 533.3623)" font-family="'TimesNewRomanPSMT'" font-size="10">i</text>
+	<text transform="matrix(1 0 0 1 80.6545 533.3623)" font-family="'TimesNewRomanPSMT'" font-size="10">x</text>
+	<text transform="matrix(1 0 0 1 85.6545 533.3623)" font-family="'TimesNewRomanPSMT'" font-size="10">(</text>
+	<text transform="matrix(1 0 0 1 89.0247 533.3623)" font-family="'TimesNewRomanPSMT'" font-size="10">.</text>
+	<text transform="matrix(1 0 0 1 91.5247 533.3623)" font-family="'TimesNewRomanPSMT'" font-size="10">c</text>
+	<text transform="matrix(1 0 0 1 96.0227 533.3623)" font-family="'TimesNewRomanPSMT'" font-size="10">s</text>
+	<text transform="matrix(1 0 0 1 99.9045 533.3623)" font-family="'TimesNewRomanPSMT'" font-size="10">v)</text>
+	<polygon points="154.126,520.001 160.126,523.001 154.126,526.001 154.126,524.001 117.335,524.001 117.335,522.001 
+		154.126,522.001 	"/>
+	<text transform="matrix(1 0 0 1 46.9084 483.4004)" font-family="'TimesNewRomanPSMT'" font-size="12">E</text>
+	<text transform="matrix(1 0 0 1 54.2747 483.4004)" font-family="'TimesNewRomanPSMT'" font-size="12">xp</text>
+	<text transform="matrix(1 0 0 1 66.2747 483.4004)" font-family="'TimesNewRomanPSMT'" font-size="12">e</text>
+	<text transform="matrix(1 0 0 1 71.6487 483.4004)" font-family="'TimesNewRomanPSMT'" font-size="12">r</text>
+	<text transform="matrix(1 0 0 1 75.6443 483.4004)" font-family="'TimesNewRomanPSMT'" font-size="12">im</text>
+	<text transform="matrix(1 0 0 1 88.3845 483.4004)" font-family="'TimesNewRomanPSMT'" font-size="12">e</text>
+	<text transform="matrix(1 0 0 1 93.7595 483.4004)" font-family="'TimesNewRomanPSMT'" font-size="12">n</text>
+	<text transform="matrix(1 0 0 1 99.7595 483.4004)" font-family="'TimesNewRomanPSMT'" font-size="12">t</text>
+	<text transform="matrix(1 0 0 1 103.1296 483.4004)" font-family="'TimesNewRomanPSMT'" font-size="12">a</text>
+	<text transform="matrix(1 0 0 1 108.5037 483.4004)" font-family="'TimesNewRomanPSMT'" font-size="12">l</text>
+	<text transform="matrix(1 0 0 1 111.8733 483.4004)" font-family="'TimesNewRomanPSMT'" font-size="12"> </text>
+	<text transform="matrix(1 0 0 1 65.2185 497.4004)" font-family="'TimesNewRomanPSMT'" font-size="12">d</text>
+	<text transform="matrix(1 0 0 1 71.2185 497.4004)" font-family="'TimesNewRomanPSMT'" font-size="12">e</text>
+	<text transform="matrix(1 0 0 1 76.5925 497.4004)" font-family="'TimesNewRomanPSMT'" font-size="12">s</text>
+	<text transform="matrix(1 0 0 1 81.2268 497.4004)" font-family="'TimesNewRomanPSMT'" font-size="12">i</text>
+	<text transform="matrix(1 0 0 1 84.5964 497.4004)" font-family="'TimesNewRomanPSMT'" font-size="12">gn</text>
+	<polygon points="226.585,556.501 226.585,576.001 230.835,576.001 222.335,584.501 213.835,576.001 218.085,576.001 
+		218.085,556.501 	"/>
+	<polygon fill="none" stroke="#000000" stroke-miterlimit="8" points="226.585,556.501 226.585,576.001 230.835,576.001 
+		222.335,584.501 213.835,576.001 218.085,576.001 218.085,556.501 	"/>
+	<path fill="#ED7D31" d="M163.835,593.835c0-5.154,4.178-9.334,9.332-9.334h101.334c5.153,0,9.334,4.18,9.334,9.334v37.332
+		c0,5.156-4.181,9.334-9.334,9.334H173.167c-5.154,0-9.332-4.178-9.332-9.334V593.835z"/>
+	<path fill="none" stroke="#AE5A21" stroke-miterlimit="8" d="M163.835,593.835c0-5.154,4.178-9.334,9.332-9.334h101.334
+		c5.153,0,9.334,4.18,9.334,9.334v37.334c0,5.154-4.181,9.332-9.334,9.332H173.167c-5.154,0-9.332-4.178-9.332-9.332V593.835z"/>
+	<text transform="matrix(1 0 0 1 183.6619 616.0469)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">S</text>
+	<text transform="matrix(1 0 0 1 189.1638 616.0469)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">u</text>
+	<text transform="matrix(1 0 0 1 194.1638 616.0469)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">mm</text>
+	<text transform="matrix(1 0 0 1 209.6799 616.0469)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">a</text>
+	<text transform="matrix(1 0 0 1 214.179 616.0469)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">r</text>
+	<text transform="matrix(1 0 0 1 217.5491 616.0469)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">y </text>
+	<text transform="matrix(1 0 0 1 225.0491 616.0469)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">&amp;</text>
+	<text transform="matrix(1 0 0 1 232.8069 616.0469)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10"> </text>
+	<text transform="matrix(1 0 0 1 235.3069 616.0469)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">R</text>
+	<text transform="matrix(1 0 0 1 241.9368 616.0469)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 246.4348 616.0469)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">po</text>
+	<text transform="matrix(1 0 0 1 256.4348 616.0469)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">r</text>
+	<text transform="matrix(1 0 0 1 259.8059 616.0469)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">t</text>
+	<text transform="matrix(1 0 0 1 262.5637 616.0469)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10"> </text>
+	<text transform="matrix(1 0 0 1 111.0129 152.1777)" font-family="'TimesNewRomanPSMT'" font-size="18">*</text>
+	<text transform="matrix(1 0 0 1 278.3 152.7881)" font-family="'TimesNewRomanPSMT'" font-size="18">*</text>
+	<text transform="matrix(1 0 0 1 280.9797 323.5039)" font-family="'TimesNewRomanPSMT'" font-size="18">*</text>
+	<text transform="matrix(1 0 0 1 284.554 421.2998)" font-family="'TimesNewRomanPSMT'" font-size="18">*</text>
+	<text transform="matrix(1 0 0 1 296.3684 615.9531)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">L</text>
+	<text transform="matrix(1 0 0 1 302.4875 615.9531)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">n</text>
+	<text transform="matrix(1 0 0 1 307.9895 615.9531)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">c</text>
+	<text transform="matrix(1 0 0 1 312.4875 615.9531)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">P</text>
+	<text transform="matrix(1 0 0 1 318.6047 615.9531)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">i</text>
+	<text transform="matrix(1 0 0 1 321.3645 615.9531)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">p</text>
+	<text transform="matrix(1 0 0 1 326.3645 615.9531)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 330.8625 615.9531)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">R</text>
+	<text transform="matrix(1 0 0 1 337.4915 615.9531)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 341.9915 615.9531)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">po</text>
+	<text transform="matrix(1 0 0 1 351.9915 615.9531)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">r</text>
+	<text transform="matrix(1 0 0 1 355.8723 615.9531)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">t</text>
+	<text transform="matrix(1 0 0 1 358.6311 615.9531)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 363.1282 615.9531)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">r</text>
+	<text transform="matrix(1 0 0 1 297.3469 181.6045)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">H</text>
+	<text transform="matrix(1 0 0 1 305.1057 181.6045)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">I</text>
+	<text transform="matrix(1 0 0 1 308.9866 181.6045)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">S</text>
+	<text transform="matrix(1 0 0 1 314.4885 181.6045)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">A</text>
+	<text transform="matrix(1 0 0 1 321.1174 181.6045)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">T</text>
+	<text transform="matrix(1 0 0 1 327.2454 181.6045)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">2</text>
+	<text transform="matrix(1 0 0 1 332.2219 181.6045)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">-</text>
+	<text transform="matrix(1 0 0 1 335.5969 181.6045)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">S</text>
+	<text transform="matrix(1 0 0 1 341.0969 181.6045)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">t</text>
+	<text transform="matrix(1 0 0 1 343.8567 181.6045)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">r</text>
+	<text transform="matrix(1 0 0 1 347.7385 181.6045)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">i</text>
+	<text transform="matrix(1 0 0 1 350.4954 181.6045)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">n</text>
+	<text transform="matrix(1 0 0 1 355.9973 181.6045)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">g</text>
+	<text transform="matrix(1 0 0 1 360.9973 181.6045)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">T</text>
+	<text transform="matrix(1 0 0 1 367.1165 181.6045)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">i</text>
+	<text transform="matrix(1 0 0 1 369.8743 181.6045)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">e</text>
+	<text transform="matrix(1 0 0 1 295.8098 261.8945)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">g</text>
+	<text transform="matrix(1 0 0 1 300.8098 261.8945)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">ff</text>
+	<text transform="matrix(1 0 0 1 307.55 261.8945)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">c</text>
+	<text transform="matrix(1 0 0 1 312.0481 261.8945)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">o</text>
+	<text transform="matrix(1 0 0 1 317.0481 261.8945)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">m</text>
+	<text transform="matrix(1 0 0 1 324.8079 261.8945)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">pa</text>
+	<text transform="matrix(1 0 0 1 334.8079 261.8945)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">r</text>
+	<text transform="matrix(1 0 0 1 338.6887 261.8945)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">e</text>
+</g>
+</svg>
