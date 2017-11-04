@@ -252,3 +252,12 @@ Column
 -------------------------------------
 
 ### Description
+**Title**: Comparation analysis between novel identified lncRNA and known ones 
+
+**What we have done**: On the basis of identified transicrpts as well as their expression in differ samples, we performed comparation analysis between categories defined by LncPipe, which are known, novel and protein coding. while protein coding information were extracted from GENECODE. To note, catergory not presented in the plot means that the corresponding catergory was not included in result files. We do not present data at sample level or condition level but show the overview comparison included in all samples.
+
+**What dose plots Mean**: 
+
+`Desity plot` Presents the density of lncRNA or coding genes at each abundence, this plot show the overview distibution of normalized readscount or expression in certain system. The X-axis denotes the increasing expression value, the Y-axis with range 0 to 1 represents the fraction of gene count in total genes.
+`Volin plot` The same as boxplot, also gives a overview distribution of gene's or transcript's expression.
+``
