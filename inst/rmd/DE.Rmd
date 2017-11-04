@@ -75,7 +75,7 @@ p <- ggplot(data = de$table, aes(x = logFC, y = -log10(PValue), colour = thresho
   geom_hline(yintercept = -log10(0.05), colour = "grey", linetype = "dashed", size = 1) + 
   theme(legend.position = "none") + scale_x_continuous(limits = c(-10, 10)) + 
   get(paste0('scale_color_',params$theme))()
-save_plot(file.path(params$figures, 'vocano.tiff'), p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
+save_plot('vocano.tiff', p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
 ggplotly(p)
 ```
 
@@ -86,7 +86,7 @@ pca.m <- prcomp(t(log.cpm), scale. = FALSE)
 design.table$condition <- toUpperFirstLetter(design.table$condition)
 p <- ggbiplot::ggbiplot(pca.m, groups = design.table$condition, ellipse = TRUE, circle = TRUE, var.axes = FALSE) + 
   labs(color = "Groups") + get(paste0('scale_color_',params$theme))()
-save_plot(file.path(params$figures, 'pca.tiff'), p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
+save_plot('pca.tiff', p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
 ggplotly(p)
 rm(pca.m, p)
 invisible(gc())
@@ -200,7 +200,7 @@ Column
 ### Differential expressed lncRNAs table
 
 ```{r}
-fwrite(de$table[, -5], file.path(params$tables, 'DE.csv'), row.names = TRUE)
+fwrite(de$table[, -5], 'DE.csv', row.names = TRUE)
 DT::datatable(head(de$table[, -5], n = 80L)) %>% DT::formatRound(c('logFC', 'logCPM', 'PValue', "FDR"), digits = 2)
 ```
 
@@ -235,6 +235,7 @@ Column {.tabset}
 ```{r compare density}
 compare.dt <- data.table(Type = as.vector(t(rna.type))[as.numeric(row.names(log.cpm))], log.cpm)
 p <- ggplot() + geom_density(data = melt(compare.dt, id = 'Type'), aes(x = value, colour = Type), size = 1.5) + get(paste0('scale_color_',params$theme))()
+save_plot('compare_density.tiff', p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
 ggplotly(p)
 ```
 
@@ -243,6 +244,7 @@ ggplotly(p)
 ```{r compare violin}
 compare.dt <- data.table(Type = as.vector(t(rna.type))[as.numeric(row.names(log.cpm))], log.cpm)
 p <- ggplot() + geom_boxplot(data = melt(compare.dt, id = 'Type'), aes(x = Type, y = value), notch = TRUE)
+save_plot('compare_violin.tiff', p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
 ggplotly(p)
 ```
 

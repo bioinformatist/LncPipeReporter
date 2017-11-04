@@ -71,12 +71,11 @@ invisible(gc())
 Column
 -------------------------------------
 
+### Description
+
 ### *STAR* log table
 
 ```{r star table}
 fwrite(log.summary, 'STAR.csv')
 DT::datatable(head(log.summary, n = 80L), colnames = c('Sample', 'Type', 'Value'), extensions = 'Buttons') %>% DT::formatRound('V3', digits = 2)
 ```
-
-### Description
-

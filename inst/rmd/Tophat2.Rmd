@@ -34,12 +34,11 @@ ggplotly(p)
 Column
 -------------------------------------
 
+### Description
+
 ### *TopHat2* aligning report table
 
 ```{r tophat table}
 fwrite(tophat, 'TopHat2.csv')
 DT::datatable(head(tophat, n = 80L))
 ```
-
-### Description
-

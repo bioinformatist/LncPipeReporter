@@ -37,7 +37,7 @@ p <- ggplot() +
   labs(x = 'Coding Probablity(CPAT)', title = "Coding Potential", y = "CDF") +
   geom_hline(yintercept = 1, colour = "grey", linetype = "dashed", size = 1) +
   get(paste0('scale_color_',params$theme))()
-save_plot(file.path(params$figures, 'CDF.tiff'), p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
+save_plot('CDF.tiff', p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
 ggplotly(p)
 rm(p)
 invisible(gc())
@@ -46,16 +46,14 @@ invisible(gc())
 Column
 -------------------------------------
 
+### Description
+
 ### *CPAT* table
 
 ```{r}
-fwrite(lncRNA[, -6], file.path(params$tables, 'lncRNAs.csv'))
+fwrite(lncRNA[, -6], 'lncRNAs.csv')
 DT::datatable(head(lncRNA[, -(6:7)], n = 80L)) %>% DT::formatRound('Potential', digits = 2)
 ```
-
-### Description
-
-
 
 Stats {data-navmenu="Assembly"}
 =====================================
@@ -80,7 +78,7 @@ p <- ggplot() + geom_density(data = lncRNA.gtf, aes(x = Length, colour = Type), 
                      expand = c(0.01, 0)) +
   scale_y_continuous(expand = c(0.01, 0)) +
   get(paste0('scale_color_',params$theme))()
-save_plot(file.path(params$figures, 'lncRNA_length_distribution_with_type.tiff'), p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
+save_plot('lncRNA_length_distribution_with_type.tiff', p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
 ggplotly(p) %>% layout(margin = list(r = 50))
 rm(p)
 invisible(gc())
@@ -95,7 +93,7 @@ p <- ggplot() + geom_histogram(data = lncRNA.gtf, aes(x = Length), binwidth = 10
                                 paste0(params$max.lncrna.len, '+')),
                      expand = c(0.01, 0)) +
   scale_y_continuous(expand = c(0, 10)) + labs(x = 'lncRNA length', y = 'Count')
-save_plot(file.path(params$figures, 'lncRNA_length_distribution.tiff'), p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
+save_plot('lncRNA_length_distribution.tiff', p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
 ggplotly(p) %>% layout(margin = list(r = 50))
 rm(p)
 invisible(gc())
@@ -123,20 +121,17 @@ plot_ly(cls, labels = ~Class, values = ~count, type = 'pie',
 Column
 -------------------------------------
 
-### Table
-
-```{r lncRNA table}
-DT::datatable(head(lncRNA.gtf[, -(5:6)], n = 80L))
-```
-
 ### Description
 
 **Title** Statistics of lncRNAs identified by lncPipe
 
 **What have we done**  Briefly, lncRNAs identified by [lncPipe](https://github.com/likelet/LncPipe) contains novel and known lncs, this section sysmeticly summarize and compare the two categories in at length, coding potential and classification level. In LncPipe, coding poteintial of final lncRNAs were reassesed by CNCI, so CNCI CDS data were plot accordingly which coding genes were also considered; Besides, we summarized length distribution of noval and knon lncs and classified lncRNAs based on thier genome location to nearest protein coding genes. The following figure illustrate the classicification categories.
 
-![lncRNA classes](Nucleotide-20170720011933.svg)
-</br>
+<div>
+```{r echo=FALSE, out.width = '100%'}
+knitr::include_graphics('Nucleotide-20170720011933.svg')
+```
+</div>
 
 **What dose plots mean** As metioned above, this section contains `CDF plot`, `length distrition plot`, `lncRNA classification plot` and `result table`. Of those :
 
@@ -150,4 +145,9 @@ DT::datatable(head(lncRNA.gtf[, -(5:6)], n = 80L))
 
 1. Mao A-P, Shen J, Zuo Z. Expression and regulation of long noncoding RNAs in TLR4 signaling in mouse macrophages. BMC Genomics. 2015;16:45. 
 
+### Table
+
+```{r lncRNA table}
+DT::datatable(head(lncRNA.gtf[, -(5:6)], n = 80L))
+```
 

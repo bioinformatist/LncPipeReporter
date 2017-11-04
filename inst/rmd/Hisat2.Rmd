@@ -42,6 +42,8 @@ invisible(gc())
 Column
 -------------------------------------
 
+### Description
+
 ### *HISAT2* log table
 
 ```{r}
@@ -49,6 +51,3 @@ fwrite(hisat, 'HISAT2.csv')
 DT::datatable(head(hisat, n = 80L)) %>% DT::formatRound('Percentage', digits = 2)
 rm(hisat)
 ```
-
-### Description
-

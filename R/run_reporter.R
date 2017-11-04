@@ -35,13 +35,6 @@ run_reporter <- function(input = system.file(file.path("extdata", "demo_results"
                          max.lncrna.len = 10000,
                          min.expressed.sample = 50,
                          ask = FALSE) {
-  figures.dir <-  file.path(output_dir, 'figures')
-  tables.dir <- file.path(output_dir, 'tables')
-  
-  # Create subdirectories first
-  # dir.create(figures.dir, showWarnings = FALSE)
-  # dir.create(tables.dir, showWarnings = FALSE)
-  
   if (ask) {
     rmarkdown::render(system.file(file.path('rmd', 'reporter.Rmd'),
                                   package = 'LncPipeReporter'),
@@ -55,16 +48,21 @@ run_reporter <- function(input = system.file(file.path("extdata", "demo_results"
                       params = list(input = input,
                                     output = output,
                                     theme = theme,
-                                    figures = figures.dir,
-                                    tables = tables.dir,
                                     cdf.percent = cdf.percent,
                                     max.lncrna.len = max.lncrna.len,
                                     min.expressed.sample = min.expressed.sample))
   }
+  
+  figures.dir <-  file.path(output_dir, 'figures')
+  tables.dir <- file.path(output_dir, 'tables')
+  
   dir.create(figures.dir)
   dir.create(tables.dir)
   
-  file.rename(from = c('STAR.csv', 'HISAT2.csv', 'TopHat2.csv'), to = tables.dir)
-  file.rename(from = c('STAR.tiff', 'HISAT2.tiff', 'TopHat2.tiff', ), to = figures.dir)
+  # file.rename(from = c('STAR.csv', 'HISAT2.csv', 'TopHat2.csv', 'lncRNAs.csv', "DE.csv"), to = rep(tables.dir, 5))
+  # file.rename(from = c('STAR.tiff', 'HISAT2.tiff', 'TopHat2.tiff', 'lncRNA_length_distribution.tiff', 'lncRNA_length_distribution_with_type.tiff', 'CDF.tiff', "vocano.tiff", "pca.tiff", 'compare_density.tiff', 'compare_violin.tiff'), to = rep(figures.dir, 10))
+  invisible(file.copy(Sys.glob(file.path(system.file(package = 'LncPipeReporter'), 'rmd', '*.csv')), tables.dir))
+  invisible(file.copy(Sys.glob(file.path(system.file(package = 'LncPipeReporter'), 'rmd', '*.tiff')), figures.dir))
+  file.remove(Sys.glob(file.path(system.file(package = 'LncPipeReporter'), 'rmd', '*.csv')), Sys.glob(file.path(system.file(package = 'LncPipeReporter'), 'rmd', '*.tiff')))
 }
 
