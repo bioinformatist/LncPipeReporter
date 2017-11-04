@@ -55,8 +55,8 @@ options(DT.options = list(autoFill = TRUE,
                           search = list(regex = TRUE, caseInsensitive = FALSE),
                           dom = 'Bfrtip', 
                           buttons = c('copy', 'csv', 'excel', 'pdf', 'print')))
-rm(list = setdiff(ls(), "params"))
-gc()
+# rm(list = setdiff(ls(), "params"))
+# gc()
 # The latest plotly should be used, for a lot of bugs fixed
 # if (!require("devtools")) install.packages("devtools")
 # install.packages(c("curl", "httr"))
@@ -83,6 +83,15 @@ theme_set(cowplot::theme_cowplot())
 
 Home
 ===================================== 
+
+Column
+-------------------------------------
+
+### Overview {.no-padding}
+
+```{r echo = FALSE}
+knitr::include_graphics('Figure 1A.pdf.svg')
+```
 
 Column
 -------------------------------------
