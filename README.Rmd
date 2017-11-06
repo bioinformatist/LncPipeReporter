@@ -77,30 +77,7 @@ install.packages("devtools")
 devtools::install_github("bioinformatist/LncPipeReporter")
 ```
 
-If `devtools::install_github()` raise `Installation failed: Problem with the SSL CA cert (path? access rights?)` error, try:
-```{r}
-install.packages(c("curl", "httr"))
-```
-
-During installation there may be some configuration error (lack of libraries):
-```{pre}
-------------------------- ANTICONF ERROR ---------------------------
-Configuration failed because libcurl was not found. Try installing:
- * deb: libcurl4-openssl-dev (Debian, Ubuntu, etc)
- * rpm: libcurl-devel (Fedora, CentOS, RHEL)
- * csw: libcurl_dev (Solaris)
-If libcurl is already installed, check that 'pkg-config' is in your
-PATH and PKG_CONFIG_PATH contains a libcurl.pc file. If pkg-config
-is unavailable you can set INCLUDE_DIR and LIB_DIR manually via:
-R CMD INSTALL --configure-vars='INCLUDE_DIR=... LIB_DIR=...'
---------------------------------------------------------------------
-```
-
-Just follow the instruction to satisfy the dependencies. For instance, you can run `sudo apt-get install libcurl4-openssl-dev` in *Ubuntu* to fix the problem above.
-
-> LncPipeReporter use Bioconductor package *edgeR* to perform differential expression analysis, so if you get `'BiocInstaller' must be installed to install Bioconductor packages.`, please choose `1 (Yes)`. Since then you may see `Installation failed: cannot open the connection to 'https://bioconductor.org/biocLite.R'`, run `source('http://bioconductor.org/biocLite.R')`, finally try the installation commands above again.
-
-> Please wait for minutes then **try again** if solving some dependencies from *GitHub* fails with `Connection timed out after 100001 milliseconds`.
+If there's any problem during installation, please refer to [FAQ].
 
 To test installation:
 ```{r}
@@ -215,6 +192,33 @@ LncPipeReports
 ## Gallery
 
 Coming soon.
+
+## FAQ
+
+If `devtools::install_github()` raise `Installation failed: Problem with the SSL CA cert (path? access rights?)` error, try:
+```{r}
+install.packages(c("curl", "httr"))
+```
+
+During installation there may be some configuration error (lack of libraries):
+```{pre}
+------------------------- ANTICONF ERROR ---------------------------
+Configuration failed because libcurl was not found. Try installing:
+ * deb: libcurl4-openssl-dev (Debian, Ubuntu, etc)
+ * rpm: libcurl-devel (Fedora, CentOS, RHEL)
+ * csw: libcurl_dev (Solaris)
+If libcurl is already installed, check that 'pkg-config' is in your
+PATH and PKG_CONFIG_PATH contains a libcurl.pc file. If pkg-config
+is unavailable you can set INCLUDE_DIR and LIB_DIR manually via:
+R CMD INSTALL --configure-vars='INCLUDE_DIR=... LIB_DIR=...'
+--------------------------------------------------------------------
+```
+
+Just follow the instruction to satisfy the dependencies. For instance, you can run `sudo apt-get install libcurl4-openssl-dev` in *Ubuntu* to fix the problem above.
+
+> LncPipeReporter use Bioconductor package *edgeR* to perform differential expression analysis, so if you get `'BiocInstaller' must be installed to install Bioconductor packages.`, please choose `1 (Yes)`. Since then you may see `Installation failed: cannot open the connection to 'https://bioconductor.org/biocLite.R'`, run `source('http://bioconductor.org/biocLite.R')`, finally try the installation commands above again.
+
+> Please wait for minutes then **try again** if solving some dependencies from *GitHub* fails with `Connection timed out after 100001 milliseconds`.
 
 ## License
 
