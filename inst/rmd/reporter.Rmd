@@ -7,7 +7,7 @@ output:
     self_contained: false
     lib_dir: ~/LncPipeReports/libs
     navbar:
-      - { title: "About", href: "https://icannotendure.space/", align: right }
+      - { title: "About", href: "http://icannotendure.space/", align: right }
       - { icon: "ion-social-github", href: "https://github.com/bioinformatist/multiIP", align: right }
     theme: flatly
 params:
@@ -77,7 +77,7 @@ options(DT.options = list(autoFill = TRUE,
 # require(heatmaply)
 # require(ggsci)
 
-type.list <- search_then_determine(path = params$input)
+type.list <- search_then_determine(path = normalizePath(params$input))
 theme_set(cowplot::theme_cowplot())
 ```
 
@@ -90,7 +90,7 @@ Column
 ### Overview {.no-padding}
 
 ```{r echo = FALSE}
-knitr::include_graphics('Figure 1A.pdf.svg')
+knitr::include_graphics('Figure 1A.svg')
 ```
 
 Column
