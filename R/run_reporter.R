@@ -56,13 +56,12 @@ run_reporter <- function(input = system.file(file.path("extdata", "demo_results"
   figures.dir <-  file.path(output_dir, 'figures')
   tables.dir <- file.path(output_dir, 'tables')
   
-  dir.create(figures.dir)
-  dir.create(tables.dir)
+  dir.create(figures.dir, showWarnings = FALSE)
+  dir.create(tables.dir, showWarnings = FALSE)
   
-  # file.rename(from = c('STAR.csv', 'HISAT2.csv', 'TopHat2.csv', 'lncRNAs.csv', "DE.csv"), to = rep(tables.dir, 5))
-  # file.rename(from = c('STAR.tiff', 'HISAT2.tiff', 'TopHat2.tiff', 'lncRNA_length_distribution.tiff', 'lncRNA_length_distribution_with_type.tiff', 'CDF.tiff', "vocano.tiff", "pca.tiff", 'compare_density.tiff', 'compare_violin.tiff'), to = rep(figures.dir, 10))
   invisible(file.copy(Sys.glob(file.path(system.file(package = 'LncPipeReporter'), 'rmd', '*.csv')), tables.dir))
   invisible(file.copy(Sys.glob(file.path(system.file(package = 'LncPipeReporter'), 'rmd', '*.tiff')), figures.dir))
-  file.remove(Sys.glob(file.path(system.file(package = 'LncPipeReporter'), 'rmd', '*.csv')), Sys.glob(file.path(system.file(package = 'LncPipeReporter'), 'rmd', '*.tiff')))
+  invisible(file.remove(Sys.glob(file.path(system.file(package = 'LncPipeReporter'), 'rmd', '*.csv')),
+                        Sys.glob(file.path(system.file(package = 'LncPipeReporter'), 'rmd', '*.tiff'))))
 }
 
