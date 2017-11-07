@@ -35,7 +35,13 @@ run_reporter <- function(input = system.file(file.path("extdata", "demo_results"
                          max.lncrna.len = 10000,
                          min.expressed.sample = 50,
                          ask = FALSE) {
-  output_dir <- normalizePath(output_dir)
+  origin <- getwd()
+  setwd(normalizePath(input))
+  input <- getwd()
+  setwd(origin)
+  setwd(normalizePath(output_dir))
+  output_dir <- getwd()
+  
   if (ask) {
     rmarkdown::render(system.file(file.path('rmd', 'reporter.Rmd'),
                                   package = 'LncPipeReporter'),

@@ -77,7 +77,7 @@ options(DT.options = list(autoFill = TRUE,
 # require(heatmaply)
 # require(ggsci)
 
-type.list <- search_then_determine(path = normalizePath(params$input))
+type.list <- search_then_determine(path = input)
 theme_set(cowplot::theme_cowplot())
 ```
 
