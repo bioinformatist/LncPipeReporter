@@ -10,6 +10,23 @@ Most of bioinformatics tools, such as aligners like [STAR](https://github.com/al
 
 This project is a part of LncPipe (but can also be used solely) that take charge of automatically generating reports in `HTML` format with interactive plots based on pipeline output. It contains several ploting functions as well as analysis scripts to perform comparison analysis and differential expression analysis when experimental design information was available. We speculated this tools can facilitate understanding the underlining machanism of known and novel lncRNAs in their experiment.
 
+Gallery
+-------
+
+Gif aminations were recorded using [phw/peek](https://github.com/phw/peek).
+
+LncPipeReporter generated interactive plots support **arbitrary scaling**, **filtering** with tags refer to **real value** implemented via [plotly](https://github.com/ropensci/plotly).
+
+![](imgs/Peek%202017-11-07%2013-18.gif)
+
+There are also interactive tables exhibiting **the first 80 lines** of the `data.frame`/`data.table`, which could be exported as **many forms**, allowing for **searching**, **filtering** and **ordering**.
+
+![](imgs/Peek%202017-11-07%2013-32.gif)
+
+The **user-adjusted** plots can always be saved as **static figures**, then could be temporarily placed in your manuscripts for peer-review. Once time comes to publication, you may use [publish-deserved version](#results) instead.
+
+![](imgs/f3.gif)
+
 Features
 --------
 
@@ -30,7 +47,7 @@ Features
 
 -   **More themes available.** The users can apply for a series of pretty theme brought by ggsci. See [Parameters](#parameters) for details.
 
--   **High resolution static figures with detailed results in *csv* is provided.** User will get figures which can be used for publication in *tiff* format with *300 ppi resolution* and *lzw compression* performed. Also, LncPipeReporter bring you analysis result tables (comma-separated, can be opened/edited by *MS Excel*, etc.), for details, see [Results](#results).
+-   **High resolution static figures with detailed results in *csv* is provided.** User will get figures which can be used for publication in *tiff* format with *300 ppi resolution* and *lzw compression* performed. Also, LncPipeReporter always brings you analysis result tables (comma-separated, can be opened/edited by *MS Excel*, etc.), for details, see [Results](#results).
 
 Installation
 ------------
@@ -230,11 +247,6 @@ LncPipeReports
     ├── STAR.csv
     └── TopHat2.csv
 ```
-
-Gallery
--------
-
-Coming soon.
 
 FAQ
 ---
