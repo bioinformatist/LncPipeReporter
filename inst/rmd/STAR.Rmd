@@ -19,7 +19,7 @@ log.summary <- fread(paste0("grep -H '' ",
                             " | perl -F':\\s{2,}|\\s\\|\\t' -lanE'/:$/ ? next : say join qq{\t}, @F'"),
                      header = FALSE)
 # Extract lines and get sample names
-log.summary <- log.summary[V2 %like% c('of i|Uni|mu|many l|sho|oth')][, V1 := tstrsplit(V1, .Platform$file.sep)[[length(tstrsplit(V1, .Platform$file.sep))]]][, V1 := tstrsplit(V1, '\\.')[[1]]]
+log.summary <- log.summary[V2 %like% c('of i|Uni|mu|many l|sho|oth')][, V1 := tstrsplit(V1, .Platform$file.sep)[[length(tstrsplit(V1, .Platform$file.sep))]]][, V1 := tstrsplit(V1, '[._]')[[1]]]
 # Convert percentage (characters) into decimals
 log.percentage <- log.summary[V2 %like% '%'][, ':=' (V2 = toUpperFirstLetter(gsub('% of reads | reads %', '', V2)),
                                                      V3 = as.numeric(sub("%", "", V3, fixed = TRUE)) / 100)]

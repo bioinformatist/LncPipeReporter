@@ -14,7 +14,7 @@ TopHat2 {data-navmenu="Aligning"}
 
 ```{r tophat parsing}
 tophat <- fread(paste0("grep -H '' ", paste(type.list$Tophat2, collapse=" "), " | perl -F':|\\(' -lanE'say qq{$F[0]\tLeft\tInput reads\t$F[2]} if $. % 14 == 2; say qq{$F[0]\tLeft\tMapped reads\t$F[2]} if $. % 14 == 3; say qq{$F[0]\tLeft\tMultiple alignments\t$F[2]} if $. % 14 == 4; say qq{$F[0]\tRight\tInput reads\t$F[2]} if $. % 14 == 6; say qq{$F[0]\tRight\tMapped reads\t$F[2]} if $. % 14 == 7; say qq{$F[0]\tRight\tMultiple alignments\t$F[2]} if $. % 14 == 8'"), header = FALSE, sep = "\t", fill = TRUE)
-tophat[, V1 := tstrsplit(V1, .Platform$file.sep)[[length(tstrsplit(V1, .Platform$file.sep))]]][, V1 := tstrsplit(V1, '\\.')[[1]]]
+tophat[, V1 := tstrsplit(V1, .Platform$file.sep)[[length(tstrsplit(V1, .Platform$file.sep))]]][, V1 := tstrsplit(V1, '[._]')[[1]]]
 setnames(tophat, c("Sample", "Direction", "Type", "Number"))
 ```
 
