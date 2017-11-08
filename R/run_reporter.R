@@ -39,7 +39,7 @@ run_reporter <- function(input = system.file(file.path("extdata", "demo_results"
   setwd(normalizePath(input))
   input <- getwd()
   setwd(origin)
-  dir.create(invisible(normalizePath(output_dir)), showWarnings = FALSE, recursive = TRUE)
+  dir.create(suppressWarnings(normalizePath(output_dir)), showWarnings = FALSE, recursive = TRUE)
   setwd(normalizePath(output_dir))
   output_dir <- getwd()
   

@@ -48,6 +48,28 @@ Column
 
 ### Description
 
+**Title** Statistics of lncRNAs identified by lncPipe
+
+**What have we done**  Briefly, lncRNAs identified by [lncPipe](https://github.com/likelet/LncPipe) contains novel and known lncs, this section sysmeticly summarize and compare the two categories in at length, coding potential and classification level. In LncPipe, coding poteintial of final lncRNAs were reassesed by CNCI, so CNCI CDS data were plot accordingly which coding genes were also considered; Besides, we summarized length distribution of noval and knon lncs and classified lncRNAs based on thier genome location to nearest protein coding genes. The following figure illustrate the classicification categories.
+
+<div>
+```{r echo=FALSE, out.width = '100%'}
+knitr::include_graphics('Nucleotide-20170720011933.svg')
+```
+</div>
+
+**What dose plots mean** As metioned above, this section contains `CDF plot`, `length distrition plot`, `lncRNA classification plot` and `result table`. Of those :
+
+`CDF plot` represents the coding potential score of lncRNA distribution that also called Cumulative Distribution Function plot, which is the probability that the variable takes a value less than or equal to x. The horizontal axis is the allowable domain for the given probability function. Since the vertical axis is a probability, it must fall between zero and one. It increases from zero to one as we go from left to right on the horizontal axis.
+
+`length distrition plot` gives the length distribution of known and novel lncRNA, the X axis is length of lncRNA sequence and Y axix is the fraction of lncRNA at specify length. To note, not all the length number were plot, while length number largger than `max.length` parameter were sum and show ">10000" for instance.
+
+`lncRNA classification plot` showns the fraction of differ kind of lncRNA in novel and knowns. Classification information were produced by lncPipe and illustrated at above figures.
+
+**Reference:**
+
+1. Mao A-P, Shen J, Zuo Z. Expression and regulation of long noncoding RNAs in TLR4 signaling in mouse macrophages. BMC Genomics. 2015;16:45. 
+
 ### *CPAT* table
 
 ```{r}
