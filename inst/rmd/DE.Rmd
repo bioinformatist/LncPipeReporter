@@ -31,6 +31,8 @@ DE analysis
 #   return(list(de$table, log.cpm, heatmap.m))
 # }
 
+suppressWarnings(rm(rsem.count))
+
 rsem.count <- fread(type.list$RSEM)
 rna.id <- rsem.count[,1]
 rna.type <- rsem.count[,2]
