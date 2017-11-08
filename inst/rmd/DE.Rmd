@@ -60,6 +60,7 @@ deg <- row.names(de$table[with(de$table,
 log.cpm <- edgeR::cpm(d, prior.count=2, log=TRUE)
 log.cpm <- data.frame(log.cpm)
 heatmap.m <- log.cpm[deg,]
+row.names(heatmap.m) <- as.vector(t(rna.id[,1]))[as.numeric(row.names(heatmap.m))]
 ```
 
 Column {.tabset}
@@ -179,7 +180,7 @@ invisible(gc())
 # ggheatmap(heatmap.m)
 # rm(ggheatmap)
 
-heatmaply::heatmaply(heatmap.m, scale = 'row', xlab = "Sample", margins = c(60,100,40,20)) %>% layout(margin = list(l = 50, b = 50))
+heatmaply::heatmaply(heatmap.m, scale = 'row', xlab = "Sample", margins = c(60,100,40,20), row_text_angle = 45, column_text_angle = 60) %>% layout(margin = list(l = 100, b = 50, r = 0))
 # invisible(gc())
 ```
 
@@ -221,7 +222,6 @@ McCarthy DJ, Chen Y and Smyth GK (2012). Differential expression analysis of mul
 ### Differential expressed lncRNAs table
 
 ```{r}
-de$table <- data.frame(de$table)
 row.names(de$table) <- as.vector(t(rna.id[,1]))[as.numeric(row.names(de$table))]
 fwrite(de$table[, -5], 'DE.csv', row.names = TRUE)
 DT::datatable(head(de$table[, -5], n = 80L)) %>% DT::formatRound(c('logFC', 'logCPM', 'PValue', "FDR"), digits = 2)
