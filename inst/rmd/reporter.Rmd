@@ -50,6 +50,17 @@ knitr::opts_chunk$set(
 	warning = FALSE,
 	cache = FALSE
 )
+
+local({
+  hook_plot = knitr::knit_hooks$get('plot')
+  knitr::knit_hooks$set(plot = function(x, options) {
+    x = paste(x, collapse = '.')
+    if (!grepl('\\.svg', x)) return(hook_plot(x, options))
+    # read the content of the svg image and write it out without <?xml ... ?>
+    paste(readLines(x)[-1], collapse = '\n')
+  })
+})
+
 options(DT.options = list(autoFill = TRUE, 
                           searchHighlight = TRUE, 
                           search = list(regex = TRUE, caseInsensitive = FALSE),
