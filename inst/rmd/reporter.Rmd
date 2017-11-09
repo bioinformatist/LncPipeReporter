@@ -44,8 +44,6 @@ params:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
 	echo = FALSE,
-	fig.height = 6,
-	fig.width = 9,
 	message = FALSE,
 	warning = FALSE,
 	cache = FALSE
