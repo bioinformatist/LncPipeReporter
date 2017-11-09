@@ -14,16 +14,17 @@ STAR {data-navmenu="Aligning"}
 
 ```{r star parsing}
 # Call perl one-liner to concatenate all log files in the list
-log.summary <- fread(paste0("grep -H '' ",
+star <- fread(paste0("grep -H '' ",
                             paste(type.list$STAR, collapse=" "),
                             " | perl -F':\\s{2,}|\\s\\|\\t' -lanE'/:$/ ? next : say join qq{\t}, @F'"),
                      header = FALSE)
 # Extract lines and get sample names
-log.summary <- log.summary[V2 %like% c('of i|Uni|mu|many l|sho|oth')][, V1 := tstrsplit(V1, .Platform$file.sep)[[length(tstrsplit(V1, .Platform$file.sep))]]][, V1 := tstrsplit(V1, '[._]')[[1]]]
+star <- star[V2 %like% c('of i|Uni|mu|many l|sho|oth')][, V1 := tstrsplit(V1, .Platform$file.sep)[[length(tstrsplit(V1, .Platform$file.sep))]]][, V1 := tstrsplit(V1, '[._]')[[1]]]
 # Convert percentage (characters) into decimals
-log.percentage <- log.summary[V2 %like% '%'][, ':=' (V2 = toUpperFirstLetter(gsub('% of reads | reads %', '', V2)),
+log.percentage <- star[V2 %like% '%'][, ':=' (V2 = toUpperFirstLetter(gsub('% of reads | reads %', '', V2)),
                                                      V3 = as.numeric(sub("%", "", V3, fixed = TRUE)) / 100)]
 setnames(log.percentage, c('Sample', 'Type', 'Percentage'))
+fig.height <- length(unique(as.vector(t(star[,1])))) * 0.6
 
 ##############################################################################################################################
 # system.time(
@@ -45,7 +46,7 @@ Column
 
 ### *STAR* percentage plot
 
-```{r star plot}
+```{r star plot, fig.height = fig.height}
 # Make donut chart when there's only one sample
 if (nrow(unique(log.percentage[,1])) == 1) {
   log.percentage %>%
@@ -59,7 +60,7 @@ if (nrow(unique(log.percentage[,1])) == 1) {
     geom_bar(data = log.percentage, aes(x = Sample, y = Percentage, fill = Type), stat = 'identity') +
     scale_y_continuous(labels = scales::percent) + coord_flip() +
     get(paste0('scale_fill_',params$theme))()
-  save_plot('STAR.tiff', p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
+  save_plot('STAR.tiff', p, base_height = fig.height, base_width = 11, dpi = 300, compression = 'lzw')
   ggplotly(p)
 }
 
@@ -76,6 +77,6 @@ Column
 ### *STAR* log table
 
 ```{r star table}
-fwrite(log.summary, 'STAR.csv')
-DT::datatable(head(log.summary, n = 80L), colnames = c('Sample', 'Type', 'Value'), extensions = 'Buttons') %>% DT::formatRound('V3', digits = 2)
+fwrite(star, 'STAR.csv')
+DT::datatable(head(star, n = 80L), colnames = c('Sample', 'Type', 'Value'), extensions = 'Buttons') %>% DT::formatRound('V3', digits = 2)
 ```

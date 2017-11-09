@@ -16,6 +16,7 @@ TopHat2 {data-navmenu="Aligning"}
 tophat <- fread(paste0("grep -H '' ", paste(type.list$Tophat2, collapse=" "), " | perl -F':|\\(' -lanE'say qq{$F[0]\tLeft\tInput reads\t$F[2]} if $. % 14 == 2; say qq{$F[0]\tLeft\tMapped reads\t$F[2]} if $. % 14 == 3; say qq{$F[0]\tLeft\tMultiple alignments\t$F[2]} if $. % 14 == 4; say qq{$F[0]\tRight\tInput reads\t$F[2]} if $. % 14 == 6; say qq{$F[0]\tRight\tMapped reads\t$F[2]} if $. % 14 == 7; say qq{$F[0]\tRight\tMultiple alignments\t$F[2]} if $. % 14 == 8'"), header = FALSE, sep = "\t", fill = TRUE)
 tophat[, V1 := tstrsplit(V1, .Platform$file.sep)[[length(tstrsplit(V1, .Platform$file.sep))]]][, V1 := tstrsplit(V1, '[._]')[[1]]]
 setnames(tophat, c("Sample", "Direction", "Type", "Number"))
+fig.height <- length(unique(as.vector(t(tophat[,1])))) * 0.6
 ```
 
 Column
@@ -23,11 +24,11 @@ Column
 
 ### *TopHat2* aligning report plot
 
-```{r tophat plot}
+```{r tophat plot, fig.height = fig.height}
 p <- ggplot() +
   geom_bar(data = tophat, aes(x = Direction, y = Number, fill = Type), stat = 'identity') +
   coord_flip() + facet_grid(Sample ~ .) + get(paste0('scale_fill_',params$theme))()
-save_plot('TopHat2.tiff', p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
+save_plot('TopHat2.tiff', p, base_height = fig.height, base_width = 11, dpi = 300, compression = 'lzw')
 ggplotly(p)
 ```
 
