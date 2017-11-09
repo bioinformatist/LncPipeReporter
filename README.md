@@ -104,7 +104,7 @@ run_reporter(input = system.file(file.path("extdata", "demo_results_single_sampl
 How to use
 ----------
 
-> Caution: Though users never need specify file types, the sample name should be embedded in the **first part** of file name's prefix, for example, the sample name of *LWS2.Log.final.out* and *N1037.log* will be obtained as *LWS2* and *N1037*.
+> Caution: Though users never need specify file types, the sample name should be embedded in the **first part** (use both `.` and `_` as file name delimiter) of file name's prefix, for example, the sample name of *LWS2.Log.final.out* and *N1037.log* will be obtained as *LWS2* and *N1037*.
 
 > It is highly recommended that users should use **Chrome** web browser for looking through reports produced by LncPipeReporter.
 
