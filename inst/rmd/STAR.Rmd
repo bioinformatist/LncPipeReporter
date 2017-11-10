@@ -24,7 +24,7 @@ star <- star[V2 %like% c('of i|Uni|mu|many l|sho|oth')][, V1 := tstrsplit(V1, .P
 log.percentage <- star[V2 %like% '%'][, ':=' (V2 = toUpperFirstLetter(gsub('% of reads | reads %', '', V2)),
                                                      V3 = as.numeric(sub("%", "", V3, fixed = TRUE)) / 100)]
 setnames(log.percentage, c('Sample', 'Type', 'Percentage'))
-fig.height <- length(unique(as.vector(t(star[,1])))) * 0.6
+fig.height <- length(unique(as.vector(t(star[,1])))) * 0.7
 
 ##############################################################################################################################
 # system.time(
@@ -61,7 +61,7 @@ if (nrow(unique(log.percentage[,1])) == 1) {
     scale_y_continuous(labels = scales::percent) + coord_flip() +
     get(paste0('scale_fill_',params$theme))()
   save_plot('STAR.tiff', p, base_height = fig.height, base_width = 11, dpi = 300, compression = 'lzw')
-  ggplotly(p)
+  ggplotly(p) %>% layout(margin = list(b = 60))
 }
 
 
