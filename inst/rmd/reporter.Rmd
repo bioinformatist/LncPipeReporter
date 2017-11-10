@@ -3,6 +3,7 @@ title: "LncPipe Reports"
 date: '`r date()`'
 output:
   flexdashboard::flex_dashboard:
+    vertical_layout: scroll
     mathjax: null
     self_contained: false
     lib_dir: ~/LncPipeReports/libs
