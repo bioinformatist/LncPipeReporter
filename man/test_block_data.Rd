@@ -15,7 +15,3 @@ None
 \description{
 Test and print if a specific kind of file exists.
 }
-\examples{
-type.list <- search_then_determine()
-test_block_data(type.list)
-}

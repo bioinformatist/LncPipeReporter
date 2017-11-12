@@ -3,10 +3,6 @@
 #' @param x the sentence/phrase.
 #'
 #' @return The sentence/phrase converted.
-#'
-#' @examples
-#' toUpperFirstLetter('the man called Qi Zhao is handsome!')
-#' toUpperFirstLetter('coolest Yu Sun')
 toUpperFirstLetter <- function(x) {
   paste0(toupper(substr(x, 1, 1)), substring(x, 2))
 }
@@ -17,9 +13,6 @@ toUpperFirstLetter <- function(x) {
 #' @param path path for searching.
 #'
 #' @return A list with types containing file absolute path in vector.
-#'
-#' @examples
-#' search_then_determine()
 search_then_determine <- function(path = system.file(file.path("extdata", "demo_results"),package = "LncPipeReporter")) {
   # Initialize an empty list for storing file types
   type.list <- list()
@@ -73,10 +66,6 @@ search_then_determine <- function(path = system.file(file.path("extdata", "demo_
 #' @param l list of file type. Generally produced by [search_then_determine].
 #'
 #' @return None
-#'
-#' @examples
-#' type.list <- search_then_determine()
-#' test_block_data(type.list)
 test_block_data <- function(l) {
   if (is.null(l[['Tophat2']])) print("No Tophat2 log file detected!")
   if (is.null(l[['lncRNA']])) print("No lncRNA information detected!")

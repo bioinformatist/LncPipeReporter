@@ -16,6 +16,3 @@ A list with types containing file absolute path in vector.
 \description{
 Search the data folder recursively then determine their types.
 }
-\examples{
-search_then_determine()
-}

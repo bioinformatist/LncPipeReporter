@@ -15,7 +15,3 @@ The sentence/phrase converted.
 \description{
 Change the first letter of sentence/phrase to uppercase.
 }
-\examples{
-toUpperFirstLetter('the man called Qi Zhao is handsome!')
-toUpperFirstLetter('coolest Yu Sun')
-}
