@@ -19,11 +19,11 @@ Gif aminations were recorded using [phw/peek](https://github.com/phw/peek).
 
 LncPipeReporter generated interactive plots support **arbitrary scaling**, **filtering** with tags refer to **real value** implemented via [plotly](https://github.com/ropensci/plotly).
 
-![](imgs/Peek%202017-11-07%2013-18.gif)
+![](imgs/f1.gif)
 
 There are also interactive tables exhibiting **the first 80 lines** of the `data.frame`/`data.table`, which could be exported as **many forms**, allowing for **searching**, **filtering** and **ordering**.
 
-![](imgs/Peek%202017-11-07%2013-32.gif)
+![](imgs/f2.gif)
 
 The **user-adjusted** plots can always be saved as **static figures**, then could be temporarily placed in your manuscripts for peer-review. Once time comes to publication, you may use [publish-deserved version](#results) instead.
 
