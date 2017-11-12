@@ -1,7 +1,7 @@
 language: r
 cache: packages
 
-r: release
+r: bioc-release
 
 latex: false
 
