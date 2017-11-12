@@ -102,7 +102,7 @@ Column
 ### Overview {.no-padding}
 
 ```{r echo = FALSE}
-knitr::include_graphics('Figure 1A.svg')
+knitr::include_graphics('Figure_1_A.svg')
 ```
 
 Column
