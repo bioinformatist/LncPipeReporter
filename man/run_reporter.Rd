@@ -40,13 +40,13 @@ There're also default paramter values in the script -- sometimes if the user try
 Also you can use statement like \code{rmarkdown::render('./reporter.Rmd', params = 'ask')} to call the interface in browser.
 }
 \examples{
+\donttest{
+# Below takes too long time for running, so ignore them in R CMD check.
 run_reporter()
-
 run_reporter(ask = TRUE)
-
 run_reporter(input = system.file(paste0("extdata", .Platform$file.sep, "demo_results"),
              package = "LncPipeReporter"),
              output = 'reporter.html', theme = 'npg', cdf.percent = 10,
              max.lncrna.len = 10000, min.expressed.sample = 50, ask = FALSE)
-
+}
 }
