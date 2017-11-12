@@ -8,6 +8,8 @@ always_allow_html: yes
 knitr::opts_chunk$set(echo = TRUE, base.dir = '.', eval = FALSE)
 ```
 
+[![Build Status](https://travis-ci.org/bioinformatist/LncPipeReporter.svg?branch=master)](https://travis-ci.org/bioinformatist/LncPipeReporter)
+
 A R package for automatically aggregating and summarizing lncRNA analysis results.
 
 ## Overview
