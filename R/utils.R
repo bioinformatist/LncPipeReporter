@@ -68,19 +68,6 @@ search_then_determine <- function(path = system.file(file.path("extdata", "demo_
   return(type.list)
 }
 
-#' Generate title (h1 level) in [flexdashboard](../../flexdashboard/html/00Index.html) style
-#'
-#' @param title the content of title.
-#' @param nav which (what) menu the title belong to.
-#'
-#' @return Pretty printed (by [cat] but not [print]) title.
-#'
-#' @examples
-#' generate_title("Qi Fat and Yu Fat", "triple-six")
-generate_title <- function(title, nav) {
-  cat(paste0(title, ' {data-navmenu="', nav, '"}', '\n', paste(rep('=', 37), collapse = '')))
-}
-
 #' Test and print if a specific kind of file exists.
 #'
 #' @param l list of file type. Generally produced by [search_then_determine].
