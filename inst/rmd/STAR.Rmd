@@ -63,10 +63,6 @@ if (nrow(unique(log.percentage[,1])) == 1) {
   save_plot('STAR.tiff', p, base_height = fig.height, base_width = 11, dpi = 300, compression = 'lzw')
   ggplotly(p) %>% layout(margin = list(b = 60))
 }
-
-
-rm(p)
-invisible(gc())
 ```
 
 Column
