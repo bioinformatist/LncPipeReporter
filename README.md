@@ -1,7 +1,7 @@
 LncPipeReporter
 ================
 
-[![Build Status](https://travis-ci.org/bioinformatist/LncPipeReporter.svg?branch=master)](https://travis-ci.org/bioinformatist/LncPipeReporter)
+[![Build Status](https://travis-ci.org/bioinformatist/LncPipeReporter.svg?branch=master)](https://travis-ci.org/bioinformatist/LncPipeReporter) [![codecov](https://codecov.io/gh/bioinformatist/LncPipeReporter/branch/master/graph/badge.svg)](https://codecov.io/gh/bioinformatist/LncPipeReporter)
 
 A R package for automatically aggregating and summarizing lncRNA analysis results.
 
@@ -90,18 +90,6 @@ devtools::install_github("bioinformatist/LncPipeReporter")
 ```
 
 If there's any problem during installation, please refer to [FAQ](#faq).
-
-To test installation:
-
-``` r
-library(LncPipeReporter)
-# For testing multipe sample case (default)
-run_reporter()
-# For testing lacking certain parts case
-run_reporter(input = system.file(file.path("extdata", "demo_results_lack_part"),package = "LncPipeReporter"))
-# For testing single sample case
-run_reporter(input = system.file(file.path("extdata", "demo_results_single_sample"),package = "LncPipeReporter"))
-```
 
 How to use
 ----------
