@@ -60,17 +60,3 @@ search_then_determine <- function(path = system.file(file.path("extdata", "demo_
   
   return(type.list)
 }
-
-#' Test and print if a specific kind of file exists.
-#'
-#' @param l list of file type. Generally produced by [search_then_determine].
-#'
-#' @return None
-test_block_data <- function(l) {
-  if (is.null(l[['Tophat2']])) print("No Tophat2 log file detected!")
-  if (is.null(l[['lncRNA']])) print("No lncRNA information detected!")
-  if (is.null(l[['STAR']])) print("No STAR log file detected!")
-  if (is.null(l[['Design']])) print("No experiment design information detected!")
-  if (is.null(l[['RSEM']])) print("No RSEM matrix detected!")
-  if (is.null(l[['Hisat2']])) print("No RSEM matrix detected!")
-}
