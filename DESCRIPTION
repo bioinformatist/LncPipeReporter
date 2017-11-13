@@ -35,4 +35,5 @@ Remotes: ramnathv/htmlwidgets,
     vqv/ggbiplot
 RoxygenNote: 6.0.1
 Roxygen: list(markdown = TRUE)
-Suggests: testthat
+Suggests: testthat,
+    covr
