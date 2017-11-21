@@ -110,11 +110,11 @@ Column
 
 ### Introduction
 
-Thanks for using [LncPipe](https://git.oschina.net/likelet/workflow)! LncPipe is a nextflow-based pipeline which collected several popular tools and in-house scripts so as to identifiy and analyze novel lncRNAs from raw RNA sequencing data.  As we known, identification and profiling of lncRNAs is a fundamental step to advance our knowledge on their function and regulatory mechanisms. We thus presents LncPipe to facilitate the relanvet researches on LncRNA discovery and annotation.
-This report summarized all output files produced by [LncPipe](https://git.oschina.net/likelet/workflow) and shown them via fancy interactive plots. Briefly, this report contains sections as follows:
+Thanks for using [LncPipe](https://git.oschina.net/likelet/workflow)! LncPipe is a nextflow-based pipeline which collected several popular tools and in-house scripts so as to identifiy and analyze novel lncRNAs from raw RNA sequencing data.  As we known, identification and profiling of lncRNAs is a fundamental step to advance our knowledge on their function and regulatory mechanisms. We thus present LncPipe to facilitate related researches on LncRNA discovery and annotation.
+This report summarized all output files produced by [LncPipe](https://git.oschina.net/likelet/workflow) and shown them via fancy interactive plots. Briefly, LncPipeReporter's output contains sections as follows:
 
-1. Reads alignment summary. Since the intial mapping step was carried out by STAR, we summarized the basic information that can help control the library quanlity of each samples.
-2. Novel lncRNAs basic charateristics such length distribution, exon number, coding potiential and classifications.
+1. Reads alignment summary. Since the intial mapping step was carried out by STAR,HISAT or Tophat, we summarized the basic information that can help assess the library quanlity of each samples.
+2. Novel lncRNAs basic charateristics such as length distribution, exon number, coding potiential and classifications.
 3. Differential expression analysis if design file was feed. Abandunce of each transcript was assessed and compared between conditions. We also provide exploration analysis like PCA and clustering to help check the experimental design.
 4. Comparison analysis was also performed between coding gene, known lncRNA and novel lncRNAs 
 
