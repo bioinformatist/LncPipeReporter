@@ -79,6 +79,7 @@ p <- ggplot(data = de$table, aes(x = logFC, y = -log10(PValue), colour = thresho
   theme(legend.position = "none") + scale_x_continuous(limits = c(-10, 10)) + 
   get(paste0('scale_color_',params$theme))()
 save_plot('vocano.tiff', p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
+save_plot('vocano.pdf', p, base_height = 8.5, base_width = 11, dpi = 300)
 ggplotly(p)
 ```
 
@@ -90,6 +91,7 @@ design.table$condition <- toUpperFirstLetter(design.table$condition)
 p <- ggbiplot::ggbiplot(pca.m, groups = design.table$condition, ellipse = TRUE, circle = TRUE, var.axes = FALSE) + 
   labs(color = "Groups") + get(paste0('scale_color_',params$theme))()
 save_plot('pca.tiff', p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
+save_plot('pca.pdf', p, base_height = 8.5, base_width = 11, dpi = 300)
 ggplotly(p)
 rm(pca.m, p)
 invisible(gc())
@@ -239,6 +241,7 @@ Column {.tabset}
 compare.dt <- data.table(Type = as.vector(t(rna.type))[as.numeric(row.names(log.cpm))], log.cpm)
 p <- ggplot() + geom_density(data = melt(compare.dt, id = 'Type'), aes(x = value, colour = Type), size = 1.5) + get(paste0('scale_color_',params$theme))()
 save_plot('compare_density.tiff', p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
+save_plot('compare_density.pdf', p, base_height = 8.5, base_width = 11, dpi = 300)
 ggplotly(p)
 ```
 
@@ -246,8 +249,9 @@ ggplotly(p)
 
 ```{r compare violin}
 compare.dt <- data.table(Type = as.vector(t(rna.type))[as.numeric(row.names(log.cpm))], log.cpm)
-p <- ggplot() + geom_boxplot(data = melt(compare.dt, id = 'Type'), aes(x = Type, y = value), notch = TRUE)
+p <- ggplot() + geom_violin(data = melt(compare.dt, id = 'Type'), aes(x = Type, y = value), notch = TRUE)
 save_plot('compare_violin.tiff', p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
+save_plot('compare_violin.pdf', p, base_height = 8.5, base_width = 11, dpi = 300)
 ggplotly(p)
 ```
 
@@ -263,4 +267,5 @@ Column
 **What dose plots Mean**: 
 
 `Desity plot` Presents the density of lncRNA or coding genes at each abundence, this plot show the overview distibution of normalized readscount or expression in certain system. The X-axis denotes the increasing expression value, the Y-axis with range 0 to 1 represents the fraction of gene count in total genes.
+
 `Volin plot` The same as boxplot, also gives a overview distribution of gene's or transcript's expression.
