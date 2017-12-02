@@ -47,7 +47,7 @@ Features
 
 -   **More themes available.** The users can apply for a series of pretty theme brought by ggsci. See [Parameters](#parameters) for details.
 
--   **High resolution static figures with detailed results in *csv* is provided.** User will get figures which can be used for publication in *tiff* format with *300 ppi resolution* and *lzw compression* performed. Also, LncPipeReporter always brings you analysis result tables (comma-separated, can be opened/edited by *MS Excel*, etc.), for details, see [Results](#results).
+-   **High resolution static figures with detailed results in *csv* is provided.** User will get figures which can be used for publication in *tiff* format (with *300 ppi resolution* and *lzw compression* performed) and *pdf* format (could be modified in *AI*, etc.). Also, LncPipeReporter always brings you analysis result tables (comma-separated, can be opened/edited by *MS Excel*, etc.), for details, see [Results](#results).
 
 Installation
 ------------
@@ -215,15 +215,27 @@ Results
 By default, LncPipeReporter will generate a directory named as `LncPipeReports` at your `$HOME` (**you can [set another place](#parameters) yourself**) that holds all results as well as dependencies, so you should always move/copy the **whole** folder. The contents of the output directory seems like:
 
 ``` pre
-LncPipeReports
+LncPipeReports/
 ├── figures
+│   ├── CDF.pdf
 │   ├── CDF.tiff
+│   ├── compare_density.pdf
+│   ├── compare_density.tiff
+│   ├── compare_violin.pdf
+│   ├── compare_violin.tiff
+│   ├── HISAT2.pdf
 │   ├── HISAT2.tiff
+│   ├── lncRNA_length_distribution.pdf
 │   ├── lncRNA_length_distribution.tiff
+│   ├── lncRNA_length_distribution_with_type.pdf
 │   ├── lncRNA_length_distribution_with_type.tiff
+│   ├── pca.pdf
 │   ├── pca.tiff
+│   ├── STAR.pdf
 │   ├── STAR.tiff
+│   ├── TopHat2.pdf
 │   ├── TopHat2.tiff
+│   ├── vocano.pdf
 │   └── vocano.tiff
 ├── libs
 │   ├── bootstrap-3.3.5
@@ -237,17 +249,18 @@ LncPipeReports
 │   ├── jquery-1.12.4
 │   ├── jszip-1.10.12
 │   ├── pdfmake-1.10.12
-│   ├── plotly-binding-4.7.1
-│   ├── plotlyjs-1.29.2
+│   ├── plotly-binding-4.7.1.9000
+│   ├── plotlyjs-1.31.2.9000
 │   ├── stickytableheaders-0.1.19
 │   └── typedarray-0.1
 ├── reporter.html
 └── tables
     ├── DE.csv
     ├── HISAT2.csv
-    ├── lncRNAs.csv
     ├── STAR.csv
     └── TopHat2.csv
+
+18 directories, 25 files
 ```
 
 FAQ
