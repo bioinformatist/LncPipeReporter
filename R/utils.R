@@ -3,10 +3,6 @@
 #' @param x the sentence/phrase.
 #'
 #' @return The sentence/phrase converted.
-#'
-#' @examples
-#' toUpperFirstLetter('the man called Qi Zhao is handsome!')
-#' toUpperFirstLetter('coolest Yu Sun')
 toUpperFirstLetter <- function(x) {
   paste0(toupper(substr(x, 1, 1)), substring(x, 2))
 }
@@ -17,9 +13,6 @@ toUpperFirstLetter <- function(x) {
 #' @param path path for searching.
 #'
 #' @return A list with types containing file absolute path in vector.
-#'
-#' @examples
-#' search_then_determine()
 search_then_determine <- function(path = system.file(file.path("extdata", "demo_results"),package = "LncPipeReporter")) {
   # Initialize an empty list for storing file types
   type.list <- list()
@@ -66,35 +59,4 @@ search_then_determine <- function(path = system.file(file.path("extdata", "demo_
   lapply(names(file.headlines), function(x) determine_type(file.headlines[[x]], x))
   
   return(type.list)
-}
-
-#' Generate title (h1 level) in [flexdashboard](../../flexdashboard/html/00Index.html) style
-#'
-#' @param title the content of title.
-#' @param nav which (what) menu the title belong to.
-#'
-#' @return Pretty printed (by [cat] but not [print]) title.
-#'
-#' @examples
-#' generate_title("Qi Fat and Yu Fat", "triple-six")
-generate_title <- function(title, nav) {
-  cat(paste0(title, ' {data-navmenu="', nav, '"}', '\n', paste(rep('=', 37), collapse = '')))
-}
-
-#' Test and print if a specific kind of file exists.
-#'
-#' @param l list of file type. Generally produced by [search_then_determine].
-#'
-#' @return None
-#'
-#' @examples
-#' type.list <- search_then_determine()
-#' test_block_data(type.list)
-test_block_data <- function(l) {
-  if (is.null(l[['Tophat2']])) print("No Tophat2 log file detected!")
-  if (is.null(l[['lncRNA']])) print("No lncRNA information detected!")
-  if (is.null(l[['STAR']])) print("No STAR log file detected!")
-  if (is.null(l[['Design']])) print("No experiment design information detected!")
-  if (is.null(l[['RSEM']])) print("No RSEM matrix detected!")
-  if (is.null(l[['Hisat2']])) print("No RSEM matrix detected!")
 }

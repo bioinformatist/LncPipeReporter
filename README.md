@@ -1,6 +1,8 @@
 LncPipeReporter
 ================
 
+[![Build Status](https://travis-ci.org/bioinformatist/LncPipeReporter.svg?branch=master)](https://travis-ci.org/bioinformatist/LncPipeReporter) [![codecov](https://codecov.io/gh/bioinformatist/LncPipeReporter/branch/master/graph/badge.svg)](https://codecov.io/gh/bioinformatist/LncPipeReporter)
+
 A R package for automatically aggregating and summarizing lncRNA analysis results.
 
 Overview
@@ -13,15 +15,15 @@ This project is a part of LncPipe (but can also be used solely) that take charge
 Gallery
 -------
 
-Gif aminations were recorded using [phw/peek](https://github.com/phw/peek).
+Gif animations were recorded using [phw/peek](https://github.com/phw/peek).
 
 LncPipeReporter generated interactive plots support **arbitrary scaling**, **filtering** with tags refer to **real value** implemented via [plotly](https://github.com/ropensci/plotly).
 
-![](imgs/Peek%202017-11-07%2013-18.gif)
+![](imgs/f1.gif)
 
 There are also interactive tables exhibiting **the first 80 lines** of the `data.frame`/`data.table`, which could be exported as **many forms**, allowing for **searching**, **filtering** and **ordering**.
 
-![](imgs/Peek%202017-11-07%2013-32.gif)
+![](imgs/f2.gif)
 
 The **user-adjusted** plots can always be saved as **static figures**, then could be temporarily placed in your manuscripts for peer-review. Once time comes to publication, you may use [publish-deserved version](#results) instead.
 
@@ -88,18 +90,6 @@ devtools::install_github("bioinformatist/LncPipeReporter")
 ```
 
 If there's any problem during installation, please refer to [FAQ](#faq).
-
-To test installation:
-
-``` r
-library(LncPipeReporter)
-# For testing multipe sample case (default)
-run_reporter()
-# For testing lacking certain parts case
-run_reporter(input = system.file(file.path("extdata", "demo_results_lack_part"),package = "LncPipeReporter"))
-# For testing single sample case
-run_reporter(input = system.file(file.path("extdata", "demo_results_single_sample"),package = "LncPipeReporter"))
-```
 
 How to use
 ----------

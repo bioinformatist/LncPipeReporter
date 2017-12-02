@@ -38,6 +38,12 @@ Column
 
 ### Description
 
+This section summarized the Tophat mapping stats of reads from multiple samples. `aligner` paramerter set in LncPipe result in different kind of summary report, and LncPipeReporter can also automatically determine the aligner from file content, which means that lncPipeReportered can be run seperatedly based a set of aligner ouputs files. 
+Mapping status usually contains reads count that mapped or unmapped, where mapped reads can also divided into discordinate mapped, unique mapped, multiple mapped or mapped with low quality. This kind of information are necessary for evaluated the sequencing and library quality. When multiple samples are involved in analysis, this overview analysis can quickly detect batch effect or outlier samples.
+
+An typical output of Tophat2 log file can be found from this link
+[Tophat Log file](https://github.com/bioinformatist/LncPipeReporter/blob/master/inst/extdata/demo_results/N1037.log)
+
 ### *TopHat2* aligning report table
 
 ```{r tophat table}

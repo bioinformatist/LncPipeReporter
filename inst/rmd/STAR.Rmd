@@ -64,16 +64,18 @@ if (nrow(unique(log.percentage[,1])) == 1) {
   save_plot('STAR.pdf', p, base_height = fig.height, base_width = 11, dpi = 300)
   ggplotly(p) %>% layout(margin = list(b = 60))
 }
-
-
-rm(p)
-invisible(gc())
 ```
 
 Column
 -------------------------------------
 
 ### Description
+
+This section summarized the STAR mapping stats of reads from multiple samples. `aligner` paramerter set in LncPipe result in different kind of summary report, and LncPipeReporter can also automatically determine the aligner from file content, which means that lncPipeReportered can be run seperatedly based a set of aligner ouputs files. 
+Mapping status usually contains reads count that mapped or unmapped, where mapped reads can also divided into discordinate mapped, unique mapped, multiple mapped or mapped with low quality. This kind of information are necessary for evaluated the sequencing and library quality. When multiple samples are involved in analysis, this overview analysis can quickly detect batch effect or outlier samples.
+
+An typical output of STAR log file can be found from following link
+[STAR Log file](https://github.com/bioinformatist/LncPipeReporter/blob/master/inst/extdata/demo_results/LWS3.Log.final.out)
 
 ### *STAR* log table
 
