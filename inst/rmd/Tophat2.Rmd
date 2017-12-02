@@ -29,6 +29,7 @@ p <- ggplot() +
   geom_bar(data = tophat, aes(x = Direction, y = Number, fill = Type), stat = 'identity') +
   coord_flip() + facet_grid(Sample ~ .) + get(paste0('scale_fill_',params$theme))()
 save_plot('TopHat2.tiff', p, base_height = fig.height, base_width = 11, dpi = 300, compression = 'lzw')
+save_plot('TopHat2.pdf', p, base_height = fig.height, base_width = 11, dpi = 300)
 ggplotly(p) %>% layout(margin = list(b = 60))
 ```
 

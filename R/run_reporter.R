@@ -69,7 +69,9 @@ run_reporter <- function(input = system.file(file.path("extdata", "demo_results"
   
   invisible(file.copy(Sys.glob(file.path(system.file(package = 'LncPipeReporter'), 'rmd', '*.csv')), tables.dir))
   invisible(file.copy(Sys.glob(file.path(system.file(package = 'LncPipeReporter'), 'rmd', '*.tiff')), figures.dir))
+  invisible(file.copy(Sys.glob(file.path(system.file(package = 'LncPipeReporter'), 'rmd', '*.pdf')), figures.dir))
   invisible(file.remove(Sys.glob(file.path(system.file(package = 'LncPipeReporter'), 'rmd', '*.csv')),
-                        Sys.glob(file.path(system.file(package = 'LncPipeReporter'), 'rmd', '*.tiff'))))
+                        Sys.glob(file.path(system.file(package = 'LncPipeReporter'), 'rmd', '*.tiff')),
+                        Sys.glob(file.path(system.file(package = 'LncPipeReporter'), 'rmd', '*.pdf'))))
 }
 

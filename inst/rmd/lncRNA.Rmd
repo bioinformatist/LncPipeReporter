@@ -38,6 +38,7 @@ p <- ggplot() +
   geom_hline(yintercept = 1, colour = "grey", linetype = "dashed", size = 1) +
   get(paste0('scale_color_',params$theme))()
 save_plot('CDF.tiff', p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
+save_plot('CDF.pdf', p, base_height = 8.5, base_width = 11, dpi = 300)
 ggplotly(p)
 rm(p)
 invisible(gc())
@@ -61,6 +62,7 @@ p <- ggplot() + geom_density(data = lncRNA.gtf, aes(x = Length, colour = Type), 
   scale_y_continuous(expand = c(0.01, 0)) +
   get(paste0('scale_color_',params$theme))()
 save_plot('lncRNA_length_distribution_with_type.tiff', p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
+save_plot('lncRNA_length_distribution_with_type.pdf', p, base_height = 8.5, base_width = 11, dpi = 300)
 ggplotly(p) %>% layout(margin = list(r = 50))
 rm(p)
 invisible(gc())
@@ -76,6 +78,7 @@ p <- ggplot() + geom_histogram(data = lncRNA.gtf, aes(x = Length), binwidth = 10
                      expand = c(0.01, 0)) +
   scale_y_continuous(expand = c(0, 10)) + labs(x = 'lncRNA length', y = 'Count')
 save_plot('lncRNA_length_distribution.tiff', p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
+save_plot('lncRNA_length_distribution.pdf', p, base_height = 8.5, base_width = 11, dpi = 300)
 ggplotly(p) %>% layout(margin = list(r = 50))
 rm(p)
 invisible(gc())
