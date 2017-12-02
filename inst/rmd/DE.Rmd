@@ -250,7 +250,7 @@ ggplotly(p)
 
 ```{r compare violin}
 compare.dt <- data.table(Type = as.vector(t(rna.type))[as.numeric(row.names(log.cpm))], log.cpm)
-p <- ggplot() + geom_violin(data = melt(compare.dt, id = 'Type'), aes(x = Type, y = value), notch = TRUE)
+p <- ggplot() + geom_violin(data = melt(compare.dt, id = 'Type'), aes(x = Type, y = value))
 save_plot('compare_violin.tiff', p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
 save_plot('compare_violin.pdf', p, base_height = 8.5, base_width = 11, dpi = 300)
 ggplotly(p)
