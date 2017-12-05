@@ -46,7 +46,7 @@ Column
 
 ### *STAR* percentage plot
 
-```{r star plot, fig.height=fig.height, message=TRUE, warning=TRUE}
+```{r star plot, fig.height=fig.height}
 # Make donut chart when there's only one sample
 if (nrow(unique(log.percentage[,1])) == 1) {
   log.percentage %>%
