@@ -32,7 +32,8 @@ biocViews: Software
 Remotes: ramnathv/htmlwidgets,
     tidyverse/ggplot2,
     ropensci/plotly,
-    vqv/ggbiplot
+    vqv/ggbiplot,
+    yihui/knitr
 RoxygenNote: 6.0.1
 Roxygen: list(markdown = TRUE)
 Suggests: testthat,
