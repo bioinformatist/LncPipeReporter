@@ -27,7 +27,8 @@ Imports: plotly,
     cowplot,
     ggplot2,
     htmlwidgets,
-    rmarkdown
+    rmarkdown,
+    sf
 biocViews: Software
 Remotes: ramnathv/htmlwidgets,
     tidyverse/ggplot2,
