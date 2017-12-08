@@ -14,148 +14,100 @@
 	<rect x="62.835" y="68.5" fill="#FFFFFF" width="48" height="45"/>
 	<rect x="62.835" y="68.5" fill="none" stroke="#000000" stroke-miterlimit="8" width="48" height="45"/>
 	<text transform="matrix(1 0 0 1 71.9421 89.1104)" font-family="'TimesNewRomanPSMT'" font-size="8">Rawdata</text>
-	<text transform="matrix(1 0 0 1 74.5076 98.1104)" font-family="'TimesNewRomanPSMT'" font-size="8">(</text>
+	<text transform="matrix(1 0 0 1 74.5081 98.1104)" font-family="'TimesNewRomanPSMT'" font-size="8">(</text>
 	<text transform="matrix(1 0 0 1 77.1389 98.1104)" font-family="'TimesNewRomanPSMT'" font-size="8">.fastq</text>
-	<text transform="matrix(1 0 0 1 94.6326 98.1104)" font-family="'TimesNewRomanPSMT'" font-size="8">)</text>
-	<path fill="#FFFFFF" d="M161.835,61c0-5.799,4.701-10.5,10.5-10.5h96c5.8,0,10.5,4.701,10.5,10.5v42c0,5.799-4.7,10.5-10.5,10.5
-		h-96c-5.799,0-10.5-4.701-10.5-10.5V61L161.835,61z"/>
+	<text transform="matrix(1 0 0 1 94.6331 98.1104)" font-family="'TimesNewRomanPSMT'" font-size="8">)</text>
+	<path fill="#FFFFFF" d="M161.835,61c0-5.799,4.701-10.5,10.5-10.5h96c5.801,0,10.5,4.701,10.5,10.5v42
+		c0,5.799-4.699,10.5-10.5,10.5h-96c-5.799,0-10.5-4.701-10.5-10.5V61L161.835,61z"/>
 	<path fill="none" stroke="#000000" stroke-miterlimit="8" d="M161.835,61c0-5.799,4.701-10.5,10.5-10.5h96
-		c5.8,0,10.5,4.701,10.5,10.5v42c0,5.799-4.7,10.5-10.5,10.5h-96c-5.799,0-10.5-4.701-10.5-10.5V61L161.835,61z"/>
-	<text transform="matrix(1 0 0 1 178.8708 74.373)" font-family="'TimesNewRomanPSMT'" font-size="9">Reference genome(.fa)</text>
-	<text transform="matrix(1 0 0 1 181.3708 84.373)" font-family="'TimesNewRomanPSMT'" font-size="9">Gene annotation(.gtf)</text>
-	<text transform="matrix(1 0 0 1 179.8708 95.373)" font-family="'TimesNewRomanPSMT'" font-size="9">rRNA annotation(.gtf)</text>
+		c5.801,0,10.5,4.701,10.5,10.5v42c0,5.799-4.699,10.5-10.5,10.5h-96c-5.799,0-10.5-4.701-10.5-10.5V61L161.835,61z"/>
+	<text transform="matrix(1 0 0 1 173.8708 76.373)" font-family="'TimesNewRomanPSMT'" font-size="9">Reference genome(.fa)</text>
+	<text transform="matrix(1 0 0 1 173.3708 86.373)" font-family="'TimesNewRomanPSMT'" font-size="9">GENCODE annotation(.gtf)</text>
+	<text transform="matrix(1 0 0 1 173.8708 97.373)" font-family="'TimesNewRomanPSMT'" font-size="9">LNCipedia  annotation(.gtf)</text>
 	<text transform="matrix(1 0 0 1 47.6428 37.9541)" font-family="'TimesNewRomanPSMT'" font-size="12">Raw Reads</text>
-	<text transform="matrix(1 0 0 1 174.0706 43.6797)" font-family="'TimesNewRomanPSMT'" font-size="12">Known annotation</text>
+	<text transform="matrix(1 0 0 1 174.071 43.6797)" font-family="'TimesNewRomanPSMT'" font-size="12">Known annotation/Ref</text>
 	<polygon points="224.335,190.5 224.335,211.5 227.835,211.5 220.835,218.5 213.835,211.5 217.335,211.5 217.335,190.5 	"/>
 	<polygon fill="none" stroke="#000000" stroke-miterlimit="8" points="224.335,190.5 224.335,211.5 227.835,211.5 220.835,218.5 
 		213.835,211.5 217.335,211.5 217.335,190.5 	"/>
-	<path fill="#FFFFFF" d="M336.836,61.167c0-5.891,4.773-10.667,10.665-10.667h73.666c5.894,0,10.669,4.776,10.669,10.667v42.666
-		c0,5.892-4.775,10.667-10.669,10.667h-73.666c-5.892,0-10.666-4.775-10.666-10.667L336.836,61.167L336.836,61.167z"/>
-	<path fill="none" stroke="#70AD47" stroke-miterlimit="8" d="M336.836,61.167c0-5.891,4.773-10.667,10.665-10.667h73.666
-		c5.894,0,10.669,4.776,10.669,10.667v42.666c0,5.892-4.775,10.667-10.669,10.667h-73.666c-5.892,0-10.666-4.775-10.666-10.667
-		L336.836,61.167L336.836,61.167z"/>
+	<path fill="#FFFFFF" d="M336.837,61.167c0-5.891,4.772-10.667,10.665-10.667h73.665c5.895,0,10.67,4.776,10.67,10.667v42.666
+		c0,5.892-4.775,10.667-10.67,10.667h-73.666c-5.892,0-10.666-4.775-10.666-10.667L336.837,61.167L336.837,61.167z"/>
+	<path fill="none" stroke="#70AD47" stroke-miterlimit="8" d="M336.837,61.167c0-5.891,4.772-10.667,10.665-10.667h73.665
+		c5.895,0,10.67,4.776,10.67,10.667v42.666c0,5.892-4.775,10.667-10.67,10.667h-73.666c-5.892,0-10.666-4.775-10.666-10.667
+		L336.837,61.167L336.837,61.167z"/>
 	<text transform="matrix(1 0 0 1 349.8044 74.7832)" font-family="'TimesNewRomanPSMT'" font-size="9">Known coding and </text>
 	<text transform="matrix(1 0 0 1 355.4294 84.7832)" font-family="'TimesNewRomanPSMT'" font-size="9">noncoding gene </text>
 	<text transform="matrix(1 0 0 1 354.1794 95.7832)" font-family="'TimesNewRomanPSMT'" font-size="9">annotations(.</text>
 	<text transform="matrix(1 0 0 1 400.9294 95.7832)" font-family="'TimesNewRomanPSMT'" font-size="9">gtf</text>
 	<text transform="matrix(1 0 0 1 410.9294 95.7832)" font-family="'TimesNewRomanPSMT'" font-size="9">)</text>
-	<text transform="matrix(1 0 0 1 320.7498 43.6797)" font-family="'TimesNewRomanPSMT'" font-size="12">Integrated annotation</text>
-	<path d="M61.835,153.5c0-3.313,2.687-6,6-6h37c3.312,0,6,2.687,6,6v24c0,3.313-2.688,6-6,6h-37c-3.313,0-6-2.687-6-6V153.5z"/>
-	<path fill="none" stroke="#000000" stroke-miterlimit="8" d="M61.835,153.5c0-3.313,2.687-6,6-6h37c3.312,0,6,2.687,6,6v24
+	<text transform="matrix(1 0 0 1 320.7507 43.6797)" font-family="'TimesNewRomanPSMT'" font-size="12">Integrated annotation</text>
+	<path d="M61.835,153.5c0-3.313,2.688-6,6-6h37c3.313,0,6,2.687,6,6v24c0,3.313-2.688,6-6,6h-37c-3.313,0-6-2.687-6-6V153.5z"/>
+	<path fill="none" stroke="#000000" stroke-miterlimit="8" d="M61.835,153.5c0-3.313,2.688-6,6-6h37c3.313,0,6,2.687,6,6v24
 		c0,3.313-2.688,6-6,6h-37c-3.313,0-6-2.687-6-6V153.5z"/>
 	<text transform="matrix(1 0 0 1 70.8044 162.8496)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">Q</text>
 	<text transform="matrix(1 0 0 1 78.0466 162.8496)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">u</text>
 	<text transform="matrix(1 0 0 1 83.0466 162.8496)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">a</text>
-	<text transform="matrix(1 0 0 1 87.5452 162.8496)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">lit</text>
-	<text transform="matrix(1 0 0 1 95.8201 162.8496)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">y </text>
-	<text transform="matrix(1 0 0 1 71.6199 174.8496)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">c</text>
+	<text transform="matrix(1 0 0 1 87.5457 162.8496)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">lit</text>
+	<text transform="matrix(1 0 0 1 95.8206 162.8496)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">y </text>
+	<text transform="matrix(1 0 0 1 71.6204 174.8496)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">c</text>
 	<text transform="matrix(1 0 0 1 76.1184 174.8496)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">on</text>
 	<text transform="matrix(1 0 0 1 86.1184 174.8496)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">t</text>
 	<text transform="matrix(1 0 0 1 88.8762 174.8496)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">r</text>
 	<text transform="matrix(1 0 0 1 92.2463 174.8496)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ol</text>
-	<text transform="matrix(1 0 0 1 7.3137 152.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">F</text>
-	<text transform="matrix(1 0 0 1 13.9436 152.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">a</text>
-	<text transform="matrix(1 0 0 1 18.9436 152.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">s</text>
-	<text transform="matrix(1 0 0 1 22.8259 152.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">t</text>
-	<text transform="matrix(1 0 0 1 25.5837 152.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">Q</text>
-	<text transform="matrix(1 0 0 1 32.8259 152.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">C</text>
-	<text transform="matrix(1 0 0 1 7.3137 164.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">A</text>
-	<text transform="matrix(1 0 0 1 13.9436 164.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">f</text>
-	<text transform="matrix(1 0 0 1 17.3137 164.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">t</text>
-	<text transform="matrix(1 0 0 1 20.0715 164.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">e</text>
-	<text transform="matrix(1 0 0 1 24.571 164.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">r</text>
-	<text transform="matrix(1 0 0 1 28.4519 164.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">Q</text>
-	<text transform="matrix(1 0 0 1 35.7043 164.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">C</text>
-	<text transform="matrix(1 0 0 1 7.3137 176.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">F</text>
-	<text transform="matrix(1 0 0 1 13.9436 176.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">a</text>
-	<text transform="matrix(1 0 0 1 18.9436 176.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">s</text>
-	<text transform="matrix(1 0 0 1 22.8259 176.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">t</text>
-	<text transform="matrix(1 0 0 1 25.5837 176.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">x_</text>
-	<text transform="matrix(1 0 0 1 35.5837 176.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">t</text>
-	<text transform="matrix(1 0 0 1 38.342 176.9873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">ool</text>
+	<text transform="matrix(1 0 0 1 11.3884 160.2344)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">FastQC</text>
+	<text transform="matrix(1 0 0 1 11.3884 172.2344)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">AfterQC</text>
 	<polygon points="84.409,112.998 84.349,140.431 82.349,140.427 85.335,146.434 88.349,140.44 86.349,140.436 86.409,113.002 	"/>
 	<polygon points="221.335,113 221.345,141.162 223.345,141.162 220.345,147.163 217.343,141.164 219.343,141.163 219.335,113 	"/>
 	<polygon points="120.835,161.75 145.335,161.75 145.335,158.5 151.835,165 145.335,171.5 145.335,168.25 120.835,168.25 	"/>
 	<polygon fill="none" stroke="#000000" stroke-miterlimit="8" points="120.835,161.75 145.335,161.75 145.335,158.5 151.835,165 
 		145.335,171.5 145.335,168.25 120.835,168.25 	"/>
-	<path d="M160.835,153.667c0-3.406,2.761-6.167,6.166-6.167h107.666c3.405,0,6.168,2.761,6.168,6.167v24.666
-		c0,3.406-2.763,6.167-6.168,6.167H167.001c-3.405,0-6.166-2.761-6.166-6.167V153.667z"/>
-	<path fill="none" stroke="#000000" stroke-miterlimit="8" d="M160.835,153.667c0-3.405,2.761-6.167,6.166-6.167h107.666
-		c3.405,0,6.168,2.762,6.168,6.167v24.666c0,3.406-2.763,6.167-6.168,6.167H167.001c-3.405,0-6.166-2.761-6.166-6.167V153.667z"/>
-	<text transform="matrix(1 0 0 1 172.3831 169.5781)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">Alignment &amp; Assembly</text>
+	<path d="M160.835,153.667c0-3.406,2.762-6.167,6.166-6.167h107.666c3.405,0,6.168,2.761,6.168,6.167v24.666
+		c0,3.406-2.763,6.167-6.168,6.167H167.001c-3.404,0-6.166-2.761-6.166-6.167V153.667z"/>
+	<path fill="none" stroke="#000000" stroke-miterlimit="8" d="M160.835,153.667c0-3.405,2.762-6.167,6.166-6.167h107.666
+		c3.405,0,6.168,2.762,6.168,6.167v24.666c0,3.406-2.763,6.167-6.168,6.167H167.001c-3.404,0-6.166-2.761-6.166-6.167V153.667z"/>
+	<text transform="matrix(1 0 0 1 172.3835 169.5781)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">Alignment &amp; Assembly</text>
 	<polygon points="330.552,79.368 336.53,82.41 330.51,85.368 330.522,83.368 278.327,83 278.341,81 330.535,81.368 	"/>
 	<path fill="none" stroke="#000000" stroke-miterlimit="8" d="M295.835,178.5c-3.313,0-6-2.91-6-6.5s-2.688-6.5-6-6.5
-		c3.312,0,6-2.91,6-6.5s2.687-6.5,6-6.5"/>
-	<text transform="matrix(1 0 0 1 297.8748 151.7441)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">STAR-Cuffinks</text>
+		c3.313,0,6-2.91,6-6.5s2.688-6.5,6-6.5"/>
+	<text transform="matrix(1 0 0 1 297.8757 151.7441)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">STAR-Cuffinks</text>
 	<text transform="matrix(1 0 0 1 297.655 166.2344)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">Tophat-Cufflinks</text>
 	<text transform="matrix(1 0 0 1 297.9753 180.2549)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">HISAT2-StringTie</text>
-	<path d="M160.835,232.833c0-5.155,4.179-9.334,9.332-9.334h101.334c5.153,0,9.334,4.179,9.334,9.334v37.333
-		c0,5.154-4.181,9.333-9.334,9.333H170.167c-5.153,0-9.332-4.179-9.332-9.333V232.833z"/>
-	<path fill="none" stroke="#000000" stroke-miterlimit="8" d="M160.835,232.833c0-5.155,4.179-9.334,9.332-9.334h101.334
-		c5.153,0,9.334,4.179,9.334,9.334v37.333c0,5.154-4.181,9.333-9.334,9.333H170.167c-5.153,0-9.332-4.179-9.332-9.333V232.833z"/>
-	<text transform="matrix(1 0 0 1 175.8831 243.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">Remove known genes </text>
-	<text transform="matrix(1 0 0 1 175.8831 255.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">and exclude by </text>
-	<text transform="matrix(1 0 0 1 175.8831 267.0195)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">criterions</text>
+	<path d="M160.835,232.833c0-5.155,4.18-9.334,9.332-9.334h101.334c5.153,0,9.334,4.179,9.334,9.334v37.333
+		c0,5.154-4.181,9.333-9.334,9.333H170.167c-5.152,0-9.332-4.179-9.332-9.333V232.833z"/>
+	<path fill="none" stroke="#000000" stroke-miterlimit="8" d="M160.835,232.833c0-5.155,4.18-9.334,9.332-9.334h101.334
+		c5.153,0,9.334,4.179,9.334,9.334v37.333c0,5.154-4.181,9.333-9.334,9.333H170.167c-5.152,0-9.332-4.179-9.332-9.333V232.833z"/>
+	<text transform="matrix(1 0 0 1 175.8835 243.0195)" enable-background="new    "><tspan x="0" y="0" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">Identify novel lncRNAs </tspan><tspan x="0" y="12" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">by criterions</tspan></text>
 	<polygon points="385.24,114.5 385.24,252.353 286.835,252.353 286.835,254.853 280.835,251.853 286.835,248.853 286.835,251.353 
 		384.24,251.353 384.24,114.5 	"/>
 	<text transform="matrix(1 0 0 1 296.3689 247.1807)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">C</text>
-	<text transform="matrix(1 0 0 1 302.9998 247.1807)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">u</text>
-	<text transform="matrix(1 0 0 1 308.4998 247.1807)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">ff</text>
+	<text transform="matrix(1 0 0 1 303.0007 247.1807)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">u</text>
+	<text transform="matrix(1 0 0 1 308.5007 247.1807)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">ff</text>
 	<text transform="matrix(1 0 0 1 315.24 247.1807)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">c</text>
 	<text transform="matrix(1 0 0 1 319.74 247.1807)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">o</text>
 	<text transform="matrix(1 0 0 1 324.74 247.1807)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">m</text>
 	<text transform="matrix(1 0 0 1 332.4978 247.1807)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">pa</text>
 	<text transform="matrix(1 0 0 1 342.4978 247.1807)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">r</text>
-	<text transform="matrix(1 0 0 1 346.3787 247.1807)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">e</text>
-	<rect x="40.835" y="220.5" fill="#FFFFFF" width="102" height="60"/>
-	<rect x="40.835" y="220.5" fill="none" stroke="#ED7D31" stroke-miterlimit="8" width="102" height="60"/>
-	<text transform="matrix(1 0 0 1 47.6448 241.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">1. </text>
-	<text transform="matrix(1 0 0 1 57.6448 241.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">L</text>
-	<text transform="matrix(1 0 0 1 63.7629 241.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
-	<text transform="matrix(1 0 0 1 68.262 241.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">ng</text>
-	<text transform="matrix(1 0 0 1 78.262 241.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">t</text>
-	<text transform="matrix(1 0 0 1 81.0198 241.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">h </text>
-	<text transform="matrix(1 0 0 1 88.5198 241.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">&gt;</text>
-	<text transform="matrix(1 0 0 1 94.1497 241.6465)" font-family="'TimesNewRomanPSMT'" font-size="10"> 200</text>
-	<text transform="matrix(1 0 0 1 47.6448 253.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">2. </text>
-	<text transform="matrix(1 0 0 1 57.6448 253.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">E</text>
-	<text transform="matrix(1 0 0 1 63.7629 253.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">xon nu</text>
-	<text transform="matrix(1 0 0 1 91.2629 253.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">m</text>
-	<text transform="matrix(1 0 0 1 99.0212 253.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">b</text>
-	<text transform="matrix(1 0 0 1 104.0212 253.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
-	<text transform="matrix(1 0 0 1 108.5198 253.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">r</text>
-	<text transform="matrix(1 0 0 1 111.8894 253.6465)" font-family="'TimesNewRomanPSMT'" font-size="10"> </text>
-	<text transform="matrix(1 0 0 1 114.3894 253.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">&gt;</text>
-	<text transform="matrix(1 0 0 1 120.0198 253.6465)" font-family="'TimesNewRomanPSMT'" font-size="10"> 2</text>
-	<text transform="matrix(1 0 0 1 47.6448 265.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">3. </text>
-	<text transform="matrix(1 0 0 1 57.6448 265.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">R</text>
-	<text transform="matrix(1 0 0 1 64.2747 265.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
-	<text transform="matrix(1 0 0 1 68.7722 265.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">m</text>
-	<text transform="matrix(1 0 0 1 76.532 265.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">ov</text>
-	<text transform="matrix(1 0 0 1 86.532 265.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
-	<text transform="matrix(1 0 0 1 91.0295 265.6465)" font-family="'TimesNewRomanPSMT'" font-size="10"> </text>
-	<text transform="matrix(1 0 0 1 93.5198 265.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">r</text>
-	<text transform="matrix(1 0 0 1 96.8894 265.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">R</text>
-	<text transform="matrix(1 0 0 1 103.5198 265.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">NA</text>
-	<text transform="matrix(1 0 0 1 118.0027 265.6465)" font-family="'TimesNewRomanPSMT'" font-size="10">s</text>
-	<text transform="matrix(1 0 0 1 47.6448 215.4531)" font-family="'TimesNewRomanPSMT'" font-size="12">Filtering Criterion</text>
+	<text transform="matrix(1 0 0 1 346.3796 247.1807)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">e</text>
+	<rect x="40.835" y="220.5" fill="none" stroke="#ED7D31" stroke-miterlimit="8" width="108.998" height="60"/>
+	<text transform="matrix(1 0 0 1 49.1619 251.499)" font-family="'TimesNewRomanPSMT'" font-size="10">2. Length &gt; 200 </text>
+	<text transform="matrix(1 0 0 1 49.1619 263.499)" font-family="'TimesNewRomanPSMT'" font-size="10">3. Exon number &gt; 2 </text>
+	<text transform="matrix(1 0 0 1 49.1619 238.3965)" enable-background="new    "><tspan x="0" y="0" font-family="'TimesNewRomanPSMT'" font-size="10">1. class code = </tspan><tspan x="61.455" y="0" font-family="'TimesNewRomanPS-ItalicMT'" font-size="10">i</tspan><tspan x="64.233" y="0" font-family="'TimesNewRomanPSMT'" font-size="10">/</tspan><tspan x="67.012" y="0" font-family="'TimesNewRomanPS-ItalicMT'" font-size="10">u</tspan><tspan x="72.012" y="0" font-family="'TimesNewRomanPSMT'" font-size="10">/</tspan><tspan x="74.79" y="0" font-family="'TimesNewRomanPS-ItalicMT'" font-size="10">x</tspan></text>
+	<text transform="matrix(1 0 0 1 47.6453 215.4531)" font-family="'TimesNewRomanPSMT'" font-size="12">Filtering Criterion</text>
 	<text transform="matrix(1 0 0 1 48.2419 385.167)" font-family="'TimesNewRomanPSMT'" font-size="12">Clean Reads</text>
 	<text transform="matrix(1 0 0 1 38.342 491.833)" font-family="'TimesNewRomanPSMT'" font-size="12">Experimental design</text>
 	<polygon points="225.585,284.5 225.585,304 229.835,304 221.335,312.5 212.835,304 217.085,304 217.085,284.5 	"/>
 	<polygon fill="none" stroke="#000000" stroke-miterlimit="8" points="225.585,284.5 225.585,304 229.835,304 221.335,312.5 
 		212.835,304 217.085,304 217.085,284.5 	"/>
-	<path d="M160.835,322.667c0-5.062,4.104-9.167,9.166-9.167h101.666c5.062,0,9.168,4.104,9.168,9.167v36.667
+	<path d="M160.835,322.667c0-5.062,4.104-9.167,9.166-9.167h101.666c5.063,0,9.168,4.104,9.168,9.167v36.667
 		c0,5.062-4.104,9.166-9.168,9.166H170.001c-5.062,0-9.166-4.104-9.166-9.166V322.667z"/>
-	<path fill="none" stroke="#000000" stroke-miterlimit="8" d="M160.835,322.667c0-5.062,4.104-9.167,9.166-9.167h101.666
-		c5.062,0,9.168,4.104,9.168,9.167v36.667c0,5.062-4.104,9.166-9.168,9.166H170.001c-5.062,0-9.166-4.104-9.166-9.166V322.667z"/>
-	<text transform="matrix(1 0 0 1 172.3831 336.8955)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">Protein coding potential </text>
-	<text transform="matrix(1 0 0 1 172.3831 348.8955)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">calculation &amp; filtering</text>
-	<path d="M160.835,416.669c0-5.062,4.104-9.168,9.166-9.168h101.666c5.062,0,9.168,4.105,9.168,9.168v36.666
-		c0,5.062-4.104,9.166-9.168,9.166H170.001c-5.062,0-9.166-4.104-9.166-9.166V416.669z"/>
-	<path fill="none" stroke="#000000" stroke-miterlimit="8" d="M160.835,416.669c0-5.062,4.104-9.168,9.166-9.168h101.666
-		c5.062,0,9.168,4.105,9.168,9.168v36.666c0,5.062-4.104,9.166-9.168,9.166H170.001c-5.062,0-9.166-4.104-9.166-9.166V416.669z"/>
-	<text transform="matrix(1 0 0 1 189.9353 434.501)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">Classification &amp; </text>
-	<text transform="matrix(1 0 0 1 189.9353 446.501)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">Quantification</text>
+	<path fill="none" d="M160.835,322.667c0-5.062,4.104-9.167,9.166-9.167h101.666c5.063,0,9.168,4.104,9.168,9.167v36.667
+		c0,5.062-4.104,9.166-9.168,9.166H170.001c-5.062,0-9.166-4.104-9.166-9.166V322.667z"/>
+	<text transform="matrix(1 0 0 1 172.3835 336.8955)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">Protein coding potential </text>
+	<text transform="matrix(1 0 0 1 172.3835 348.8955)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">calculation &amp; filtering</text>
+	<path d="M160.835,416.669c0-5.063,4.104-9.168,9.166-9.168h101.666c5.063,0,9.168,4.105,9.168,9.168v36.666
+		c0,5.063-4.104,9.166-9.168,9.166H170.001c-5.062,0-9.166-4.104-9.166-9.166V416.669z"/>
+	<path fill="none" stroke="#000000" stroke-miterlimit="8" d="M160.835,416.669c0-5.063,4.104-9.168,9.166-9.168h101.666
+		c5.063,0,9.168,4.105,9.168,9.168v36.666c0,5.063-4.104,9.166-9.168,9.166H170.001c-5.062,0-9.166-4.104-9.166-9.166V416.669z"/>
+	<text transform="matrix(1 0 0 1 189.9353 437.5732)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">Quantification</text>
 	<polygon points="224.835,376.499 224.835,396.501 228.835,396.501 220.835,404.501 212.835,396.501 216.835,396.501 
 		216.835,376.499 	"/>
 	<polygon fill="none" stroke="#000000" stroke-miterlimit="8" points="224.835,376.499 224.835,396.501 228.835,396.501 
@@ -174,40 +126,39 @@
 	<polygon points="154.028,431.573 159.983,434.661 153.94,437.573 153.97,435.573 115.319,435.001 115.349,433.001 153.999,433.573 
 			"/>
 	<path fill="none" stroke="#000000" stroke-miterlimit="8" d="M295.835,355.5c-3.313,0-6-2.91-6-6.5s-2.688-6.5-6-6.5
-		c3.312,0,6-2.91,6-6.5s2.687-6.5,6-6.5"/>
+		c3.313,0,6-2.91,6-6.5s2.688-6.5,6-6.5"/>
 	<text transform="matrix(1 0 0 1 296.3689 332.4121)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">CPAT</text>
 	<text transform="matrix(1 0 0 1 296.3689 359.873)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">PLEK</text>
-	<text transform="matrix(1 0 0 1 296.3689 346.1426)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">CNCI</text>
-	<path d="M160.835,505.669c0-5.062,4.104-9.168,9.166-9.168h101.666c5.062,0,9.168,4.105,9.168,9.168v36.666
-		c0,5.062-4.104,9.166-9.168,9.166H170.001c-5.062,0-9.166-4.104-9.166-9.166V505.669z"/>
+	<path d="M160.835,505.669c0-5.062,4.104-9.168,9.166-9.168h101.666c5.063,0,9.168,4.105,9.168,9.168v36.666
+		c0,5.063-4.104,9.166-9.168,9.166H170.001c-5.062,0-9.166-4.104-9.166-9.166V505.669z"/>
 	<path fill="none" stroke="#000000" stroke-miterlimit="8" d="M160.835,505.669c0-5.062,4.104-9.168,9.166-9.168h101.666
-		c5.062,0,9.168,4.105,9.168,9.168v36.666c0,5.062-4.104,9.166-9.168,9.166H170.001c-5.062,0-9.166-4.104-9.166-9.166V505.669z"/>
-	<text transform="matrix(1 0 0 1 173.1956 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">D</text>
+		c5.063,0,9.168,4.105,9.168,9.168v36.666c0,5.063-4.104,9.166-9.168,9.166H170.001c-5.062,0-9.166-4.104-9.166-9.166V505.669z"/>
+	<text transform="matrix(1 0 0 1 173.196 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">D</text>
 	<text transform="matrix(1 0 0 1 180.4377 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">i</text>
-	<text transform="matrix(1 0 0 1 183.1956 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ff</text>
+	<text transform="matrix(1 0 0 1 183.196 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ff</text>
 	<text transform="matrix(1 0 0 1 189.9348 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
 	<text transform="matrix(1 0 0 1 194.4333 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">r</text>
 	<text transform="matrix(1 0 0 1 197.8044 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
-	<text transform="matrix(1 0 0 1 202.3025 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">n</text>
-	<text transform="matrix(1 0 0 1 207.3025 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ti</text>
-	<text transform="matrix(1 0 0 1 212.8196 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">a</text>
+	<text transform="matrix(1 0 0 1 202.303 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">n</text>
+	<text transform="matrix(1 0 0 1 207.303 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ti</text>
+	<text transform="matrix(1 0 0 1 212.8201 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">a</text>
 	<text transform="matrix(1 0 0 1 217.3171 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">l</text>
 	<text transform="matrix(1 0 0 1 220.0759 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10"> </text>
 	<text transform="matrix(1 0 0 1 222.5759 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">E</text>
-	<text transform="matrix(1 0 0 1 228.6951 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">xp</text>
-	<text transform="matrix(1 0 0 1 238.6951 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">r</text>
+	<text transform="matrix(1 0 0 1 228.696 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">xp</text>
+	<text transform="matrix(1 0 0 1 238.696 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">r</text>
 	<text transform="matrix(1 0 0 1 242.0632 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">e</text>
-	<text transform="matrix(1 0 0 1 246.5623 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ss</text>
+	<text transform="matrix(1 0 0 1 246.5632 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">ss</text>
 	<text transform="matrix(1 0 0 1 254.325 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">i</text>
 	<text transform="matrix(1 0 0 1 257.0847 521.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">on</text>
 	<text transform="matrix(1 0 0 1 202.6306 533.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">A</text>
 	<text transform="matrix(1 0 0 1 209.8718 533.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">n</text>
 	<text transform="matrix(1 0 0 1 214.8718 533.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">a</text>
 	<text transform="matrix(1 0 0 1 219.3708 533.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">l</text>
-	<text transform="matrix(1 0 0 1 222.1292 533.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">y</text>
-	<text transform="matrix(1 0 0 1 227.1287 533.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">s</text>
+	<text transform="matrix(1 0 0 1 222.1296 533.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">y</text>
+	<text transform="matrix(1 0 0 1 227.1296 533.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">s</text>
 	<text transform="matrix(1 0 0 1 231.0085 533.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">i</text>
-	<text transform="matrix(1 0 0 1 233.7693 533.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">s</text>
+	<text transform="matrix(1 0 0 1 233.7703 533.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">s</text>
 	<text transform="matrix(1 0 0 1 237.6511 533.3623)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10"> </text>
 	<polygon points="224.835,467.501 224.835,487.501 228.835,487.501 220.835,495.501 212.835,487.501 216.835,487.501 
 		216.835,467.501 	"/>
@@ -216,20 +167,20 @@
 	<text transform="matrix(1 0 0 1 296.3689 531.248)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">EdgeR</text>
 	<rect x="50.835" y="501.501" fill="#FFFFFF" width="67" height="45"/>
 	<rect x="50.835" y="501.501" fill="none" stroke="#000000" stroke-miterlimit="8" width="67" height="45"/>
-	<text transform="matrix(1 0 0 1 62.761 521.3623)" font-family="'TimesNewRomanPSMT'" font-size="10">Phenotype</text>
+	<text transform="matrix(1 0 0 1 62.7615 521.3623)" font-family="'TimesNewRomanPSMT'" font-size="10">Phenotype</text>
 	<text transform="matrix(1 0 0 1 105.0173 521.3623)" font-family="'TimesNewRomanPSMT'" font-size="10"> </text>
-	<text transform="matrix(1 0 0 1 59.511 533.3623)" font-family="'TimesNewRomanPSMT'" font-size="10">matrix(.csv)</text>
+	<text transform="matrix(1 0 0 1 59.5115 533.3623)" font-family="'TimesNewRomanPSMT'" font-size="10">matrix(.csv)</text>
 	<polygon points="154.126,520.001 160.126,523.001 154.126,526.001 154.126,524.001 117.335,524.001 117.335,522.001 
 		154.126,522.001 	"/>
 	<polygon points="226.585,556.501 226.585,576.001 230.835,576.001 222.335,584.501 213.835,576.001 218.085,576.001 
 		218.085,556.501 	"/>
 	<polygon fill="none" stroke="#000000" stroke-miterlimit="8" points="226.585,556.501 226.585,576.001 230.835,576.001 
 		222.335,584.501 213.835,576.001 218.085,576.001 218.085,556.501 	"/>
-	<path fill="#ED7D31" d="M163.835,593.835c0-5.154,4.179-9.334,9.332-9.334h101.334c5.153,0,9.334,4.18,9.334,9.334v37.332
-		c0,5.156-4.181,9.334-9.334,9.334H173.167c-5.153,0-9.332-4.178-9.332-9.334V593.835z"/>
-	<path fill="none" stroke="#AE5A21" stroke-miterlimit="8" d="M163.835,593.835c0-5.154,4.179-9.334,9.332-9.334h101.334
-		c5.153,0,9.334,4.18,9.334,9.334v37.334c0,5.154-4.181,9.332-9.334,9.332H173.167c-5.153,0-9.332-4.178-9.332-9.332V593.835z"/>
-	<text transform="matrix(1 0 0 1 183.6624 616.0469)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">Summary &amp; report</text>
+	<path fill="#ED7D31" d="M163.835,593.835c0-5.154,4.18-9.334,9.332-9.334h101.334c5.153,0,9.334,4.18,9.334,9.334v37.332
+		c0,5.156-4.181,9.334-9.334,9.334H173.167c-5.152,0-9.332-4.178-9.332-9.334V593.835z"/>
+	<path fill="none" stroke="#AE5A21" stroke-miterlimit="8" d="M163.835,593.835c0-5.154,4.18-9.334,9.332-9.334h101.334
+		c5.153,0,9.334,4.18,9.334,9.334v37.334c0,5.154-4.181,9.332-9.334,9.332H173.167c-5.152,0-9.332-4.178-9.332-9.332V593.835z"/>
+	<text transform="matrix(1 0 0 1 183.6628 616.0469)" fill="#FFFFFF" font-family="'TimesNewRomanPSMT'" font-size="10">Summary &amp; report</text>
 	<text transform="matrix(1 0 0 1 111.0129 152.1777)" font-family="'TimesNewRomanPSMT'" font-size="18">*</text>
 	<text transform="matrix(1 0 0 1 278.2996 152.7881)" font-family="'TimesNewRomanPSMT'" font-size="18">*</text>
 	<text transform="matrix(1 0 0 1 280.9792 323.5039)" font-family="'TimesNewRomanPSMT'" font-size="18">*</text>
@@ -238,12 +189,13 @@
 	<text transform="matrix(1 0 0 1 295.8103 261.8945)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">g</text>
 	<text transform="matrix(1 0 0 1 300.8103 261.8945)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">ff</text>
 	<text transform="matrix(1 0 0 1 307.5496 261.8945)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">c</text>
-	<text transform="matrix(1 0 0 1 312.0486 261.8945)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">o</text>
-	<text transform="matrix(1 0 0 1 317.0486 261.8945)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">m</text>
+	<text transform="matrix(1 0 0 1 312.0496 261.8945)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">o</text>
+	<text transform="matrix(1 0 0 1 317.0496 261.8945)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">m</text>
 	<text transform="matrix(1 0 0 1 324.8083 261.8945)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">pa</text>
 	<text transform="matrix(1 0 0 1 334.8083 261.8945)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">r</text>
 	<text transform="matrix(1 0 0 1 338.6882 261.8945)" font-family="'TimesNewRomanPS-BoldItalicMT'" font-size="10">e</text>
-	<text transform="matrix(1 0 0 1 79.1321 438.501)" font-family="'TimesNewRomanPSMT'" font-size="8">  reads</text>
-	<text transform="matrix(1 0 0 1 79.1321 448.1006)" font-family="'AdobeSongStd-Light-GBpc-EUC-H'" font-size="8">(.fastq)</text>
+	<text transform="matrix(1 0 0 1 79.1326 438.501)" font-family="'TimesNewRomanPSMT'" font-size="8">  reads</text>
+	<text transform="matrix(1 0 0 1 79.1326 448.1006)" font-family="'ArialMT'" font-size="8">(.fastq)</text>
+	<text transform="matrix(1 0 0 1 173.196 66.873)" font-family="'TimesNewRomanPSMT'" font-size="9">Indexed reference genome</text>
 </g>
 </svg>
