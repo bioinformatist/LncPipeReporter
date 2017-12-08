@@ -29,10 +29,10 @@ Imports: plotly,
     htmlwidgets,
     rmarkdown
 biocViews: Software
-Remotes: ramnathv/htmlwidgets,
+Remotes: vqv/ggbiplot,
+    ramnathv/htmlwidgets,
     tidyverse/ggplot2,
     ropensci/plotly,
-    vqv/ggbiplot,
     yihui/knitr
 RoxygenNote: 6.0.1
 Roxygen: list(markdown = TRUE)
