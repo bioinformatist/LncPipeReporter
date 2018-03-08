@@ -9,7 +9,7 @@ output:
 ```{r setup, include=FALSE}
 ```
 
-DE analysis
+DE analysis (by edgeR)
 =====================================
 
 ```{r}

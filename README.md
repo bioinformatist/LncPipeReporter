@@ -47,9 +47,11 @@ Features
 
 -   **Flexible use.** User can send **arbitrary type or number** of files at a time, for instance, more than one STAR log files, or both STAR and HISAT2 log files, or even without any alignment log files.
 
--   **More themes available.** The users can apply for a series of pretty theme brought by ggsci. See [Parameters](#parameters) for details.
+-   **More themes available.** Users can apply for a series of pretty theme brought by ggsci. See [Parameters](#parameters) for details.
 
--   **High resolution static figures with detailed results in *csv* is provided.** User will get figures which can be used for publication in *tiff* format (with *300 ppi resolution* and *lzw compression* performed) and *pdf* format (could be modified in *AI*, etc.). Also, LncPipeReporter always brings you analysis result tables (comma-separated, can be opened/edited by *MS Excel*, etc.), for details, see [Results](#results).
+-   **Multiple differential expression analysis method supported.** Up to now, users can choose one of [edgeR](http://www.bioconductor.org/packages/release/bioc/html/edgeR.html), [DESeq2](http://www.bioconductor.org/packages/release/bioc/html/DESeq2.html) or [NOISeq](http://www.bioconductor.org/packages/release/bioc/html/NOISeq.html) as differential expression analysis tool.
+
+-   **High resolution static figures with detailed results in *csv* is provided.** Users will get figures which can be used for publication in *tiff* format (with *300 ppi resolution* and *lzw compression* performed) and *pdf* format (could be modified in *AI*, etc.). Also, LncPipeReporter always brings you analysis result tables (comma-separated, can be opened/edited by *MS Excel*, etc.), for details, see [Results](#results).
 
 Installation
 ------------
@@ -62,23 +64,17 @@ The main reporter *Rmd* file is constructed from Rmarkdown files of **R Markdown
 
 For Arch Linux:
 
-``` shell
+``` bash
 $ sudo pacman -S pandoc
 ```
 
 For other operation systems or Linux distributions, see [pandoc's official documentation](https://pandoc.org/installing.html).
 
-### Install binary version by [packrat](http://rstudio.github.io/packrat/) (**recommended**) (**still not ready**, preparing)
-
-Coming soon!
-
-### Build from source
-
-> You can't build from source in **Microsoft-R-Open** now due to [its bug](https://github.com/Microsoft/microsoft-r-open/issues/26).
+> You can't build from source in **Microsoft-R-Open** early than v3.4.2, due to [its bug](https://github.com/Microsoft/microsoft-r-open/issues/26).
 
 For some packages need `fortran` for compiling, you should install fortran compiler first:
 
-``` shell
+``` bash
 $ sudo apt-get install gfortran
 ```
 
@@ -95,6 +91,8 @@ How to use
 ----------
 
 > Caution: Though users never need specify file types, the sample name should be embedded in the **first part** (use both `.` and `_` as file name delimiter) of file name's prefix, for example, the sample name of *LWS2.Log.final.out* and *N1037.log* will be obtained as *LWS2* and *N1037*.
+
+> If you use DESeq2 or NOISeq as differentially expression analysis tool, the order of sample names in experimental design information file should be consistent with the expression matrix columns.
 
 > It is highly recommended that users should use **Chrome** web browser for looking through reports produced by LncPipeReporter.
 
@@ -170,26 +168,31 @@ Parameters with their names and default values were listed below:
 <td>output directory (who holds all results and dependencies)</td>
 </tr>
 <tr class="even">
+<td>de.method</td>
+<td>'edger'</td>
+<td>Differential expression analysis method, could be 'edger'(default), 'noiseq' or 'deseq2'</td>
+</tr>
+<tr class="odd">
 <td>theme</td>
 <td><code>npg</code></td>
 <td>Journal palette applied to all plots supplied by <a href="https://cran.r-project.org/web/packages/ggsci/vignettes/ggsci.html#discrete-color-palettes">ggsci</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>cdf.percent</td>
 <td><code>10%</code></td>
 <td>Percentage of values to display when calculating coding potential</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>max.lncrna.len</td>
 <td><code>10000</code></td>
 <td>Maximum length of lncRNAs to display when calculating distribution</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>min.expressed.sample</td>
 <td><code>50%</code></td>
 <td>Minimal percentage of expressed samples</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>ask</td>
 <td>FALSE</td>
 <td>need set parameters with graphical user-interface in browser?</td>
@@ -252,6 +255,8 @@ LncPipeReports/
 
 18 directories, 25 files
 ```
+
+> This tree thumbnail is represented for output with differentially expression analysis via edgeR. The results from the other tools may be slightly different.
 
 FAQ
 ---

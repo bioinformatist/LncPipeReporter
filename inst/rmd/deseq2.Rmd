@@ -1,0 +1,87 @@
+---
+title: "Untitled"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+```
+
+DE analysis (by DESeq2)
+=====================================
+
+```{r}
+design.table <- fread(paste0("perl -F':|,' -lanE'BEGIN{say qq{SampleID\tcondition}} $fuck = shift @F; say qq{$_\t$fuck} for @F' ", type.list$Design), header = TRUE)
+des.count <- fread(type.list$RSEM)
+rna.id <- des.count[,1]
+rna.type <- des.count[,2]
+des.count <- as.data.frame(des.count[, round(.SD), .SDcols = -(1:2), with = TRUE])
+rownames(des.count) <- rna.id[[1]]
+coldata <- as.data.frame(design.table[,2])
+rownames(coldata) <- names(des.count)
+dds <- suppressWarnings(DESeq2::DESeqDataSetFromMatrix(countData = des.count,
+                              colData = coldata,
+                              design = ~ condition))
+keep <- rowSums(counts(dds)) >= 10
+dds <- dds[keep,]
+dds <- DESeq2::DESeq(dds)
+resLFC <- DESeq2::lfcShrink(dds, coef=2)
+resOrdered <- res[order(resLFC$pvalue),]
+vsd <- DESeq2::vst(dds, blind=FALSE)
+ntd <- DESeq2::normTransform(dds)
+```
+
+Column {.tabset}
+-------------------------------------
+
+### MA-plot
+
+```{r}
+DESeq2::plotMA(resLFC, ylim=c(-2,2))
+```
+
+### Heatmap
+
+```{r}
+select <- order(rowMeans(counts(dds,normalized=TRUE)),
+                decreasing=TRUE)[1:20]
+# df <- as.data.frame(SummarizedExperiment::colData(dds)[,"condition"])
+heatmaply::heatmaply(SummarizedExperiment::assay(ntd)[select,], scale = 'row', xlab = "Sample", margins = c(60,100,40,20), row_text_angle = 45, column_text_angle = 60) %>% layout(margin = list(l = 100, b = 50, r = 0))
+```
+
+### Correlation heatmap
+
+```{r}
+heatmaply::heatmaply(cor(SummarizedExperiment::assay(ntd)[select,]), margins = c(40, 40),
+          k_col = 2, k_row = 2,
+          limits = c(-1,1)) %>% layout(margin = list(l = 50, b = 50))
+```
+
+### Principle Components Analysis
+
+```{r}
+pcaData <- DESeq2::plotPCA(vsd, intgroup="condition", returnData=TRUE)
+percentVar <- round(100 * attr(pcaData, "percentVar"))
+p <- ggplot(pcaData, aes(PC1, PC2, color=condition)) +
+  geom_point(size=3) +
+  xlab(paste0("PC1: ",percentVar[1],"% variance")) +
+  ylab(paste0("PC2: ",percentVar[2],"% variance")) + 
+  coord_fixed()
+save_plot('pca.tiff', p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
+save_plot('pca.pdf', p, base_height = 8.5, base_width = 11, dpi = 300)
+ggplotly(p)
+```
+
+Column
+-------------------------------------
+
+### Description
+
+### Differential expressed lncRNAs table
+
+```{r}
+resSig <- BiocGenerics::subset(resOrdered, padj < 0.1)
+fwrite(as.data.table(resSig), 'DE.csv', row.names = TRUE)
+DT::datatable(head(as.data.table(resSig), n = 80L)) %>% DT::formatRound(c('baseMean', 'log2FoldChange', 'lfcSE', "stat", 'pvalue', 'padj'), digits = 2)

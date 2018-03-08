@@ -1,0 +1,57 @@
+---
+title: "Untitled"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+```
+
+DE analysis (by NOISeq)
+=====================================
+
+```{r}
+design.table <- fread(paste0("perl -F':|,' -lanE'BEGIN{say qq{SampleID\tcondition}} $fuck = shift @F; say qq{$_\t$fuck} for @F' ", type.list$Design), header = TRUE)
+noi.count <- fread(type.list$RSEM)
+rna.id <- noi.count[,1]
+rna.type <- noi.count[,2]
+noi.count <- as.data.frame(noi.count[, round(.SD), .SDcols = -(1:2), with = TRUE])
+rownames(noi.count) <- rna.id[[1]]
+rna.type <- rna.type[[1]]
+names(rna.type) <- rna.id[[1]]
+noi.data <- readData(data = noi.count, factors = as.data.frame(design.table[,2]), biotype = rna.type)
+# This 'pok gai' function use print as message,
+# cannot be suppressed by invisible() or suppressMessages(),
+# so the tricky sink blocks were used
+{ sink("/dev/null"); seqbio.result <- NOISeq::noiseqbio(noi.data, norm = 'tmm', factor = 'condition'); sink(); }
+```
+
+Column {.tabset}
+-------------------------------------
+
+### Expression plot
+
+```{r}
+{ sink("/dev/null"); DE.plot(seqbio.result, graphic = "expr", q = 0.9); sink(); }
+```
+
+### MD plot
+
+```{r}
+{ sink("/dev/null"); DE.plot(seqbio.result, graphic = "MD", q = 0.8); sink(); }
+```
+
+Column
+-------------------------------------
+
+### Description
+
+### Differential expressed lncRNAs table
+
+```{r}
+{ sink("/dev/null"); degs <- degenes(seqbio.result); sink(); }
+fwrite(degs, 'DE.csv', row.names = TRUE)
+DT::datatable(head(degs, n = 80L)) %>% DT::formatRound(c('normal_mean', 'tumor_mean', 'theta', "log2FC"), digits = 2)
+```

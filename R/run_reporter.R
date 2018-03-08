@@ -8,6 +8,8 @@
 #' @param max.lncrna.len maximum length of lncRNAs to display when calculating distribution (percentage).
 #' @param min.expressed.sample minimal percentage of expressed samples (percentage).
 #' @param ask need set parameters with graphical user-interface in browser?
+#' @param de.method which method should be used to perform differential expression analysis?
+#' Could be 'edger'(default), 'noiseq' or 'deseq2'.
 #'
 #' @return None
 #' @export
@@ -30,6 +32,7 @@
 run_reporter <- function(input = system.file(file.path("extdata", "demo_results"),package = "LncPipeReporter"),
                          output = 'reporter.html',
                          output_dir = path.expand('~/LncPipeReports'),
+                         de.method = 'edger', 
                          theme = 'npg',
                          cdf.percent = 10,
                          max.lncrna.len = 10000,
@@ -55,6 +58,7 @@ run_reporter <- function(input = system.file(file.path("extdata", "demo_results"
                       output_options = list(lib_dir = file.path(output_dir, 'libs')),
                       params = list(input = input,
                                     output = output,
+                                    de.method = de.method,
                                     theme = theme,
                                     cdf.percent = cdf.percent,
                                     max.lncrna.len = max.lncrna.len,

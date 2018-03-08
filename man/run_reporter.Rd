@@ -6,9 +6,9 @@
 \usage{
 run_reporter(input = system.file(file.path("extdata", "demo_results"), package
   = "LncPipeReporter"), output = "reporter.html",
-  output_dir = path.expand("~/LncPipeReports"), theme = "npg",
-  cdf.percent = 10, max.lncrna.len = 10000, min.expressed.sample = 50,
-  ask = FALSE)
+  output_dir = path.expand("~/LncPipeReports"), de.method = "edger",
+  theme = "npg", cdf.percent = 10, max.lncrna.len = 10000,
+  min.expressed.sample = 50, ask = FALSE)
 }
 \arguments{
 \item{input}{absolute path of input directory (results of up-stream analysis).}
@@ -16,6 +16,9 @@ run_reporter(input = system.file(file.path("extdata", "demo_results"), package
 \item{output}{index file name (In HTML format).}
 
 \item{output_dir}{output directory (who holds all results and dependencies).}
+
+\item{de.method}{which method should be used to perform differential expression analysis?
+Could be 'edger'(default), 'noiseq' or 'deseq2'.}
 
 \item{theme}{journal palette applied to all plots supplied by package \href{../../ggsci/doc/ggsci.html}{ggsci}.}
 

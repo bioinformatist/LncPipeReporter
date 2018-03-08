@@ -54,9 +54,11 @@ The **user-adjusted** plots can always be saved as **static figures**, then coul
 
 - **Flexible use.** User can send **arbitrary type or number** of files at a time, for instance, more than one STAR log files, or both STAR and HISAT2 log files, or even without any alignment log files.
 
-- **More themes available.** The users can apply for a series of pretty theme brought by ggsci. See [Parameters] for details.
+- **More themes available.** Users can apply for a series of pretty theme brought by ggsci. See [Parameters] for details.
 
-- **High resolution static figures with detailed results in *csv* is provided.** User will get figures which can be used for publication in *tiff* format (with *300 ppi resolution* and *lzw compression* performed) and *pdf* format (could be modified in *AI*, etc.). Also, LncPipeReporter always brings you analysis result tables (comma-separated, can be opened/edited by *MS Excel*, etc.), for details, see [Results].
+- **Multiple differential expression analysis method supported.** Up to now, users can choose one of [edgeR](http://www.bioconductor.org/packages/release/bioc/html/edgeR.html), [DESeq2](http://www.bioconductor.org/packages/release/bioc/html/DESeq2.html) or [NOISeq](http://www.bioconductor.org/packages/release/bioc/html/NOISeq.html) as differential expression analysis tool.
+
+- **High resolution static figures with detailed results in *csv* is provided.** Users will get figures which can be used for publication in *tiff* format (with *300 ppi resolution* and *lzw compression* performed) and *pdf* format (could be modified in *AI*, etc.). Also, LncPipeReporter always brings you analysis result tables (comma-separated, can be opened/edited by *MS Excel*, etc.), for details, see [Results].
 
 ## Installation
 
@@ -70,23 +72,17 @@ so **you must install `pandoc` first**:
 
 For Arch Linux:
 
-```{shell}
+```bash
 $ sudo pacman -S pandoc
 ```
 
 For other operation systems or Linux distributions, see [pandoc's official documentation](https://pandoc.org/installing.html).
 
-### Install binary version by [packrat](http://rstudio.github.io/packrat/) (**recommended**) (**still not ready**, preparing)
-
-Coming soon!
-
-### Build from source
-
-> You can't build from source in **Microsoft-R-Open** now due to [its bug](https://github.com/Microsoft/microsoft-r-open/issues/26).
+> You can't build from source in **Microsoft-R-Open** early than v3.4.2, due to [its bug](https://github.com/Microsoft/microsoft-r-open/issues/26).
 
 For some packages need `fortran` for compiling, you should install fortran compiler first:
 
-```{shell}
+```bash
 $ sudo apt-get install gfortran
 ```
 
@@ -101,6 +97,8 @@ If there's any problem during installation, please refer to [FAQ].
 ## How to use
 
 > Caution: Though users never need specify file types, the sample name should be embedded in the **first part** (use both `.` and `_` as file name delimiter) of file name's prefix, for example, the sample name of *LWS2.Log.final.out* and *N1037.log* will be obtained as *LWS2* and *N1037*.
+
+> If you use DESeq2 or NOISeq as differentially expression analysis tool, the order of sample names in experimental design information file should be consistent with the expression matrix columns.
 
 > It is highly recommended that users should use **Chrome** web browser for looking through reports produced by LncPipeReporter.
 
@@ -136,7 +134,7 @@ run_reporter(input = system.file(file.path("extdata", "demo_results"),package = 
 
 List the paramters with values as a R `list` object:
 
-```{bash}
+```bash
 $ Rscript -e "library(LncPipeReporter); run_reporter(input = '.', ...)"
 ```
 
@@ -151,6 +149,7 @@ Parameters with their names and default values were listed below:
 | input | `extdata/demo_results` | Absolute path of input directory (results of up-stream analysis) |
 | output | `~/reporter.html` | index file name (In HTML format) |
 | output_dir | `~/LncPipeReports` | output directory (who holds all results and dependencies) |
+| de.method | 'edger' | Differential expression analysis method, could be 'edger'(default), 'noiseq' or 'deseq2' |
 | theme | `npg` | Journal palette applied to all plots supplied by [ggsci](https://cran.r-project.org/web/packages/ggsci/vignettes/ggsci.html#discrete-color-palettes) |
 | cdf.percent | `10%` | Percentage of values to display when calculating coding potential |
 | max.lncrna.len | `10000` | Maximum length of lncRNAs to display when calculating distribution |
@@ -163,7 +162,7 @@ For details and examples, please type `help(run_reporter)` or `?run_reporter` in
 
 By default, LncPipeReporter will generate a directory named as `LncPipeReports` at your `$HOME` (**you can [set another place](#parameters) yourself**) that holds all results as well as dependencies, so you should always move/copy the **whole** folder. The contents of the output directory seems like:
 
-```{pre}
+```pre
 LncPipeReports/
 ├── figures
 │   ├── CDF.pdf
@@ -211,6 +210,7 @@ LncPipeReports/
 
 18 directories, 25 files
 ```
+> This tree thumbnail is represented for output with differentially expression analysis via edgeR. The results from the other tools may be slightly different.
 
 ## FAQ
 
@@ -220,7 +220,7 @@ install.packages(c("curl", "httr"))
 ```
 
 During installation there may be some configuration error (lack of libraries):
-```{pre}
+```pre
 ------------------------- ANTICONF ERROR ---------------------------
 Configuration failed because libcurl was not found. Try installing:
  * deb: libcurl4-openssl-dev (Debian, Ubuntu, etc)
