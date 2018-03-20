@@ -47,6 +47,7 @@ Column
 -------------------------------------
 
 ### Description
+
 **Title**: Differential expression analysis of novel and known lncRNA from LncPipe(NOIseq)
 
 NOISeq takes both the log fold change and absolute difference of reads count into consideration when comparing two conditions. All pairs of replicates are calculated to determine empirical distribution functions. Differentially expressed genes is identified by a small P-value in both the log fold change and the absolute difference in reads count.
@@ -56,8 +57,6 @@ NOISeq takes both the log fold change and absolute difference of reads count int
 **What dose plots Mean**: In this section, `Expression plot `,  `MD plot ` were show at right panel.
 
 Those plots showing different aspects of differential expression results. Expression plot is to compare the expression values in each condition for all features. Differentially expressed features can be highlighted. Manhattan plot is to compare the expression values in each condition across all the chromosome positions. Differentially expressed features can also be highlighted. MD plot shows the values for (M,D) statistics. Differentially expressed features can also be highlighted. Distribution plot displays the percentage of differentially expressed features per chromosome and biotype (if this information is provided by the user).Detail introduction of this function can be fould at http://www.imsbio.co.jp/RGM/R_rdfile?f=NOISeq/man/DE.plot.Rd&d=R_BC 
-
-
 
 **Reference** 
 
