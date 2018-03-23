@@ -33,7 +33,7 @@ DE analysis (by edgeR)
 
 suppressWarnings(rm(rsem.count))
 
-rsem.count <- fread(type.list$RSEM)
+rsem.count <- fread(type.list$RSEM)[Type!="protein_coding",]
 rna.id <- rsem.count[,1]
 rna.type <- rsem.count[,2]
 design.table <- fread(paste0("perl -F':|,' -lanE'BEGIN{say qq{SampleID\tcondition}} $fuck = shift @F; say qq{$_\t$fuck} for @F' ", type.list$Design), header = TRUE)
@@ -230,7 +230,7 @@ McCarthy, J. D, Chen, Yunshun, Smyth and K. G (2012). “Differential expression
 
 ```{r}
 row.names(de$table) <- as.vector(t(rna.id[,1]))[as.numeric(row.names(de$table))]
-fwrite(de$table[, -5], 'DE.csv', row.names = TRUE)
+fwrite(de$table[, -5], 'DE_lncRNA.csv', row.names = TRUE)
 DT::datatable(head(de$table[, -5], n = 80L)) %>% DT::formatRound(c('logFC', 'logCPM', 'PValue', "FDR"), digits = 2)
 ```
 
@@ -274,3 +274,29 @@ Column
 `Desity plot` Presents the density of lncRNA or coding genes at each abundence, this plot show the overview distibution of normalized readscount or expression in certain system. The X-axis denotes the increasing expression value, the Y-axis with range 0 to 1 represents the fraction of gene count in total genes.
 
 `Volin plot` The same as boxplot, also gives a overview distribution of gene's or transcript's expression.
+
+```{r protein_coding result table}
+rsem.count <- fread(type.list$RSEM)
+rna.id <- rsem.count[,1]
+rna.type <- rsem.count[,2]
+rsem.count <- rsem.count[, round(.SD), .SDcols = -(1:2), with = TRUE]
+group <- as.factor(design.table$condition)
+d <- edgeR::DGEList(counts = rsem.count, group = group)
+design <- model.matrix( ~ group)
+# Important!!! The function keep.lib.sizes belongs to subsetting family in package edgeR.
+# The DGEList S3 generic must be imported first.
+# According to the source code:
+# assign("[.DGEList",
+# function(object, i, j, keep.lib.sizes=TRUE)
+# You should: 
+# @importFrom edgeR "[.DGEList"
+d <- d[keep <- rowSums(edgeR::cpm(d) > 1) >= nrow(design.table) * params$min.expressed.sample / 100, ,
+       keep.lib.sizes = FALSE]
+d <- calcNormFactors(d)
+d <- estimateDisp(d, design = design)
+de <- exactTest(d)
+de <- topTags(de, n = length(rownames(de$table)))
+row.names(de$table) <- as.vector(t(rna.id[,1]))[as.numeric(row.names(de$table))]
+fwrite(de$table[, -5], 'DE_all.csv', row.names = TRUE)
+DT::datatable(head(de$table[, -5], n = 80L)) %>% DT::formatRound(c('logFC', 'logCPM', 'PValue', "FDR"), digits = 2)
+```
