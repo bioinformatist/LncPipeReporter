@@ -182,7 +182,7 @@ invisible(gc())
 # ggheatmap(heatmap.m)
 # rm(ggheatmap)
 
-heatmaply::heatmaply(heatmap.m, scale = 'row', xlab = "Sample", margins = c(60,100,40,20), row_text_angle = 45, column_text_angle = 60) %>% layout(margin = list(l = 100, b = 50, r = 0))
+heatmaply::heatmaply(heatmap.m, scale = 'row', xlab = "Sample", margins = c(60,110,40,20), row_text_angle = 45, column_text_angle = 30, cexRow = 0.8, cexCol = 0.8) %>% layout(margin = list(l = 100, b = 50, r = 0))
 # invisible(gc())
 ```
 
@@ -193,7 +193,8 @@ heatmaply::heatmaply(heatmap.m, scale = 'row', xlab = "Sample", margins = c(60,1
 # p <- ggplot() + geom_raster(data = melt(cor(heatmap.m)), aes(x = Var1, y = Var2, fill = value)) + labs(x = '', y = '') + guides(fill=guide_legend(title='Cor value')) + theme(axis.text = element_text(size = rel(0.8)), axis.text.x = element_text(angle = 60, vjust = 0.7))
 # ggplotly(p)
 
-heatmaply::heatmaply(cor(heatmap.m), margins = c(40, 40),
+heatmaply::heatmaply(cor(heatmap.m), margins = c(60, 80, 40, 20),
+                     row_text_angle = 60, column_text_angle = 30, cexRow = 0.8, cexCol = 0.8,
           k_col = 2, k_row = 2,
           limits = c(-1,1)) %>% layout(margin = list(l = 50, b = 50))
 
