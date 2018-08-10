@@ -21,7 +21,7 @@ noi.count <- as.data.frame(noi.count[, round(.SD), .SDcols = -(1:2), with = TRUE
 rownames(noi.count) <- rna.id[[1]]
 rna.type <- rna.type[[1]]
 names(rna.type) <- rna.id[[1]]
-noi.data <- readData(data = noi.count, factors = as.data.frame(design.table[,2]), biotype = rna.type)
+noi.data <- NOISeq::readData(data = noi.count, factors = as.data.frame(design.table[,2]), biotype = rna.type)
 # This 'pok gai' function use print as message,
 # cannot be suppressed by invisible() or suppressMessages(),
 # so the tricky sink blocks were used
@@ -34,13 +34,13 @@ Column {.tabset}
 ### Expression plot
 
 ```{r}
-{ sink("/dev/null"); DE.plot(seqbio.result, graphic = "expr", q = 0.9); sink(); }
+{ sink("/dev/null"); NOISeq::DE.plot(seqbio.result, graphic = "expr", q = 0.9); sink(); }
 ```
 
 ### MD plot
 
 ```{r}
-{ sink("/dev/null"); DE.plot(seqbio.result, graphic = "MD", q = 0.8); sink(); }
+{ sink("/dev/null"); NOISeq::DE.plot(seqbio.result, graphic = "MD", q = 0.8); sink(); }
 ```
 
 Column
@@ -65,7 +65,7 @@ Tarazona S, Furio-Tari P, Turra D, Pietro AD, Nueda MJ, Ferrer A and Conesa A (2
 ### Differential expressed lncRNAs table
 
 ```{r}
-{ sink("/dev/null"); degs <- degenes(seqbio.result); sink(); }
+{ sink("/dev/null"); degs <- NOISeq::degenes(seqbio.result); sink(); }
 fwrite(degs, 'DE.csv', row.names = TRUE)
 DT::datatable(head(degs, n = 80L)) %>% DT::formatRound(c('normal_mean', 'tumor_mean', 'theta', "log2FC"), digits = 2)
 ```

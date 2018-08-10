@@ -45,7 +45,7 @@ DESeq2::plotMA(resLFC, ylim=c(-2,2))
 ### Heatmap
 
 ```{r}
-select <- order(rowMeans(counts(dds,normalized=TRUE)),
+select <- order(rowMeans(DESeq2::counts(dds,normalized=TRUE)),
                 decreasing=TRUE)[1:20]
 # df <- as.data.frame(SummarizedExperiment::colData(dds)[,"condition"])
 heatmaply::heatmaply(SummarizedExperiment::assay(ntd)[select,], scale = 'row', xlab = "Sample", margins = c(60,100,40,20), row_text_angle = 45, column_text_angle = 60) %>% layout(margin = list(l = 100, b = 50, r = 0))
