@@ -80,7 +80,7 @@ p <- ggplot(data = de$table, aes(x = logFC, y = -log10(PValue), colour = thresho
   get(paste0('scale_color_',params$theme))()
 save_plot('vocano.tiff', p, base_height = 8.5, base_width = 11, dpi = 300, compression = 'lzw')
 save_plot('vocano.pdf', p, base_height = 8.5, base_width = 11, dpi = 300)
-ggplotly(p)
+p
 ```
 
 ### Principle Components Analysis
