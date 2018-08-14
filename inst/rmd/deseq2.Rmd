@@ -24,7 +24,7 @@ rownames(coldata) <- names(des.count)
 dds <- suppressWarnings(DESeq2::DESeqDataSetFromMatrix(countData = des.count,
                               colData = coldata,
                               design = ~ condition))
-keep <- rowSums(counts(dds)) >= 10
+keep <- rowSums(DESeq2::counts(dds)) >= 10
 dds <- dds[keep,]
 dds <- DESeq2::DESeq(dds)
 resLFC <- DESeq2::lfcShrink(dds, coef=2)
