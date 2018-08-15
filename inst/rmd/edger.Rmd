@@ -83,7 +83,7 @@ save_plot('vocano.pdf', p, base_height = 8.5, base_width = 11, dpi = 300)
 p
 ```
 
-### Principle Components Analysis
+### Principal Components Analysis
 
 ```{r}
 pca.m <- prcomp(t(log.cpm), scale. = FALSE)

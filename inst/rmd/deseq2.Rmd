@@ -14,7 +14,7 @@ DE analysis (by DESeq2)
 
 ```{r}
 design.table <- fread(paste0("perl -F':|,' -lanE'BEGIN{say qq{SampleID\tcondition}} $fuck = shift @F; say qq{$_\t$fuck} for @F' ", type.list$Design), header = TRUE)
-des.count <- fread(type.list$RSEM)
+des.count <- fread(type.list$RSEM)[Type!="protein_coding",]
 rna.id <- des.count[,1]
 rna.type <- des.count[,2]
 des.count <- as.data.frame(des.count[, round(.SD), .SDcols = -(1:2), with = TRUE])
@@ -102,4 +102,4 @@ Michael I Love, Wolfgang Huber and Simon Anders. Moderated estimation of fold ch
 ```{r}
 resSig <- BiocGenerics::subset(resOrdered, padj < 0.1)
 fwrite(as.data.table(resSig), 'DE.csv', row.names = TRUE)
-DT::datatable(head(as.data.table(resSig), n = 80L)) %>% DT::formatRound(c('baseMean', 'log2FoldChange', 'lfcSE', "stat", 'pvalue', 'padj'), digits = 2)
+DT::datatable(head(as.data.frame(resSig), n = 80L)) %>% DT::formatRound(c('baseMean', 'log2FoldChange', 'lfcSE', "stat", 'pvalue', 'padj'), digits = 2)
