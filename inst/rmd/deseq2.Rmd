@@ -28,7 +28,7 @@ keep <- rowSums(DESeq2::counts(dds)) >= 10
 dds <- dds[keep,]
 dds <- DESeq2::DESeq(dds)
 resLFC <- DESeq2::lfcShrink(dds, coef=2)
-resOrdered <- res[order(resLFC$pvalue),]
+resOrdered <- resLFC[order(resLFC$pvalue),]
 vsd <- DESeq2::vst(dds, blind=FALSE)
 ntd <- DESeq2::normTransform(dds)
 ```
@@ -59,7 +59,7 @@ heatmaply::heatmaply(cor(SummarizedExperiment::assay(ntd)[select,]), margins = c
           limits = c(-1,1)) %>% layout(margin = list(l = 50, b = 50))
 ```
 
-### Principle Components Analysis
+### Principal Component Analysis
 
 ```{r}
 pcaData <- DESeq2::plotPCA(vsd, intgroup="condition", returnData=TRUE)
