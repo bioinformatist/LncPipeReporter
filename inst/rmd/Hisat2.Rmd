@@ -44,13 +44,15 @@ Column
 
 ### Description
 
-This section summarized the HISAT mapping stats of reads from multiple samples. `aligner` paramerter set in LncPipe result in different kind of summary report, and LncPipeReporter can also automatically determine the aligner from file content, which means that lncPipeReportered can be run seperatedly based a set of aligner ouputs files. 
-Mapping status usually contains reads count that mapped or unmapped, where mapped reads can also divided into discordinate mapped, unique mapped, multiple mapped or mapped with low quality. This kind of information are necessary for evaluated the sequencing and library quality. When multiple samples are involved in analysis, this overview analysis can quickly detect batch effect or outlier samples.
+This section summarizes HISAT2 mapping statistics of reads from multiple samples.  
 
-An typical output of HISAT log file can be found from following link
-[Hisat Log file](https://github.com/bioinformatist/LncPipeReporter/blob/master/inst/extdata/demo_results/N1037.log)
+A typical output of Hisat2 Alignment Summary can be found [here](https://github.com/bioinformatist/LncPipeReporter/blob/master/inst/extdata/demo_results/N1037.log)
 
-### *HISAT2* log table
+Hisat2 mapping statistics summarize read alignments that either mapped or did not map to the reference genome. Mapped reads are further classified into discordantly mapped, unique mapped, multiple mapped or mapped with low-quality. This kind of information is necessary for evaluating the library quality and sequencing-run. When multiple samples are involved in analysis, this overview can help in detecting batch effects or outlier samples.
+
+Note: Depending on the choice of `aligner` set in the parameters of LncPipe, this will result in different kinds of summary reports. LncPipeReporter can also automatically determine the aligner from file type. Therefore, LncPipeReporter can also be run separately based on user-choice of aligner.
+
+### *HISAT2* log table (Only the first 80 values are shown)
 
 ```{r}
 fwrite(hisat, 'HISAT2.csv')
