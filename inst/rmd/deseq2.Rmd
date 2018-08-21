@@ -100,7 +100,7 @@ The R scripts for differential expression analysis can be freely checked [here](
 
 Michael I Love, Wolfgang Huber and Simon Anders. Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2. Genome Biology. 2014. 15:550
 
-### Differentially expressed lncRNAs table (Only the first 80 values are shown)
+### Differentially expressed lncRNAs table
 
 ```{r}
 resSig <- BiocGenerics::subset(resOrdered, padj < 0.1)
