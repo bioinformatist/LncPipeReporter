@@ -36,7 +36,7 @@ search_then_determine <- function(path = system.file(file.path("extdata", "demo_
         # Check if this sublist is empty. If not, append element to it
         type.list[['STAR']][length(type.list[['STAR']]) + 1] <<- x.name
       }
-    } else if (grepl(":", file.header)) {
+    } else if (grepl("Sample", file.header)) {
       type.list[['Design']] <<- x.name
     } else if (grepl("ID", file.header)) {
       type.list[['RSEM']] <<- x.name

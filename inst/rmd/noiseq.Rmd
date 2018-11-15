@@ -13,7 +13,7 @@ DE analysis (by NOISeq)
 =====================================
 
 ```{r}
-design.table <- fread(paste0("perl -F':|,' -lanE'BEGIN{say qq{SampleID\tcondition}} $fuck = shift @F; say qq{$_\t$fuck} for @F' ", type.list$Design), header = TRUE)
+design.table <- fread(type.list$Design, header = TRUE)
 noi.count <- fread(type.list$RSEM)[Type!="protein_coding",]
 rna.id <- noi.count[,1]
 rna.type <- noi.count[,2]

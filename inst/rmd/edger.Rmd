@@ -36,7 +36,7 @@ suppressWarnings(rm(rsem.count))
 rsem.count <- fread(type.list$RSEM)[Type!="protein_coding",]
 rna.id <- rsem.count[,1]
 rna.type <- rsem.count[,2]
-design.table <- fread(paste0("perl -F':|,' -lanE'BEGIN{say qq{SampleID\tcondition}} $fuck = shift @F; say qq{$_\t$fuck} for @F' ", type.list$Design), header = TRUE)
+design.table <- fread(type.list$Design, header = TRUE)
 rsem.count <- rsem.count[, round(.SD), .SDcols = -(1:2), with = TRUE]
 group <- as.factor(design.table$condition)
 d <- edgeR::DGEList(counts = rsem.count, group = group)
