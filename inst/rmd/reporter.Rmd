@@ -201,17 +201,19 @@ Coming soon!
 <!-- invisible(gc()) -->
 <!-- ``` -->
 
-# ```{r star-child, child='STAR.Rmd', eval=!is.null(type.list[['STAR']])}
-# ```
-# 
-# ```{r hisat2-child, child='Hisat2.Rmd', eval=!is.null(type.list[['Hisat2']])}
-# ```
-# 
-# ```{r tophat2-child, child='Tophat2.Rmd', eval=!is.null(type.list[['Tophat2']])}
-# ```
 
-```{r lncRNA-child, child='lncRNA.Rmd', eval=!is.null(type.list[['lncRNA']])}
-```
+<!-- ```{r star-child, child='STAR.Rmd', eval=!is.null(type.list[['STAR']])} -->
+<!-- ``` -->
+
+<!-- ```{r hisat2-child, child='Hisat2.Rmd', eval=!is.null(type.list[['Hisat2']])} -->
+<!-- ``` -->
+
+<!-- ```{r tophat2-child, child='Tophat2.Rmd', eval=!is.null(type.list[['Tophat2']])} -->
+<!-- ``` -->
+
+<!-- ```{r lncRNA-child, child='lncRNA.Rmd', eval=!is.null(type.list[['lncRNA']])} -->
+<!-- ``` -->
+
 
 ```{r DE-child, child=switch(de.method, edger = 'edger.Rmd', deseq2 = 'deseq2.Rmd', noiseq = 'noiseq.Rmd'), eval=!is.null(type.list[['Design']])}
 ```
