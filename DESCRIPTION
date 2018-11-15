@@ -30,9 +30,7 @@ Imports: plotly,
     NOISeq,
     DESeq2
 biocViews: Software
-Remotes: vqv/ggbiplot,
-    ramnathv/htmlwidgets,
-    yihui/knitr
+Remotes: vqv/ggbiplot
 RoxygenNote: 6.0.1
 Roxygen: list(markdown = TRUE)
 Suggests: testthat,
