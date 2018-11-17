@@ -2,6 +2,8 @@ LncPipeReporter
 ================
 
 [![Build Status](https://travis-ci.org/bioinformatist/LncPipeReporter.svg?branch=master)](https://travis-ci.org/bioinformatist/LncPipeReporter) [![codecov](https://codecov.io/gh/bioinformatist/LncPipeReporter/branch/master/graph/badge.svg)](https://codecov.io/gh/bioinformatist/LncPipeReporter)
+[![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat-square)](http://bioconda.github.io/recipes/r-lncpipereporter/README.html)
+
 
 An R package for automatically aggregating and summarizing lncRNA analysis results.
 
