@@ -56,7 +56,7 @@ de <- exactTest(d)
 de <- topTags(de, n = length(rownames(de$table)))
 deg <- row.names(de$table[with(de$table,
                                PValue < 0.05),][order(-de$table[with(de$table,
-                                                                     PValue < 0.05),]$logCPM),][1:20,])
+                                                                     PValue < 0.05),]$logCPM),])
 log.cpm <- edgeR::cpm(d, prior.count=2, log=TRUE)
 log.cpm <- data.frame(log.cpm)
 heatmap.m <- log.cpm[deg,]
@@ -87,8 +87,8 @@ p
 
 ```{r}
 pca.m <- prcomp(t(log.cpm), scale. = FALSE)
-design.table$condition <- toUpperFirstLetter(design.table$condition)
-p <- ggbiplot::ggbiplot(pca.m, groups = design.table$condition, ellipse = TRUE, circle = TRUE, var.axes = FALSE) + scale_x_continuous(limits = c(-2, 2)) +
+design.table$condition <- factor(toUpperFirstLetter(design.table$condition))
+p <- ggbiplot::ggbiplot(pca.m, groups = design.table$condition, ellipse = FALSE, circle = TRUE, var.axes = FALSE) + scale_x_continuous(limits = c(-2, 2)) +
   labs(color = "Groups") + get(paste0('scale_color_',params$theme))()
 save_plot('pca.tiff', p, base_height = 8.5, dpi = 300, compression = 'lzw')
 save_plot('pca.pdf', p, base_height = 8.5, dpi = 300)
