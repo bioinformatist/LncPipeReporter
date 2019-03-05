@@ -17,35 +17,16 @@ search_then_determine <- function(path = system.file(file.path("extdata", "demo_
   # Initialize an empty list for storing file types
   type.list <- list()
   
-  determine_type <- function(x, x.name) {
-    file.header <- paste(x[,1], x[,2])
-    if (grepl("Left", file.header)) {
-      if (is.null(type.list[['Tophat2']])) {
-      # It's highly not recommended to use <<- symbol, 
-      # but here is to build a temporary function called many times in lapply
-      type.list[['Tophat2']] <<- x.name
-      } else {
-        type.list[['Tophat2']][length(type.list[['Tophat2']]) + 1] <<- x.name
-      }
-    } else if (grepl("LINC", file.header)) {
+  determine_type <- function(file.header, x.name) {
+    # file.header <- paste(x[,1], x[,2])
+    if (any(grepl(paste(c('known', 'novel', 'protein_coding'),collapse="|"), file.header))) {
       type.list[['lncRNA']] <<- x.name
-    } else if (grepl("Started", file.header)) {
-      if (is.null(type.list[['STAR']])) {
-        type.list[['STAR']] <<- x.name
-      } else {
-        # Check if this sublist is empty. If not, append element to it
-        type.list[['STAR']][length(type.list[['STAR']]) + 1] <<- x.name
-      }
-    } else if (grepl("Sample", file.header)) {
+    }
+    if (any(grepl("Sample", file.header))) {
       type.list[['Design']] <<- x.name
-    } else if (grepl("ID", file.header)) {
+    }
+    if (any(grepl("ID", file.header))) {
       type.list[['RSEM']] <<- x.name
-    } else if (grepl("reads", file.header)) {
-      if (is.null(type.list[['Hisat2']])) {
-        type.list[['Hisat2']] <<- x.name
-      } else {
-        type.list[['Hisat2']][length(type.list[['Hisat2']]) + 1] <<- x.name
-      }
     }
   }
   
